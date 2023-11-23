@@ -7,7 +7,7 @@ import contact from "../assets/tutorial/contact.png";
 import appeals from "../assets/tutorial/appeals.png";
 import news from "../assets/tutorial/news.png";
 
-const Home = () => {
+const Tutorial = () => {
   const [showTutorial, setShowTutorial] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 6;
@@ -118,5 +118,7 @@ const Home = () => {
     </div>
   );
 };
+
+const Home = () => {};
 
 export default Home;
