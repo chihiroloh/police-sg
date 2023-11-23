@@ -1,15 +1,15 @@
 .singpass-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
-  }
-  
-  .loginbutton {
-    margin-top: 20px; 
-  }
-  .page-content {
-    flex-grow: 1; 
-    overflow: auto; 
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loginbutton {
+  margin-top: 20px;
+}
+.page-content {
+  flex-grow: 1;
+  overflow: auto;
+}

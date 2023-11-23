@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './LoginPage.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
+import logo from "../assets/logo.png";
+import loginsingpass from "../assets/loginsingpass.jpg";
 
 const LoginPage = () => {
   const [isNewsVisible, setIsNewsVisible] = useState(false);
@@ -19,23 +21,23 @@ const LoginPage = () => {
   };
 
   const navigateToSingpass = () => {
-    navigate('/singpass');
+    navigate("/singpass");
   };
 
   return (
     <div className="login-page">
       <div className="content">
-        <h1>POLICE@SG</h1>
+        <img src={logo} alt="logo" />
         <h3>An initiative by the Singapore Police Force</h3>
         <br />
         <button className="singpass-button" onClick={navigateToSingpass}>
-          Log in with Singpass
+          <img src={loginsingpass} alt="login"></img>
         </button>
         <br />
         <div className="action-buttons">
-          <button className='1'>Emergency SMS</button>
-          <button className='2'>Emergency Call</button>
-          <button className='3'>Police Hotline</button>
+          <button className="1">Emergency SMS</button>
+          <button className="2">Emergency Call</button>
+          <button className="3">Police Hotline</button>
         </div>
       </div>
       <div
