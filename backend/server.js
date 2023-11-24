@@ -5,6 +5,8 @@ const connectDB = require("./src/db/db");
 const cors = require("cors");
 const helmet = require("helmet");
 const reportTypes = require("./src/routers/reportTypes");
+const reports = require("./src/routers/reports");
+const appeals = require("./src/routers/appeals");
 
 connectDB();
 
@@ -16,6 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/report_types", reportTypes);
+app.use("/api/reports", reports);
+app.use("/api/appeals", appeals);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
