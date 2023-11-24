@@ -4,7 +4,6 @@ body {
   padding: 0;
 }
 
-/* Container Styles */
 .container {
   max-width: 100%;
   padding: 20px;
@@ -14,7 +13,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo Styles */
 .logo {
   max-width: 100%;
   height: auto;
@@ -29,14 +27,12 @@ h1 {
   padding: 0;
 }
 
-/* Paragraph Styles */
 p {
   font-size: 16px;
   line-height: 1.5;
   margin-top: 10px;
 }
 
-/* Media Query for iPhone XR */
 @media (max-width: 414px) {
   .container {
     padding: 10px;
@@ -51,4 +47,60 @@ p {
   p {
     font-size: 14px;
   }
+}
+.header-image {
+  max-width: 90%;
+  margin: 0 auto; /* Center horizontally */
+  display: block; /* Ensure block-level element behavior */
+}
+.home-container {
+  display: flex;
+}
+.readmore {
+  color: #1d1a60;
+}
+.announcement-column {
+  flex: 1; /* Take up all available space */
+  background-color: #e6ecf7;
+  padding: 20px;
+  padding-top: 0%;
+  height: 160px;
+}
+
+.announcement-column h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  color: #b0b0b0;
+}
+
+.welcome {
+  padding: 20px;
+  padding-top: 0;
+  color: #1d1a60;
+  margin-bottom: -8%;
+  font-size: 25px;
+}
+
+.help {
+  padding: 20px;
+  color: #555555;
+  font-size: 20px;
+  padding-top: 0px;
+}
+.crimebutton {
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding-top: 0;
+  margin-top: -5%;
 }
