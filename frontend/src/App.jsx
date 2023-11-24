@@ -5,6 +5,7 @@ import LoginPage from "./components/LoginPage";
 import Singpass from "./components/Singpass";
 import Tutorial from "./components/Tutorial";
 import Home from "./components/Home";
+import ReportACrime from "./components/ReportACrime";
 
 function App() {
   return (
@@ -39,6 +40,14 @@ function App() {
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/reportacrime"
+          element={
+            <Layout>
+              <ReportACrime />
             </Layout>
           }
         />
