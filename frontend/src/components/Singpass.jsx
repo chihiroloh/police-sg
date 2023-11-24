@@ -5,14 +5,14 @@ import "./Singpass.css"
 const Singpass = () => {
   const navigate = useNavigate();
 
-  const navigateToHome = () => {
-    navigate('/home');
+  const navigateToTutorial= () => {
+    navigate('/tutorial');
   };
 
   return (
     <div className="singpass-container">
         <h2>Log-in with Singpass</h2>
-      <button className="loginbutton" onClick={navigateToHome}>Log-in</button>
+      <button className="loginbutton" onClick={navigateToTutorial}>Log-in</button>
     </div>
   );
 };

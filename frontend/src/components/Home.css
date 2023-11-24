@@ -1,56 +1,54 @@
-.tutorial-modal {
-  background-color: white;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container Styles */
+.container {
+  max-width: 100%;
   padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  position: relative;
-  width: 414px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-img {
-  max-width: 100%; /* Set a maximum width of 100% */
-  height: auto; /* Automatically adjust the height to maintain aspect ratio */
-}
-.carousel {
-  width: 80%;
-  max-height: 100%;
-  overflow: hidden;
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-}
-.homepage {
-  width: 414px;
-  height: 896px;
-}
-.carousel-item:first-child {
+
+/* Logo Styles */
+.logo {
+  max-width: 100%;
+  height: auto;
   display: block;
+  margin: 0 auto 20px;
 }
 
-.carousel h2 {
+/* Heading Styles */
+h1 {
   font-size: 24px;
-  margin-bottom: 10px;
+  margin: 0;
+  padding: 0;
 }
 
-.carousel p {
-  font-size: 18px;
-}
-
-.carousel-controls {
-  text-align: center;
+/* Paragraph Styles */
+p {
+  font-size: 16px;
+  line-height: 1.5;
   margin-top: 10px;
 }
 
-.carousel-controls button {
-  margin: 0 10px;
-}
+/* Media Query for iPhone XR */
+@media (max-width: 414px) {
+  .container {
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
+  }
 
-.overlay {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
 }

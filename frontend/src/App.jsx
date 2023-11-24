@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import LoginPage from "./components/LoginPage";
 import Singpass from "./components/Singpass";
+import Tutorial from "./components/Tutorial";
 import Home from "./components/Home";
 
 function App() {
@@ -22,6 +23,14 @@ function App() {
           element={
             <Layout>
               <Singpass />
+            </Layout>
+          }
+        />
+        <Route
+          path="/tutorial"
+          element={
+            <Layout>
+              <Tutorial />
             </Layout>
           }
         />

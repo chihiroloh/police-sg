@@ -1,0 +1,62 @@
+.tutorial-modal {
+  background-color: white;
+  padding: 20px;
+  position: relative;
+  width: 100%; /* Use a percentage width to ensure it fits the screen */
+  max-width: 414px; /* Set a maximum width for larger screens */
+  margin: 0 auto; /* Center the modal horizontally */
+  box-sizing: border-box; /* Include padding and border in the width */
+  overflow: auto; /* Enable scrolling for content overflow */
+  max-height: 100%;
+}
+
+img {
+  max-width: 100%; /* Set a maximum width of 100% */
+  height: auto; /* Automatically adjust the height to maintain aspect ratio */
+}
+.carousel {
+  width: 100%; /* Adjust the width to fill the modal */
+  max-height: calc(100vh - 100px); /* Set a max height to fit the screen */
+  overflow: hidden;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box; /* Include padding and border in the height */
+}
+.homepage {
+  width: 100%; /* Use a percentage width */
+  max-width: 414px; /* Set a maximum width for larger screens */
+  height: 100vh; /* Fill the entire viewport height */
+}
+.carousel-item:first-child {
+  display: block;
+}
+
+.carousel h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.carousel p {
+  font-size: 18px;
+}
+
+.carousel-controls {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-controls button {
+  margin: 0 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
