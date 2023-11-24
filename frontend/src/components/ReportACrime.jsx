@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./ReportACrime.css";
+import { useNavigate } from "react-router-dom";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -9,32 +10,75 @@ const ReportACrime = () => {
   const crimeTypeRef = useRef();
   const stolenRef = useRef("");
   const costRef = useRef("");
+  const moneyRef = useRef("");
+  const accountsRef = useRef("");
+  const transferredRef = useRef("");
+  const perpetratorRef = useRef("");
+  const witnessRef = useRef("");
+  const otherIncidentRef = useRef("");
   const whatHappenedRef = useRef("");
+  const scammerRef = useRef("");
   const uploadedImageRef = useRef();
   const dateRef = useRef("");
   const timeRef = useRef("");
   const locationRef = useRef("");
   const additionalInfoRef = useRef("");
 
+  const navigate = useNavigate();
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  const handleInputChange = (event, inputRef) => {
-    inputRef.current = event.target.value;
-  };
+  //   const handleInputChange = (event, inputRef) => {
+  //     inputRef.current = event.target.value;
+  //   };
 
-  const handlePage2Change = (page) => {
-    if (crimeTypeRef.current.value) {
-      setCurrentPage(page);
+  const handlePage2Change = () => {
+    if (crimeTypeRef.current.value === "theft") {
+      setCurrentPage("page3-theft");
+    } else if (crimeTypeRef.current.value === "scams") {
+      setCurrentPage("page3-scams");
+    } else if (crimeTypeRef.current.value === "voyeurism") {
+      setCurrentPage("page3-voyeurism");
+    } else if (crimeTypeRef.current.value === "other") {
+      setCurrentPage("page3-other");
     } else {
       alert("Please choose the type of crime you wish to report");
     }
   };
 
-  const handlePage3Change = (page) => {
-    if (stolenRef.current && costRef.current) {
-      setCurrentPage(page);
+  const handlePage3ChangeTheft = () => {
+    if (stolenRef.current.value && costRef.current.value) {
+      setCurrentPage("page4-theft");
+    } else {
+      alert("Please fill up all mandatory fields");
+    }
+  };
+
+  const handlePage3ChangeScams = () => {
+    if (
+      moneyRef.current.value &&
+      accountsRef.current.value &&
+      transferredRef.current.value
+    ) {
+      setCurrentPage("page4-scams");
+    } else {
+      alert("Please fill up all mandatory fields");
+    }
+  };
+
+  const handlePage3ChangeVoyeurism = () => {
+    if (perpetratorRef.current.value) {
+      setCurrentPage("page4-voyeurism");
+    } else {
+      alert("Please fill up all mandatory fields");
+    }
+  };
+
+  const handlePageChangeOther = () => {
+    if (otherIncidentRef.current.value) {
+      setCurrentPage("page4-other");
     } else {
       alert("Please fill up all mandatory fields");
     }
@@ -46,6 +90,10 @@ const ReportACrime = () => {
     } else {
       alert("Please fill up all mandatory fields");
     }
+  };
+
+  const returnToHomepage = () => {
+    navigate("/Home");
   };
 
   return (
@@ -76,16 +124,16 @@ const ReportACrime = () => {
             <option value="" disabled>
               Select Category
             </option>
-            <option value="Theft">
+            <option value="theft">
               Dishonest Misappropriation of Property (Theft)
             </option>
-            <option value="Scams">Scams</option>
-            <option value="Voyeurism">Voyeurism</option>
-            <option value="Others">Other</option>
+            <option value="scams">Scams</option>
+            <option value="voyeurism">Voyeurism</option>
+            <option value="other">Other</option>
           </select>
           <br></br>
           <button
-            onClick={() => handlePage2Change("page3-theft")}
+            onClick={handlePage2Change}
             // disabled={!crimeTypeRef.current}
           >
             Confirm
@@ -131,7 +179,7 @@ const ReportACrime = () => {
 
           <button onClick={() => handlePageChange("page2")}>Back</button>
           <button
-            onClick={() => handlePage3Change("page4")}
+            onClick={handlePage3ChangeTheft}
             // disabled={!stolenRef.current || !costRef.current}
           >
             Confirm
@@ -139,7 +187,145 @@ const ReportACrime = () => {
         </div>
       )}
 
-      {currentPage === "page4" && (
+      {currentPage === "page3-scams" && (
+        <div className="row">
+          <h3>Financial Information*</h3>
+          <br></br>
+          <img></img>
+          <br></br>
+
+          <h3>How much money was involved?*</h3>
+          <div>If you are uncertain, please provide an estimated amount.</div>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={moneyRef}
+            // onChange={(event) => handleInputChange(event, stolenRef)}
+          ></input>
+          <br></br>
+
+          <h3>How was the money transferred?*</h3>
+          <div>
+            E.g. bank transfer, credit card, PayNow, PayLah!, etc. Please
+            include transaction numbers, if relevant.
+          </div>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={transferredRef}
+            // onChange={(event) => handleInputChange(event, costRef)}
+          ></input>
+          <br></br>
+
+          <h3>What accounts are affected?*</h3>
+          <div>E.g. bank, account number, etc. </div>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={accountsRef}
+            // onChange={(event) => handleInputChange(event, costRef)}
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page2")}>Back</button>
+          <button
+            onClick={handlePage3ChangeScams}
+            // disabled={!stolenRef.current || !costRef.current}
+          >
+            Confirm
+          </button>
+        </div>
+      )}
+
+      {currentPage === "page3-voyeurism" && (
+        <div className="row">
+          <h3>Perpetrator & Witness Information</h3>
+          <br></br>
+          <img></img>
+          <br></br>
+
+          <h3>Who was the perpetrator?* </h3>
+          <div>
+            Provide any information about the perpetrator (e.g. physical
+            appearance, clothing, other identifying features). Be as clear and
+            specific as possible.
+          </div>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={perpetratorRef}
+            // onChange={(event) => handleInputChange(event, stolenRef)}
+          ></input>
+          <br></br>
+
+          <h3>Were there any witnesses?</h3>
+          <div>
+            Include details of anywitnesses who were present during the
+            incident, if applicable.
+          </div>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={witnessRef}
+            // onChange={(event) => handleInputChange(event, costRef)}
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page2")}>Back</button>
+          <button
+            onClick={handlePage3ChangeVoyeurism}
+            // disabled={!stolenRef.current || !costRef.current}
+          >
+            Confirm
+          </button>
+        </div>
+      )}
+
+      {currentPage === "page3-other" && (
+        <div className="row">
+          <h3>Nature of Incident*</h3>
+          <select name="type" id="type" defaultValue="other" ref={crimeTypeRef}>
+            <option value="" disabled>
+              Select Category
+            </option>
+            <option value="theft">
+              Dishonest Misappropriation of Property (Theft)
+            </option>
+            <option value="scams">Scams</option>
+            <option value="voyeurism">Voyeurism</option>
+            <option value="other">Other</option>
+          </select>
+          <br></br>
+
+          <h3>What type of incident was it?*</h3>
+          <div>
+            Provide any information about what happened. Be as clear and
+            specific as possible.
+          </div>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={otherIncidentRef}
+            // onChange={(event) => handleInputChange(event, stolenRef)}
+          ></input>
+          <br></br>
+
+          <button
+            onClick={handlePageChangeOther}
+            // disabled={!crimeTypeRef.current}
+          >
+            Confirm
+          </button>
+          <br></br>
+          <div>
+            For urgent and time-sensitive matters that require immediate
+            attention, please contact the Police directly using the emergency
+            hotline at 999.
+          </div>
+        </div>
+      )}
+
+      {currentPage === "page4-theft" && (
         <div className="row">
           <h3>Incident Information</h3>
           <br></br>
@@ -166,6 +352,114 @@ const ReportACrime = () => {
           <br></br>
 
           <button onClick={() => handlePageChange("page3-theft")}>Back</button>
+          <button onClick={() => handlePageChange("page5")}>Confirm</button>
+        </div>
+      )}
+
+      {currentPage === "page4-scams" && (
+        <div className="row">
+          <h3>Incident Information</h3>
+          <br></br>
+          <img></img>
+          <br></br>
+
+          <h3>Who was the scammer?</h3>
+          <div>
+            Provide details (e.g. name, email address, phone number, other
+            identifying information).
+          </div>
+          <br></br>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={scammerRef}
+          ></input>
+          <br></br>
+
+          <h3>What happened?</h3>
+          <div>
+            Provide details about the incident (e.g. people involved, sequence
+            of activites, other relevant information). Be as clear and specific
+            as possible.
+          </div>
+          <br></br>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={whatHappenedRef}
+          ></input>
+          <br></br>
+
+          <h3>Supporting Media</h3>
+          <div>Upload up to 3 images and/or videos</div>
+          <input type="file" ref={uploadedImageRef}></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page3-scams")}>Back</button>
+          <button onClick={() => handlePageChange("page5")}>Confirm</button>
+        </div>
+      )}
+
+      {currentPage === "page4-voyeurism" && (
+        <div className="row">
+          <h3>Incident Information</h3>
+          <br></br>
+          <img></img>
+          <br></br>
+
+          <h3>What happened?</h3>
+          <div>
+            Provide details about the incident (e.g. people involved, sequence
+            of activites, other relevant information). Be as clear and specific
+            as possible.
+          </div>
+          <br></br>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={whatHappenedRef}
+          ></input>
+          <br></br>
+
+          <h3>Supporting Media</h3>
+          <div>Upload up to 3 images and/or videos</div>
+          <input type="file" ref={uploadedImageRef}></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page3-voyeurism")}>
+            Back
+          </button>
+          <button onClick={() => handlePageChange("page5")}>Confirm</button>
+        </div>
+      )}
+
+      {currentPage === "page4-other" && (
+        <div className="row">
+          <h3>Incident Information</h3>
+          <br></br>
+          <img></img>
+          <br></br>
+
+          <h3>What happened?</h3>
+          <div>
+            Provide details about the incident (e.g. people involved, sequence
+            of activites, other relevant information). Be as clear and specific
+            as possible.
+          </div>
+          <br></br>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={whatHappenedRef}
+          ></input>
+          <br></br>
+
+          <h3>Supporting Media</h3>
+          <div>Upload up to 3 images and/or videos</div>
+          <input type="file" ref={uploadedImageRef}></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page3-other")}>Back</button>
           <button onClick={() => handlePageChange("page5")}>Confirm</button>
         </div>
       )}
@@ -266,9 +560,7 @@ const ReportACrime = () => {
           </div>
           <br></br>
 
-          <button onClick={() => handlePageChange("homepage")}>
-            Return to Home
-          </button>
+          <button onClick={returnToHomepage}>Return to Home</button>
         </div>
       )}
     </div>
