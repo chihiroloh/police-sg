@@ -6,8 +6,10 @@ const ReportACrime = () => {
   //   const [input2, setInput2] = useState("");
 
   const crimeTypeRef = useRef();
-  const stolenRef = useRef("");
-  const costRef = useRef("");
+  const stolenRef = useRef();
+  const costRef = useRef();
+  const whatHappenedRef = useRef();
+  const uploadedImageRef = useRef();
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -18,7 +20,7 @@ const ReportACrime = () => {
   };
 
   const handlePage2Change = (page) => {
-    if (crimeTypeRef.current) {
+    if (crimeTypeRef.current.value) {
       setCurrentPage(page);
     } else {
       alert("Please choose the type of crime you wish to report");
@@ -33,15 +35,23 @@ const ReportACrime = () => {
     }
   };
 
+  const handlePage5Change = (page) => {
+    if (stolenRef.current && costRef.current) {
+      setCurrentPage(page);
+    } else {
+      alert("Please fill up all mandatory fields");
+    }
+  };
+
   return (
-    <>
+    <div className="container">
       {/* <nav>
         <div></div>
         <button onClick={() => handlePageChange("page1")}>Next</button>
       </nav> */}
 
       {currentPage === "page1" && (
-        <div>
+        <div className="row">
           <img></img>
           <h5>Important Notice: Making False Reports</h5>
           <div>
@@ -59,9 +69,9 @@ const ReportACrime = () => {
       )}
 
       {currentPage === "page2" && (
-        <div>
+        <div className="row">
           <h3>Nature of Incident*</h3>
-          <select defaultValue={""} ref={crimeTypeRef}>
+          <select name="type" id="type" defaultValue={""} ref={crimeTypeRef}>
             <option value="" disabled>
               Select Category
             </option>
@@ -72,7 +82,12 @@ const ReportACrime = () => {
             <option value="Voyeurism">Voyeurism</option>
             <option value="Others">Other</option>
           </select>
-          <button onClick={() => handlePage2Change("page3")}>Confirm</button>
+          <button
+            onClick={() => handlePage2Change("page3-theft")}
+            // disabled={!crimeTypeRef.current}
+          >
+            Confirm
+          </button>
           <div>
             For urgent and time-sensitive matters that require immediate
             attention, please contact the Police directly using the emergency
@@ -81,8 +96,8 @@ const ReportACrime = () => {
         </div>
       )}
 
-      {currentPage === "page3" && (
-        <div>
+      {currentPage === "page3-theft" && (
+        <div className="row">
           <h3>Item Information*</h3>
           <img></img>
           <h3>What was stolen?</h3>
@@ -105,15 +120,10 @@ const ReportACrime = () => {
             ref={costRef}
             onChange={(event) => handleInputChange(event, costRef)}
           ></input>
-          <button
-            onClick={() => handlePage3Change("page2")}
-            diasbled={!stolenRef || !costRef}
-          >
-            Back
-          </button>
+          <button onClick={() => handlePage3Change("page2")}>Back</button>
           <button
             onClick={() => handlePage3Change("page4")}
-            diasbled={!stolenRef || !costRef}
+            // disabled={!stolenRef.current || !costRef.current}
           >
             Confirm
           </button>
@@ -121,7 +131,7 @@ const ReportACrime = () => {
       )}
 
       {currentPage === "page4" && (
-        <div>
+        <div className="row">
           <h3>Incident Information</h3>
           <img></img>
           <h3>What happened?</h3>
@@ -130,34 +140,38 @@ const ReportACrime = () => {
             of activites, other relevant information). Be as clear and specific
             as possible.
           </div>
-          <input></input>
-          <h3>Supporting media</h3>
+          <input
+            type="text"
+            placeholder="Enter Description"
+            ref={whatHappenedRef}
+          ></input>
+          <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input type="file"></input>
+          <input type="file" ref={uploadedImageRef}></input>
           <button onClick={() => handlePageChange("page3")}>Back</button>
           <button onClick={() => handlePageChange("page5")}>Confirm</button>
         </div>
       )}
 
-      {currentPage === "page5" && (
-        <div>
-          <h3>Incident Information</h3>
+      {/* {currentPage === "page5" && (
+        <div className="row">
+          <h3>Date, Time & Location*</h3>
           <img></img>
-          <h3>What happened?</h3>
+          <h3>Date</h3>
           <div>
-            Provide details about the incident (e.g. people involved, sequence
-            of activites, other relevant information). Be as clear and specific
-            as possible.
+            If the incident happened over a period of time, please indicate the
+            full range of dates. (Format: DD/MM/YYYY, e.g. 26/05/2021) Enter
+            Description
           </div>
           <input></input>
           <h3>Supporting media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input type="file"></input>
+          <input type="image"></input>
           <button onClick={() => handlePageChange("page3")}>Back</button>
           <button onClick={() => handlePageChange("page5")}>Confirm</button>
         </div>
-      )}
-    </>
+      )} */}
+    </div>
   );
 };
 
