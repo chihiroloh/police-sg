@@ -1,4 +1,3 @@
-const Reports = require("../models/Reports");
 const ReportsModel = require("../models/Reports");
 
 const getReportsByUserId = async (req, res) => {
@@ -65,9 +64,20 @@ const updateReportStatus = async (req, res) => {
   }
 };
 
+const deleteReportById = async (req, res) => {
+  try {
+    await ReportsModel.findByIdAndDelete(req.params.id);
+    res.json({ status: "ok", msg: "report deleted successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ status: "ok", msg: "error deleting report" });
+  }
+};
+
 module.exports = {
   getReportsByUserId,
   createUserReport,
   createReportUpdate,
   updateReportStatus,
+  deleteReportById,
 };
