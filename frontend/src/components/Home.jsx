@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./Home.css";
+// import ReactDOM from "react-dom";
 import reportcrime from "../assets/tutorial/reportcrime.png";
 import lostandfound from "../assets/tutorial/lostandfound.png";
 import casestatus from "../assets/tutorial/casestatus.png";
 import contact from "../assets/tutorial/contact.png";
 import appeals from "../assets/tutorial/appeals.png";
 import news from "../assets/tutorial/news.png";
+import ReportACrime from "./ReportACrime";
 
-const Tutorial = () => {
+const Home = () => {
   const [showTutorial, setShowTutorial] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 6;
@@ -115,10 +117,9 @@ const Tutorial = () => {
         </div>
       )}
       {/* Rest of the home page content */}
+      <ReportACrime />
     </div>
   );
 };
-
-const Home = () => {};
 
 export default Home;
