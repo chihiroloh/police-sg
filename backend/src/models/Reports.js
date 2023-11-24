@@ -13,14 +13,16 @@ const ReportsSchema = new mongoose.Schema(
     type: { type: String, required: true },
     primaryInfo: { type: Map, of: String, required: true },
     secondaryInfo: { type: String },
-    media: {},
+    media: {
+      mediaURL1: String,
+      mediaURL2: String,
+      mediaURL3: String,
+    },
     AddInfo: { type: String },
     dateOccurred: { type: Date, required: true },
     timeOccurred: { type: String, required: true },
     locationOccurred: { type: String },
-    submittedBy: {
-      /**ObjecId */
-    },
+    submittedBy: { type: String, /*mongoose.ObjectId*/ required: true },
     submmitedOn: { type: Date, default: Date.now },
     status: {
       type: String,
