@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const reportTypes = require("./src/routers/reportTypes");
 const reports = require("./src/routers/reports");
 const appeals = require("./src/routers/appeals");
+const iWitness = require("./src/routers/iWitness");
 
 connectDB();
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/report_types", reportTypes);
 app.use("/api/reports", reports);
 app.use("/api/appeals", appeals);
+app.use("/api/iWitness", iWitness);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
