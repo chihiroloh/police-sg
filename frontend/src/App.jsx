@@ -6,6 +6,12 @@ import Singpass from "./components/Singpass";
 import Tutorial from "./components/Tutorial";
 import Home from "./components/Home";
 import ReportACrime from "./components/ReportACrime";
+import LostNFound from "./components/LostNFound";
+import CaseStatus from "./components/CaseStatus";
+import Cop from "./components/Cop";
+import About from "./components/About";
+import Toc from "./components/Toc";
+import Privacy from "./components/Privacy";
 
 function App() {
   return (
@@ -48,6 +54,54 @@ function App() {
           element={
             <Layout>
               <ReportACrime />
+            </Layout>
+          }
+        />
+        <Route
+          path="/lostnfound"
+          element={
+            <Layout>
+              <LostNFound />
+            </Layout>
+          }
+        />
+        <Route
+          path="/casestatus"
+          element={
+            <Layout>
+              <CaseStatus />
+            </Layout>
+          }
+        />
+        <Route
+          path="/cop"
+          element={
+            <Layout>
+              <Cop />
+            </Layout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Layout>
+              <About />
+            </Layout>
+          }
+        />
+        <Route
+          path="/toc"
+          element={
+            <Layout>
+              <Toc />
+            </Layout>
+          }
+        />
+        <Route
+          path="/privacy"
+          element={
+            <Layout>
+              <Privacy />
             </Layout>
           }
         />
