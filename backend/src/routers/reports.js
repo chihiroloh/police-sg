@@ -5,14 +5,67 @@ const {
   createReportUpdate,
   updateReportStatus,
   deleteReportById,
+  deleteReportUpdate,
 } = require("../controllers/reports");
+const { auth, authAdmin } = require("../middlewares/auth");
+const {
+  validateIdInParam,
+  validateUserIdInParam,
+  validateUserReportData,
+  validateUserReportUpdate,
+  validateStatusUpdate,
+  validateIdInBody,
+} = require("../validators/reports");
+const validation = require("../validators/common");
 
 const router = express.Router();
 
-router.get("/:userId", getReportsByUserId);
-router.put("/:userId", createUserReport);
-router.put("/:id/update", createReportUpdate);
-router.patch("/:id/status", updateReportStatus);
-router.delete("/:id", deleteReportById);
+router.get(
+  "/:userId",
+  auth,
+  validateUserIdInParam,
+  validation,
+  getReportsByUserId
+);
+router.put(
+  "/:userId",
+  auth,
+  validateUserIdInParam,
+  validateUserReportData,
+  validation,
+  createUserReport
+);
+router.put(
+  "/:id/update",
+  authAdmin,
+  validateIdInParam,
+  validateUserReportUpdate,
+  validation,
+  createReportUpdate
+);
+router.patch(
+  "/:id/status",
+  authAdmin,
+  validateIdInParam,
+  validateStatusUpdate,
+  validation,
+  updateReportStatus
+);
+router.delete(
+  "/:id",
+  authAdmin,
+  validateIdInParam,
+  validation,
+  deleteReportById
+);
+
+router.delete(
+  "/:id/update",
+  authAdmin,
+  validateIdInParam,
+  validateIdInBody,
+  validation,
+  deleteReportUpdate
+);
 
 module.exports = router;

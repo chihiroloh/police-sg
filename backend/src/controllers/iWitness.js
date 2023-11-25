@@ -1,4 +1,4 @@
-const IWitnessModel = require("../models/iWitness.js");
+const IWitnessModel = require("../models/IWitness.js");
 
 const createIWitness = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ const createIWitness = async (req, res) => {
       submittedBy: req.params.userId,
     };
     await IWitnessModel.create(newReport);
-    res.json({ status: "ok", msg: "report created successfully" });
+    res.json({ status: "ok", msg: "report created successfully", RefId });
   } catch (error) {
     console.log(error.message);
     res.json({ status: "error", msg: "error creating iWitness report" });

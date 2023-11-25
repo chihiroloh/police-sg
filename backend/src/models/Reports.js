@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 
 const UpdatesSchema = new mongoose.Schema({
-  type: { type: String, enum: ["receipt", "newLeads", "transfer", "close"] },
-  io: { type: String },
-  branch: { type: String },
+  type: {
+    type: String,
+    enum: ["receipt", "newLeads", "transfer", "close"],
+    required: true,
+  },
+  io: { type: String, required: true },
+  branch: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
@@ -22,7 +26,7 @@ const ReportsSchema = new mongoose.Schema(
     dateOccurred: { type: Date, required: true },
     timeOccurred: { type: String, required: true },
     locationOccurred: { type: String },
-    submittedBy: { type: String, /*mongoose.ObjectId*/ required: true },
+    submittedBy: { type: mongoose.ObjectId, required: true },
     submmitedOn: { type: Date, default: Date.now },
     status: {
       type: String,
