@@ -18,18 +18,18 @@ const createUserReport = async (req, res) => {
 
     const reports = await ReportsModel.find();
     const dateRef = new Date().toLocaleDateString().split("/").join("");
-    const RefId =
+    const refId =
       req.body.type === "Lost & Found"
         ? `B/${dateRef}/${reports.length + 1}`
         : `A/${dateRef}/${reports.length + 1}`;
 
     newReport = {
       ...newReport,
-      RefId,
+      refId,
       submittedBy: req.params.userId,
     };
     await ReportsModel.create(newReport);
-    res.json({ status: "ok", msg: "report created successfully", RefId });
+    res.json({ status: "ok", msg: "report created successfully", refId });
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ status: "error", msg: "error creating report" });

@@ -13,7 +13,7 @@ const UpdatesSchema = new mongoose.Schema({
 
 const ReportsSchema = new mongoose.Schema(
   {
-    RefId: { type: String },
+    refId: { type: String },
     type: { type: String, required: true },
     primaryInfo: { type: Map, of: String, required: true },
     secondaryInfo: { type: String },
@@ -22,7 +22,7 @@ const ReportsSchema = new mongoose.Schema(
       mediaURL2: String,
       mediaURL3: String,
     },
-    AddInfo: { type: String },
+    addInfo: { type: String },
     dateOccurred: { type: Date, required: true },
     timeOccurred: { type: String, required: true },
     locationOccurred: { type: String },
