@@ -16,6 +16,7 @@ import privacy from "./Privacy";
 import terms from "../assets/e-services/terms.png";
 import aboutpolice from "../assets/about.png";
 import privacypolicy from "../assets/privacy.png";
+import NavBar from "./NavBar";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -114,6 +115,7 @@ const Home = () => {
           <img src={privacypolicy} alt="privacy" />
         </button>
       </div>
+      <NavBar />
     </div>
   );
 };

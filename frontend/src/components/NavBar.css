@@ -1,0 +1,23 @@
+/* Example styles for the Navbar */
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white; /* Customize the background color */
+  color: white; /* Customize the text color */
+  padding: 10px;
+  border-color: #555555;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
