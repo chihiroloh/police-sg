@@ -19,7 +19,7 @@ const IWitnessSchema = new mongoose.Schema(
     dateOccurred: { type: Date },
     timeOccurred: { type: String },
     locationOccurred: { type: String },
-    submittedBy: { type: String /*mongoose.ObjectId*/, required: true },
+    submittedBy: { type: mongoose.ObjectId, required: true },
     submmitedOn: { type: Date, default: Date.now },
   },
   { collection: "iWitness" }

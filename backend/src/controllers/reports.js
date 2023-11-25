@@ -29,7 +29,7 @@ const createUserReport = async (req, res) => {
       submittedBy: req.params.userId,
     };
     await ReportsModel.create(newReport);
-    res.json({ status: "ok", msg: "report created successfully" });
+    res.json({ status: "ok", msg: "report created successfully", RefId });
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ status: "error", msg: "error creating report" });
@@ -74,10 +74,25 @@ const deleteReportById = async (req, res) => {
   }
 };
 
+const deleteReportUpdate = async (req, res) => {
+  try {
+    const report = await ReportsModel.findById(req.params.id);
+    await report.updates.id(req.body.id).deleteOne();
+    await report.save();
+    res.json({ status: "ok", msg: "update deleted successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res
+      .status(400)
+      .json({ status: "error", msg: "error deleting report update" });
+  }
+};
+
 module.exports = {
   getReportsByUserId,
   createUserReport,
   createReportUpdate,
   updateReportStatus,
   deleteReportById,
+  deleteReportUpdate,
 };
