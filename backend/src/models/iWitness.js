@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const IWitnessSchema = new mongoose.Schema(
   {
-    RefId: { type: String },
+    refId: { type: String },
     type: {
       type: String,
       required: true,
@@ -15,7 +15,7 @@ const IWitnessSchema = new mongoose.Schema(
       mediaURL2: String,
       mediaURL3: String,
     },
-    AddInfo: { type: String },
+    addInfo: { type: String },
     dateOccurred: { type: Date },
     timeOccurred: { type: String },
     locationOccurred: { type: String },
