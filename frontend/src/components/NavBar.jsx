@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"; // You can define your CSS styles for the navbar in this file
+import "./Navbar.css";
 import HomeImage from "../assets/navbar/home.png";
 import ContactUsImage from "../assets/navbar/contactus.png";
 import AppealsImage from "../assets/navbar/appeals.png";
@@ -9,7 +9,7 @@ import NewsImage from "../assets/navbar/news.png";
 const Navbar = () => {
   return (
     <div className="navbar">
-      <Link to="/">
+      <Link to="/Home">
         <img src={HomeImage} alt="Home" />
       </Link>
       <Link to="/ContactUs">

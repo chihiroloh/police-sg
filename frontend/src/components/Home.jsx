@@ -105,7 +105,7 @@ const Home = () => {
       </div>
       {/* PartFour */}
       <div>
-        <button className="about" onClick={goToCop}>
+        <button className="about" onClick={goToAbout}>
           <img src={aboutpolice} alt="about" />
         </button>
         <button className="toc" onClick={goToToc}>

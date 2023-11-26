@@ -1,0 +1,35 @@
+.news-container {
+  flex: 1;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 10px grey;
+  border: 1px solid #333;
+  max-width: 350px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+.news-text {
+  font-size: 18px;
+  color: black;
+}
+.news-header {
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.news-today {
+  font-size: 20px;
+  padding: 20px;
+  margin-bottom: -3%;
+}

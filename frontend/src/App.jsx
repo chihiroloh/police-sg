@@ -12,7 +12,10 @@ import Cop from "./components/Cop";
 import About from "./components/About";
 import Toc from "./components/Toc";
 import Privacy from "./components/Privacy";
-
+import ContactUs from "./components/ContactUs";
+import Appeals from "./components/Appeals";
+import News from "./components/News";
+import NewsContent from "./components/NewsContent";
 function App() {
   return (
     <Router>
@@ -102,6 +105,38 @@ function App() {
           element={
             <Layout>
               <Privacy />
+            </Layout>
+          }
+        />
+        <Route
+          path="/contactus"
+          element={
+            <Layout>
+              <ContactUs />
+            </Layout>
+          }
+        />
+        <Route
+          path="/appeals"
+          element={
+            <Layout>
+              <Appeals />
+            </Layout>
+          }
+        />
+        <Route
+          path="/News"
+          element={
+            <Layout>
+              <News />
+            </Layout>
+          }
+        />
+        <Route
+          path="/NewsContent"
+          element={
+            <Layout>
+              <NewsContent />
             </Layout>
           }
         />

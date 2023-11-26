@@ -2,17 +2,17 @@
   background-color: white;
   padding: 20px;
   position: relative;
-  width: 100%; /* Use a percentage width to ensure it fits the screen */
-  max-width: 414px; /* Set a maximum width for larger screens */
-  margin: 0 auto; /* Center the modal horizontally */
-  box-sizing: border-box; /* Include padding and border in the width */
-  overflow: auto; /* Enable scrolling for content overflow */
+  width: 100%;
+  max-width: 414px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: auto;
   max-height: 100%;
 }
 
 img {
-  max-width: 100%; /* Set a maximum width of 100% */
-  height: auto; /* Automatically adjust the height to maintain aspect ratio */
+  max-width: 100%;
+  height: auto;
 }
 .carousel {
   width: 100%; /* Adjust the width to fill the modal */
