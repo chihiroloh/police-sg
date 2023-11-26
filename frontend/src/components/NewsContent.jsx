@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import NavBar from "./NavBar";
 import newsimg from "../assets/newsimg.png";
 const NewsContent = () => {
   return (
@@ -52,7 +52,7 @@ const NewsContent = () => {
         suspect or know of anyone who could be involved in illegal moneylending
         activities.
       </p>
-      <Navbar />
+      <NavBar />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 import "./News.css";
 
@@ -23,7 +23,7 @@ const News = () => {
           </Link>
         </div>
       </div>
-      <Navbar />
+      <NavBar />
     </div>
   );
 };

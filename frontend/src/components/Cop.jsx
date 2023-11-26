@@ -3,11 +3,13 @@
 import React from "react";
 import jointheteam from "../assets/jointheteam.png";
 import NavBar from "./NavBar";
+import "./Cop.css";
 
 const Cop = () => {
   return (
     <div>
-      <h3>Citizens On Patrol</h3>
+      <p className="cop-header">Citizens On Patrol</p>
+      <hr />
       <img src={jointheteam} alt="jointheteam" />
       <div>
         <h3>About COP</h3>
