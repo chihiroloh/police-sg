@@ -16,6 +16,7 @@ import ContactUs from "./components/ContactUs";
 import Appeals from "./components/Appeals";
 import News from "./components/News";
 import NewsContent from "./components/NewsContent";
+import AppealOne from "./components/AppealOne";
 function App() {
   return (
     <Router>
@@ -121,6 +122,14 @@ function App() {
           element={
             <Layout>
               <Appeals />
+            </Layout>
+          }
+        />
+        <Route
+          path="/AppealOne"
+          element={
+            <Layout>
+              <AppealOne />
             </Layout>
           }
         />

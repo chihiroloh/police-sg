@@ -7,12 +7,14 @@ import Navbar from "./Navbar";
 function ContactUs() {
   return (
     <div>
+      <p className="contact-header">Contact Us</p>
+      <hr />
       <div className="contactus">
         <Link to="/ContactUs">Hotline</Link>
         <Link to="/nearest-centres">Nearest Centres</Link>
       </div>
       <img src={contactus} alt="contactus" />
-      <div>
+      <div className="contact-content">
         <h2>999</h2>
         <p>Emergency Hotline</p>
         <h2>71999</h2>
