@@ -2,7 +2,7 @@
 
 import React from "react";
 import jointheteam from "../assets/jointheteam.png";
-import Navbar from "./Navbar";
+import NavBar from "./NavBar";
 
 const Cop = () => {
   return (
@@ -36,7 +36,7 @@ const Cop = () => {
           prevention, SGSecure and Community Emergency Preparedness.
         </p>
       </div>
-      <Navbar />
+      <NavBar />
     </div>
   );
 };

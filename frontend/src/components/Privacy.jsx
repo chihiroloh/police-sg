@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import NavBar from "./NavBar";
 
 const Privacy = () => {
   return (
@@ -110,7 +110,7 @@ const Privacy = () => {
           </p>
         </li>
       </ol>
-      <Navbar />
+      <NavBar />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import ContactUsImage from "../assets/navbar/contactus.png";
 import AppealsImage from "../assets/navbar/appeals.png";
 import NewsImage from "../assets/navbar/news.png";
 
-const Navbar = () => {
+const NavBar = () => {
   return (
     <div className="navbar">
       <Link to="/Home">
@@ -25,4 +25,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

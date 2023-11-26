@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 import one from "../assets/appeals/one.png";
 import two from "../assets/appeals/two.png";
@@ -30,7 +30,7 @@ const Appeals = () => {
           <img src={six} />
         </div>
       </div>
-      <Navbar />
+      <NavBar />
     </div>
   );
 };

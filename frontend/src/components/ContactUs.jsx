@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./ContactUs.css";
 import contactus from "../assets/contactus.png";
-import Navbar from "./Navbar";
+import Navbar from "./NavBar";
 
 function ContactUs() {
   return (
@@ -26,7 +26,7 @@ function ContactUs() {
         <br />
         <p>In the event of a fire or medical emergency, please dial 995.</p>
       </div>
-      <Navbar />
+      <NavBar />
     </div>
   );
 }
