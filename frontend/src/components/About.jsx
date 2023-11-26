@@ -1,11 +1,13 @@
 // About Police@SG
 import React from "react";
-import Navbar from "./Navbar";
-
+import NavBar from "./NavBar";
+import "./About.css";
 const About = () => {
   return (
     <div>
-      <p>
+      <p className="about-header">About Police@SG</p>
+      <hr />
+      <p className="about-text">
         Police@SG is an initiative by the Singapore Police Force, which allows
         you to report crimes on top of having access to useful information and
         e-services. With Police@SG, you will have the following services at your
@@ -18,7 +20,7 @@ const About = () => {
         volunteers and application information for citizens who are keen on
         signing up
       </p>
-      <Navbar />
+      <NavBar />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import NavBar from "./NavBar";
 import mrchin from "../assets/appeals/appealone.png";
 import iwitness from "../assets/appeals/iwitness.png";
 import appealhotline from "../assets/appeals/appealhotline.png";
@@ -33,7 +33,7 @@ const AppealOne = () => {
         <img src={iwitness} />
         <img src={appealhotline} />
       </div>
-      <Navbar />
+      <NavBar />
     </div>
   );
 };
