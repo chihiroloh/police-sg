@@ -4,6 +4,7 @@ import mrchin from "../assets/appeals/appealone.png";
 import iwitness from "../assets/appeals/iwitness.png";
 import appealhotline from "../assets/appeals/appealhotline.png";
 import "./AppealOne.css";
+import { Link } from "react-router-dom";
 
 const AppealOne = () => {
   return (
@@ -30,8 +31,10 @@ const AppealOne = () => {
       </div>
       {/* Stretch Goal */}
       <div className="appeals-buttons">
-        <img src={iwitness} />
-        <img src={appealhotline} />
+        <Link to="/IWitness">
+          <button>i-Witness Report</button>
+        </Link>
+        <button>Appeal Hotline</button>
       </div>
       <NavBar />
     </div>

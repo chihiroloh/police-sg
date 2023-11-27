@@ -1,34 +1,47 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./ReportACrime.css";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
+import UserContext from "../contexts/user";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
-  const [reportTypes, setReportTypes] = useState();
+  //   const [reportTypes, setReportTypes] = useState();
   //   const [input1, setInput1] = useState("");
   //   const [input2, setInput2] = useState("");
+
+  const userInfoCtx = useContext(UserContext);
 
   const crimeTypeRef = useRef();
   const stolenRef = useRef("");
   const costRef = useRef("");
   const moneyRef = useRef("");
-  const accountsRef = useRef("");
   const transferredRef = useRef("");
+  const accountsRef = useRef("");
   const perpetratorRef = useRef("");
   const witnessRef = useRef("");
   const otherIncidentRef = useRef("");
   const whatHappenedRef = useRef("");
   const scammerRef = useRef("");
-  const uploadedImageRef = useRef();
+  const uploadedImageRef = useRef("");
   const dateRef = useRef("");
   const timeRef = useRef("");
   const locationRef = useRef("");
   const additionalInfoRef = useRef("");
 
   const primaryInfo = {
-    "What was stolen?": stolenRef.current.value,
-    "How much did the item cost?": costRef.current.value,
+    "What was stolen?": stolenRef.current,
+    "How much did the item cost?": costRef.current,
+    "What happened?": whatHappenedRef.current,
+    "Supporting Media": uploadedImageRef.current,
+    "How much money was involved?": moneyRef.current,
+    "How was the money transferred?": transferredRef.current,
+    "What accounts are affected?": accountsRef.current,
+    "Who was the scammer?": scammerRef.current,
+    "Who was the perpetrator?": perpetratorRef.current,
+    "Were there any witnesses?": witnessRef.current,
+    "What type of incident was it?": otherIncidentRef.current,
+    "Additional Information (Optional)": additionalInfoRef.current,
   };
 
   const navigate = useNavigate();
@@ -42,13 +55,15 @@ const ReportACrime = () => {
   //   };
 
   const handlePage2Change = () => {
-    if (crimeTypeRef.current.value === "theft") {
+    crimeTypeRef.current = document.querySelector("#crimeType").value;
+
+    if (crimeTypeRef.current === "theft") {
       setCurrentPage("page3-theft");
-    } else if (crimeTypeRef.current.value === "scams") {
+    } else if (crimeTypeRef.current === "scams") {
       setCurrentPage("page3-scams");
-    } else if (crimeTypeRef.current.value === "voyeurism") {
+    } else if (crimeTypeRef.current === "voyeurism") {
       setCurrentPage("page3-voyeurism");
-    } else if (crimeTypeRef.current.value === "other") {
+    } else if (crimeTypeRef.current === "other") {
       setCurrentPage("page3-other");
     } else {
       alert("Please choose the type of crime you wish to report");
@@ -56,7 +71,10 @@ const ReportACrime = () => {
   };
 
   const handlePage3ChangeTheft = () => {
-    if (stolenRef.current.value && costRef.current.value) {
+    stolenRef.current = document.querySelector("#stolen").value;
+    costRef.current = document.querySelector("#cost").value;
+
+    if (stolenRef.current && costRef.current) {
       setCurrentPage("page4-theft");
     } else {
       alert("Please fill up all mandatory fields");
@@ -64,11 +82,11 @@ const ReportACrime = () => {
   };
 
   const handlePage3ChangeScams = () => {
-    if (
-      moneyRef.current.value &&
-      accountsRef.current.value &&
-      transferredRef.current.value
-    ) {
+    moneyRef.current = document.querySelector("#money").value;
+    accountsRef.current = document.querySelector("#accounts").value;
+    transferredRef.current = document.querySelector("#transferred").value;
+
+    if (moneyRef.current && accountsRef.current && transferredRef.current) {
       setCurrentPage("page4-scams");
     } else {
       alert("Please fill up all mandatory fields");
@@ -76,7 +94,9 @@ const ReportACrime = () => {
   };
 
   const handlePage3ChangeVoyeurism = () => {
-    if (perpetratorRef.current.value) {
+    perpetratorRef.current = document.querySelector("#perpetrator").value;
+
+    if (perpetratorRef.current) {
       setCurrentPage("page4-voyeurism");
     } else {
       alert("Please fill up all mandatory fields");
@@ -84,7 +104,9 @@ const ReportACrime = () => {
   };
 
   const handlePage3ChangeOther = () => {
-    if (otherIncidentRef.current.value) {
+    otherIncidentRef.current = document.querySelector("#otherIncident").value;
+
+    if (otherIncidentRef.current) {
       setCurrentPage("page4-other");
     } else {
       alert("Please fill up all mandatory fields");
@@ -92,6 +114,10 @@ const ReportACrime = () => {
   };
 
   const handlePage5Change = (page) => {
+    dateRef.current = document.querySelector("#date").value;
+    timeRef.current = document.querySelector("#time").value;
+    locationRef.current = document.querySelector("#location").value;
+
     if (dateRef.current && timeRef.current && locationRef.current) {
       setCurrentPage(page);
     } else {
@@ -115,30 +141,43 @@ const ReportACrime = () => {
   //   };
 
   const addReport = async () => {
+    console.log(userInfoCtx.accessToken);
+    console.log(userInfoCtx.userId);
     const res = await fetch(
-      import.meta.env.VITE_SERVER + "/api/reports/:userId",
+      import.meta.env.VITE_SERVER + `/api/reports/${userInfoCtx.userId}`,
       {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + userInfoCtx.accessToken,
         },
         body: JSON.stringify({
-          type: crimeTypeRef.current.value,
+          type: crimeTypeRef.current,
           primaryInfo: primaryInfo,
-          dateOccurred: dateRef.current.value,
-          timeOccurred: timeRef.current.value,
-          locationOccurred: locationRef.current.value,
+          dateOccurred: dateRef.current,
+          timeOccurred: timeRef.current,
+          locationOccurred: locationRef.current,
         }),
       }
     );
 
     if (res.ok) {
-      crimeTypeRef.current.value = "";
-      stolenRef.current.value = "";
-      costRef.current.value = "";
-      dateRef.current.value = "";
-      timeRef.current.value = "";
-      locationRef.current.value = "";
+      crimeTypeRef.current = "";
+      stolenRef.current = "";
+      costRef.current = "";
+      whatHappenedRef.current = "";
+      uploadedImageRef.current = "";
+      moneyRef.current = "";
+      transferredRef.current = "";
+      accountsRef.current = "";
+      scammerRef.current = "";
+      perpetratorRef.current = "";
+      witnessRef.current = "";
+      otherIncidentRef.current = "";
+      additionalInfoRef.current = "";
+      dateRef.current = "";
+      timeRef.current = "";
+      locationRef.current = "";
     } else {
       alert(JSON.stringify(res.data));
       console.log(res.data);
@@ -174,7 +213,11 @@ const ReportACrime = () => {
       {currentPage === "page2" && (
         <div className="row">
           <h3>Nature of Incident*</h3>
-          <select name="type" id="type" defaultValue={""} ref={crimeTypeRef}>
+          <select
+            id="crimeType"
+            name="type"
+            defaultValue={""} /*ref={crimeTypeRef}*/
+          >
             <option value="" disabled>
               Select Category
             </option>
@@ -214,10 +257,11 @@ const ReportACrime = () => {
             number, size, etc.) Be as clear and specific as possible.
           </div>
           <input
+            id="stolen"
             type="text"
             placeholder="Enter Description"
-            ref={stolenRef}
-            // value={stolenRef.current.value}
+            // ref={stolenRef}
+            // value={stolenRef.current}
             // onChange={(event) => handleInputChange(event, stolenRef)}
           ></input>
           <br></br>
@@ -225,10 +269,11 @@ const ReportACrime = () => {
           <h3>How much did the item cost?*</h3>
           <div>If you are unsure, please provide an estimated amount.</div>
           <input
+            id="cost"
             type="text"
             placeholder="Enter Description"
-            ref={costRef}
-            // value={costRef.current.value}
+            // ref={costRef}
+            // value={costRef.current}
             // onChange={(event) => handleInputChange(event, costRef)}
           ></input>
           <br></br>
@@ -253,9 +298,10 @@ const ReportACrime = () => {
           <h3>How much money was involved?*</h3>
           <div>If you are uncertain, please provide an estimated amount.</div>
           <input
+            id="money"
             type="text"
             placeholder="Enter Description"
-            ref={moneyRef}
+            // ref={moneyRef}
             // onChange={(event) => handleInputChange(event, stolenRef)}
           ></input>
           <br></br>
@@ -266,9 +312,10 @@ const ReportACrime = () => {
             include transaction numbers, if relevant.
           </div>
           <input
+            id="transferred"
             type="text"
             placeholder="Enter Description"
-            ref={transferredRef}
+            // ref={transferredRef}
             // onChange={(event) => handleInputChange(event, costRef)}
           ></input>
           <br></br>
@@ -276,9 +323,10 @@ const ReportACrime = () => {
           <h3>What accounts are affected?*</h3>
           <div>E.g. bank, account number, etc. </div>
           <input
+            id="accounts"
             type="text"
             placeholder="Enter Description"
-            ref={accountsRef}
+            // ref={accountsRef}
             // onChange={(event) => handleInputChange(event, costRef)}
           ></input>
           <br></br>
@@ -307,9 +355,10 @@ const ReportACrime = () => {
             specific as possible.
           </div>
           <input
+            id="perpetrator"
             type="text"
             placeholder="Enter Description"
-            ref={perpetratorRef}
+            // ref={perpetratorRef}
             // onChange={(event) => handleInputChange(event, stolenRef)}
           ></input>
           <br></br>
@@ -320,9 +369,10 @@ const ReportACrime = () => {
             incident, if applicable.
           </div>
           <input
+            id="witness"
             type="text"
             placeholder="Enter Description"
-            ref={witnessRef}
+            // ref={witnessRef}
             // onChange={(event) => handleInputChange(event, costRef)}
           ></input>
           <br></br>
@@ -359,9 +409,10 @@ const ReportACrime = () => {
             specific as possible.
           </div>
           <input
+            id="otherIncident"
             type="text"
             placeholder="Enter Description"
-            ref={otherIncidentRef}
+            // ref={otherIncidentRef}
             // onChange={(event) => handleInputChange(event, stolenRef)}
           ></input>
           <br></br>
@@ -396,15 +447,20 @@ const ReportACrime = () => {
           </div>
           <br></br>
           <input
+            id="whatHappened"
             type="text"
             placeholder="Enter Description"
-            ref={whatHappenedRef}
+            // ref={whatHappenedRef}
           ></input>
           <br></br>
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input type="file" ref={uploadedImageRef} multiple></input>
+          <input
+            id="uploadedImage"
+            type="file"
+            /*ref={uploadedImageRef}*/ multiple
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-theft")}>Back</button>
@@ -428,9 +484,10 @@ const ReportACrime = () => {
           </div>
           <br></br>
           <input
+            id="scammer"
             type="text"
             placeholder="Enter Description"
-            ref={scammerRef}
+            // ref={scammerRef}
           ></input>
           <br></br>
 
@@ -442,15 +499,16 @@ const ReportACrime = () => {
           </div>
           <br></br>
           <input
+            id="whatHappened"
             type="text"
             placeholder="Enter Description"
-            ref={whatHappenedRef}
+            // ref={whatHappenedRef}
           ></input>
           <br></br>
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input type="file" ref={uploadedImageRef}></input>
+          <input id="uploadedImage" type="file" ref={uploadedImageRef}></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-scams")}>Back</button>
@@ -475,15 +533,16 @@ const ReportACrime = () => {
           </div>
           <br></br>
           <input
+            id="whatHappened"
             type="text"
             placeholder="Enter Description"
-            ref={whatHappenedRef}
+            // ref={whatHappenedRef}
           ></input>
           <br></br>
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input type="file" ref={uploadedImageRef}></input>
+          <input id="uploadedImage" type="file" ref={uploadedImageRef}></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-voyeurism")}>
@@ -510,6 +569,7 @@ const ReportACrime = () => {
           </div>
           <br></br>
           <input
+            id="whatHappened"
             type="text"
             placeholder="Enter Description"
             ref={whatHappenedRef}
@@ -518,7 +578,7 @@ const ReportACrime = () => {
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input type="file" ref={uploadedImageRef}></input>
+          <input id="uploadedImage" type="file" ref={uploadedImageRef}></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-other")}>Back</button>
@@ -541,8 +601,9 @@ const ReportACrime = () => {
             full range of dates.
           </div>
           <input
+            id="date"
             type="date"
-            ref={dateRef}
+            // ref={dateRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -553,8 +614,9 @@ const ReportACrime = () => {
             indicate as “unsure”.
           </div>
           <input
+            id="time"
             type="time"
-            ref={timeRef}
+            // ref={timeRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -565,8 +627,9 @@ const ReportACrime = () => {
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
           <input
+            id="location"
             type="text"
-            ref={locationRef}
+            // ref={locationRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -591,8 +654,9 @@ const ReportACrime = () => {
             full range of dates.
           </div>
           <input
+            id="date"
             type="date"
-            ref={dateRef}
+            // ref={dateRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -603,8 +667,9 @@ const ReportACrime = () => {
             indicate as “unsure”.
           </div>
           <input
+            id="time"
             type="time"
-            ref={timeRef}
+            // ref={timeRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -615,8 +680,9 @@ const ReportACrime = () => {
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
           <input
+            id="location"
             type="text"
-            ref={locationRef}
+            // ref={locationRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -641,8 +707,9 @@ const ReportACrime = () => {
             full range of dates.
           </div>
           <input
+            id="date"
             type="date"
-            ref={dateRef}
+            // ref={dateRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -653,8 +720,9 @@ const ReportACrime = () => {
             indicate as “unsure”.
           </div>
           <input
+            id="time"
             type="time"
-            ref={timeRef}
+            // ref={timeRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -665,8 +733,9 @@ const ReportACrime = () => {
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
           <input
+            id="location"
             type="text"
-            ref={locationRef}
+            // ref={locationRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -693,8 +762,9 @@ const ReportACrime = () => {
             full range of dates.
           </div>
           <input
+            id="date"
             type="date"
-            ref={dateRef}
+            // ref={dateRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -705,8 +775,9 @@ const ReportACrime = () => {
             indicate as “unsure”.
           </div>
           <input
+            id="time"
             type="time"
-            ref={timeRef}
+            // ref={timeRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -717,8 +788,9 @@ const ReportACrime = () => {
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
           <input
+            id="location"
             type="text"
-            ref={locationRef}
+            // ref={locationRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -743,8 +815,9 @@ const ReportACrime = () => {
             situation so that we can help you better.
           </div>
           <input
+            id="additionalInfo"
             type="text"
-            ref={additionalInfoRef}
+            // ref={additionalInfoRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -774,14 +847,22 @@ const ReportACrime = () => {
             situation so that we can help you better.
           </div>
           <input
+            id="additionalInfo"
             type="text"
-            ref={additionalInfoRef}
+            // ref={additionalInfoRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-scams")}>Back</button>
-          <button onClick={() => handlePageChange("page7")}>Submit</button>
+          <button
+            onClick={() => {
+              handlePageChange("page7");
+              addReport();
+            }}
+          >
+            Submit
+          </button>
         </div>
       )}
 
@@ -798,8 +879,9 @@ const ReportACrime = () => {
             situation so that we can help you better.
           </div>
           <input
+            id="additionalInfo"
             type="text"
-            ref={additionalInfoRef}
+            // ref={additionalInfoRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -807,7 +889,14 @@ const ReportACrime = () => {
           <button onClick={() => handlePageChange("page5-voyeurism")}>
             Back
           </button>
-          <button onClick={() => handlePageChange("page7")}>Submit</button>
+          <button
+            onClick={() => {
+              handlePageChange("page7");
+              addReport();
+            }}
+          >
+            Submit
+          </button>
         </div>
       )}
 
@@ -824,14 +913,22 @@ const ReportACrime = () => {
             situation so that we can help you better.
           </div>
           <input
+            id="additionalInfo"
             type="text"
-            ref={additionalInfoRef}
+            // ref={additionalInfoRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-other")}>Back</button>
-          <button onClick={() => handlePageChange("page7")}>Submit</button>
+          <button
+            onClick={() => {
+              handlePageChange("page7");
+              addReport();
+            }}
+          >
+            Submit
+          </button>
         </div>
       )}
 
