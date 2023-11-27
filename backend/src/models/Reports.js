@@ -16,7 +16,6 @@ const ReportsSchema = new mongoose.Schema(
     refId: { type: String },
     type: { type: String, required: true },
     primaryInfo: { type: Map, of: String, required: true },
-    secondaryInfo: { type: String },
     media: {
       mediaURL1: String,
       mediaURL2: String,
