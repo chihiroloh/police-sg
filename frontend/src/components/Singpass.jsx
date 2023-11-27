@@ -20,7 +20,7 @@ const Singpass = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: "ooiwensong@gmail.com",
+          email: "normalUser1@gmail.com",
           password: "password123",
         }),
       });
@@ -42,7 +42,8 @@ const Singpass = () => {
         onClick={() => {
           handleLogin();
           navigateToTutorial();
-        }}>
+        }}
+      >
         Log-in
       </button>
     </div>
