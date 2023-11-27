@@ -26,6 +26,11 @@ const ReportACrime = () => {
   const locationRef = useRef("");
   const additionalInfoRef = useRef("");
 
+  const primaryInfo = {
+    "What was stolen?": stolenRef.current.value,
+    "How much did the item cost?": costRef.current.value,
+  };
+
   const navigate = useNavigate();
 
   const handlePageChange = (page) => {
@@ -98,20 +103,51 @@ const ReportACrime = () => {
     navigate("/Home");
   };
 
-  const getData = async () => {
-    try {
-      const res = await fetch(import.meta.env.VITE_SERVER + "/report_types");
-      const data = await res.json();
-      setReportTypes(data);
-      console.log(data);
-    } catch (error) {
-      alert("error");
+  //   const getReport = async () => {
+  //     try {
+  //       const res = await fetch(import.meta.env.VITE_SERVER + "/report_types");
+  //       const data = await res.json();
+  //       setReportTypes(data);
+  //       console.log(data);
+  //     } catch (error) {
+  //       alert("error");
+  //     }
+  //   };
+
+  const addReport = async () => {
+    const res = await fetch(
+      import.meta.env.VITE_SERVER + "/api/reports/:userId",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: crimeTypeRef.current.value,
+          primaryInfo: primaryInfo,
+          dateOccurred: dateRef.current.value,
+          timeOccurred: timeRef.current.value,
+          locationOccurred: locationRef.current.value,
+        }),
+      }
+    );
+
+    if (res.ok) {
+      crimeTypeRef.current.value = "";
+      stolenRef.current.value = "";
+      costRef.current.value = "";
+      dateRef.current.value = "";
+      timeRef.current.value = "";
+      locationRef.current.value = "";
+    } else {
+      alert(JSON.stringify(res.data));
+      console.log(res.data);
     }
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    getData();
+    // getReport();
   });
 
   return (
@@ -714,7 +750,14 @@ const ReportACrime = () => {
           <br></br>
 
           <button onClick={() => handlePageChange("page5-theft")}>Back</button>
-          <button onClick={() => handlePageChange("page7")}>Submit</button>
+          <button
+            onClick={() => {
+              handlePageChange("page7");
+              addReport();
+            }}
+          >
+            Submit
+          </button>
         </div>
       )}
 
