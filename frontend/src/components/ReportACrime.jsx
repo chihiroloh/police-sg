@@ -6,9 +6,6 @@ import UserContext from "../contexts/user";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
-  //   const [reportTypes, setReportTypes] = useState();
-  //   const [input1, setInput1] = useState("");
-  //   const [input2, setInput2] = useState("");
 
   const userInfoCtx = useContext(UserContext);
 
@@ -27,7 +24,7 @@ const ReportACrime = () => {
   const dateRef = useRef("");
   const timeRef = useRef("");
   const locationRef = useRef("");
-  const additionalInfoRef = useRef("");
+  //   const additionalInfoRef = useRef("");
 
   const navigate = useNavigate();
 
@@ -35,20 +32,16 @@ const ReportACrime = () => {
     setCurrentPage(page);
   };
 
-  //   const handleInputChange = (event, inputRef) => {
-  //     inputRef.current = event.target.value;
-  //   };
-
   const handlePage2Change = () => {
     crimeTypeRef.current = document.querySelector("#crimeType").value;
 
-    if (crimeTypeRef.current === "theft") {
+    if (crimeTypeRef.current === "Theft") {
       setCurrentPage("page3-theft");
-    } else if (crimeTypeRef.current === "scams") {
+    } else if (crimeTypeRef.current === "Scams") {
       setCurrentPage("page3-scams");
-    } else if (crimeTypeRef.current === "voyeurism") {
+    } else if (crimeTypeRef.current === "Voyeurism") {
       setCurrentPage("page3-voyeurism");
-    } else if (crimeTypeRef.current === "other") {
+    } else if (crimeTypeRef.current === "Other") {
       setCurrentPage("page3-other");
     } else {
       alert("Please choose the type of crime you wish to report");
@@ -114,16 +107,16 @@ const ReportACrime = () => {
     navigate("/Home");
   };
 
-  //   const getReport = async () => {
-  //     try {
-  //       const res = await fetch(import.meta.env.VITE_SERVER + "/report_types");
-  //       const data = await res.json();
-  //       setReportTypes(data);
-  //       console.log(data);
-  //     } catch (error) {
-  //       alert("error");
-  //     }
-  //   };
+  /* const getReport = async () => {
+      try {
+        const res = await fetch(import.meta.env.VITE_SERVER + "/report_types");
+        const data = await res.json();
+        setReportTypes(data);
+        console.log(data);
+      } catch (error) {
+        alert("error");
+      }
+    }; */
 
   const primaryInfo = {
     "What was stolen?": stolenRef.current,
@@ -134,12 +127,6 @@ const ReportACrime = () => {
     "Who was the perpetrator?": perpetratorRef.current,
     "Were there any witnesses?": witnessRef.current,
     "What type of incident was it?": otherIncidentRef.current,
-    "What happened?": whatHappenedRef.current,
-    // "Supporting Media": uploadedImageRef.current,
-    "Who was the scammer?": scammerRef.current,
-  };
-
-  const secondaryInfo = {
     "What happened?": whatHappenedRef.current,
     // "Supporting Media": uploadedImageRef.current,
     "Who was the scammer?": scammerRef.current,
@@ -159,11 +146,10 @@ const ReportACrime = () => {
         body: JSON.stringify({
           type: crimeTypeRef.current,
           primaryInfo: primaryInfo,
-          secondaryInfo: secondaryInfo,
+          addInfo: document.querySelector("#additionalInfo").value,
           dateOccurred: dateRef.current,
           timeOccurred: timeRef.current,
           locationOccurred: locationRef.current,
-          addInfo: additionalInfoRef.current,
         }),
       }
     );
@@ -184,7 +170,7 @@ const ReportACrime = () => {
       dateRef.current = "";
       timeRef.current = "";
       locationRef.current = "";
-      additionalInfoRef.current = "";
+      //   additionalInfoRef.current = "";
     } else {
       alert(JSON.stringify(res.data));
       console.log(res.data);
@@ -223,25 +209,21 @@ const ReportACrime = () => {
           <select
             id="crimeType"
             name="type"
-            defaultValue={""} /*ref={crimeTypeRef}*/
+            defaultValue={""}
+            // ref={crimeTypeRef}
           >
             <option value="" disabled>
               Select Category
             </option>
-            <option value="theft">
+            <option value="Theft">
               Dishonest Misappropriation of Property (Theft)
             </option>
-            <option value="scams">Scams</option>
-            <option value="voyeurism">Voyeurism</option>
-            <option value="other">Other</option>
+            <option value="Scams">Scams</option>
+            <option value="Voyeurism">Voyeurism</option>
+            <option value="Other">Other</option>
           </select>
           <br></br>
-          <button
-            onClick={handlePage2Change}
-            // disabled={!crimeTypeRef.current}
-          >
-            Confirm
-          </button>
+          <button onClick={handlePage2Change}>Confirm</button>
           <br></br>
           <div>
             For urgent and time-sensitive matters that require immediate
@@ -397,7 +379,11 @@ const ReportACrime = () => {
       {currentPage === "page3-other" && (
         <div className="row">
           <h3>Nature of Incident*</h3>
-          <select name="type" id="type" defaultValue="other" ref={crimeTypeRef}>
+          <select
+            name="type"
+            id="type"
+            defaultValue="other" /*ref={crimeTypeRef}*/
+          >
             <option value="" disabled>
               Select Category
             </option>
@@ -873,7 +859,7 @@ const ReportACrime = () => {
           <button onClick={() => handlePageChange("page5-scams")}>Back</button>
           <button
             onClick={() => {
-              handlePageChange("page7");
+              handlePage6Change("page7");
               addReport();
             }}
           >
