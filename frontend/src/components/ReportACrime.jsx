@@ -23,26 +23,11 @@ const ReportACrime = () => {
   const otherIncidentRef = useRef("");
   const whatHappenedRef = useRef("");
   const scammerRef = useRef("");
-  const uploadedImageRef = useRef("");
+  //   const uploadedImageRef = useRef();
   const dateRef = useRef("");
   const timeRef = useRef("");
   const locationRef = useRef("");
   const additionalInfoRef = useRef("");
-
-  const primaryInfo = {
-    "What was stolen?": stolenRef.current,
-    "How much did the item cost?": costRef.current,
-    "What happened?": whatHappenedRef.current,
-    "Supporting Media": uploadedImageRef.current,
-    "How much money was involved?": moneyRef.current,
-    "How was the money transferred?": transferredRef.current,
-    "What accounts are affected?": accountsRef.current,
-    "Who was the scammer?": scammerRef.current,
-    "Who was the perpetrator?": perpetratorRef.current,
-    "Were there any witnesses?": witnessRef.current,
-    "What type of incident was it?": otherIncidentRef.current,
-    "Additional Information (Optional)": additionalInfoRef.current,
-  };
 
   const navigate = useNavigate();
 
@@ -140,6 +125,26 @@ const ReportACrime = () => {
   //     }
   //   };
 
+  const primaryInfo = {
+    "What was stolen?": stolenRef.current,
+    "How much did the item cost?": costRef.current,
+    "How much money was involved?": moneyRef.current,
+    "How was the money transferred?": transferredRef.current,
+    "What accounts are affected?": accountsRef.current,
+    "Who was the perpetrator?": perpetratorRef.current,
+    "Were there any witnesses?": witnessRef.current,
+    "What type of incident was it?": otherIncidentRef.current,
+    "What happened?": whatHappenedRef.current,
+    // "Supporting Media": uploadedImageRef.current,
+    "Who was the scammer?": scammerRef.current,
+  };
+
+  const secondaryInfo = {
+    "What happened?": whatHappenedRef.current,
+    // "Supporting Media": uploadedImageRef.current,
+    "Who was the scammer?": scammerRef.current,
+  };
+
   const addReport = async () => {
     console.log(userInfoCtx.accessToken);
     console.log(userInfoCtx.userId);
@@ -154,9 +159,11 @@ const ReportACrime = () => {
         body: JSON.stringify({
           type: crimeTypeRef.current,
           primaryInfo: primaryInfo,
+          secondaryInfo: secondaryInfo,
           dateOccurred: dateRef.current,
           timeOccurred: timeRef.current,
           locationOccurred: locationRef.current,
+          addInfo: additionalInfoRef.current,
         }),
       }
     );
@@ -166,7 +173,7 @@ const ReportACrime = () => {
       stolenRef.current = "";
       costRef.current = "";
       whatHappenedRef.current = "";
-      uploadedImageRef.current = "";
+      //   uploadedImageRef.current = "";
       moneyRef.current = "";
       transferredRef.current = "";
       accountsRef.current = "";
@@ -174,10 +181,10 @@ const ReportACrime = () => {
       perpetratorRef.current = "";
       witnessRef.current = "";
       otherIncidentRef.current = "";
-      additionalInfoRef.current = "";
       dateRef.current = "";
       timeRef.current = "";
       locationRef.current = "";
+      additionalInfoRef.current = "";
     } else {
       alert(JSON.stringify(res.data));
       console.log(res.data);
@@ -508,7 +515,10 @@ const ReportACrime = () => {
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input id="uploadedImage" type="file" ref={uploadedImageRef}></input>
+          <input
+            id="uploadedImage"
+            type="file" /*ref={uploadedImageRef}*/
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-scams")}>Back</button>
@@ -542,7 +552,10 @@ const ReportACrime = () => {
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input id="uploadedImage" type="file" ref={uploadedImageRef}></input>
+          <input
+            id="uploadedImage"
+            type="file" /*ref={uploadedImageRef}*/
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-voyeurism")}>
@@ -578,7 +591,10 @@ const ReportACrime = () => {
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input id="uploadedImage" type="file" ref={uploadedImageRef}></input>
+          <input
+            id="uploadedImage"
+            type="file" /*ref={uploadedImageRef}*/
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-other")}>Back</button>
@@ -941,7 +957,7 @@ const ReportACrime = () => {
           <img></img>
           <br></br>
 
-          <div>Police Report Ref:</div>
+          <div>Police Report Ref: {userInfoCtx.refId}</div>
           <br></br>
 
           <h3>Thank you for submitting a report.</h3>
