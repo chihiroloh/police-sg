@@ -18,6 +18,7 @@ import News from "./components/News";
 import NewsContent from "./components/NewsContent";
 import AppealOne from "./components/AppealOne";
 import ViewUpdate from "./components/ViewUpdate";
+
 function App() {
   return (
     <Router>
