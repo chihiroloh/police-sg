@@ -25,7 +25,7 @@ const ReportsSchema = new mongoose.Schema(
     addInfo: { type: String },
     dateOccurred: { type: Date, required: true },
     timeOccurred: { type: String, required: true },
-    locationOccurred: { type: String },
+    locationOccurred: { type: String, required: true },
     submittedBy: { type: mongoose.ObjectId, required: true },
     submmitedOn: { type: Date, default: Date.now },
     status: {
