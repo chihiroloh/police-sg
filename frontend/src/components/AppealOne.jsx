@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import UserContext from "../contexts/user";
-
+import "./AppealOne.css";
+import NavBar from "./NavBar";
 const AppealOne = () => {
   const userInfoCtx = useContext(UserContext);
-  const [appealData, setAppealData] = useState(null);
+  const [appeals, setAppeals] = useState([]);
 
-  const fetchAppealData = async () => {
+  const getAppeals = async () => {
     try {
       const res = await fetch(import.meta.env.VITE_SERVER + "/api/appeals", {
         method: "GET",
@@ -14,47 +15,33 @@ const AppealOne = () => {
           Authorization: "Bearer " + userInfoCtx.accessToken,
         },
       });
-
-      if (res.ok) {
-        const data = await res.json();
-        setAppealData(data);
-      } else {
-        const errorData = await res.json();
-        alert(errorData.message);
-        console.error(errorData);
-      }
+      const data = await res.json();
+      setAppeals(data);
     } catch (error) {
-      console.error("Error fetching appeals:", error.message);
+      console.log(error.message);
     }
   };
 
   useEffect(() => {
-    fetchAppealData();
+    getAppeals();
   }, []);
 
   return (
     <div>
-      <p>Appeal Information</p>
+      <h1>Appeals</h1>
       <hr />
-      {appealData ? (
-        <div className="appeal-details">
-          {appealData.map((appeal, index) => (
-            <div key={index} className="appeal-info">
-              <h3 className="appeal-name">{appeal.name}</h3>
-              <p className="appeal-type">Type: {appeal.type}</p>
-              <p className="appeal-contents">{appeal.contents}</p>
-              <p className="appeal-createdat">Created At: {appeal.createdAt}</p>
-              <img
-                className="appeal-image"
-                src={appeal.imageURL}
-                alt="Appeal"
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>Loading appeal data...</p>
-      )}
+      <div className="appeal-list">
+        {appeals.map((appeal) => (
+          <div key={appeal._id} className="appeal-item">
+            <img src={appeal.imageURL} alt="Appeal" />
+            <h2>{appeal.name}</h2>
+            <p>Type: {appeal.type}</p>
+            <p>Contents: {appeal.contents}</p>
+            <p>Created At: {new Date(appeal.createdAt).toLocaleString()}</p>
+          </div>
+        ))}
+      </div>
+      <NavBar />
     </div>
   );
 };
