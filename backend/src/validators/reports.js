@@ -17,7 +17,6 @@ const validateUserReportData = [
   body("primaryInfo", "primary information is required").notEmpty(),
   body("dateOccurred", "invalid date").notEmpty().isDate(),
   body("timeOccurred", "invalid time").notEmpty(),
-  body("locationOccurred", "invalid location").optional().isAlphanumeric(),
 ];
 
 const validateIWitnessReportData = [
@@ -25,7 +24,6 @@ const validateIWitnessReportData = [
   body("primaryInfo", "primary information is required").notEmpty(),
   body("dateOccurred", "invalid date").optional().isDate(), // optional; but if provided, must be Date type
   body("timeOccurred", "invalid time").optional().notEmpty(),
-  body("locationOccurred", "invalid location").optional().isAlphanumeric(),
 ];
 
 const validateUserReportUpdate = [
