@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import headerwithnoti from "../assets/headerwithnoti.png";
+import minilogo from "../assets/minilogo.png";
+import bell from "../assets/bell.png";
+import question from "../assets/question.png";
+
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import crimebutton from "../assets/crimebutton.png";
@@ -51,11 +54,14 @@ const Home = () => {
 
   return (
     <div className="content-container">
-      <img
-        className="header-image"
-        src={headerwithnoti}
-        alt="loheaderwithnoti"
-      />
+      <div className="top-header">
+        <img src={minilogo} />
+        <div className="side-content">
+          <img src={bell} />
+          <img src={question} />
+        </div>
+      </div>
+
       <br />
       {/* PartOne */}
       <div className="home-container">
