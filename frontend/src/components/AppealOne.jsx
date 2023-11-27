@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import UserContext from "../contexts/user";
+import { Link } from "react-router-dom";
 import "./AppealOne.css";
 import NavBar from "./NavBar";
 const AppealOne = () => {
@@ -28,19 +29,23 @@ const AppealOne = () => {
 
   return (
     <div>
-      <h1>Appeals</h1>
+      <h2>Appeal for Lost Dog</h2>
       <hr />
       <div className="appeal-list">
         {appeals.map((appeal) => (
           <div key={appeal._id} className="appeal-item">
+            <p>Created At: {new Date(appeal.createdAt).toLocaleString()}</p>
             <img src={appeal.imageURL} alt="Appeal" />
             <h2>{appeal.name}</h2>
             <p>Type: {appeal.type}</p>
             <p>Contents: {appeal.contents}</p>
-            <p>Created At: {new Date(appeal.createdAt).toLocaleString()}</p>
           </div>
         ))}
       </div>
+      <Link to="/IWitness">
+        <button>i-Witness Report</button>
+      </Link>
+      <button>Appeal Hotline</button>
       <NavBar />
     </div>
   );
