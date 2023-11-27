@@ -1,42 +1,66 @@
-import React from "react";
-import NavBar from "./NavBar";
-import mrchin from "../assets/appeals/appealone.png";
-import iwitness from "../assets/appeals/iwitness.png";
-import appealhotline from "../assets/appeals/appealhotline.png";
-import "./AppealOne.css";
-import { Link } from "react-router-dom";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import UserContext from "../contexts/user";
 
 const AppealOne = () => {
+  const userInfoCtx = useContext(UserContext);
+  const nameRef = useRef("");
+  const appealTypeRef = useRef("");
+  const imageRef = useRef("");
+  const contentsRef = useRef("");
+  const createdateRef = useRef("");
+
+  const addAppeal = async () => {
+    try {
+      const res = await fetch(
+        import.meta.env.VITE_SERVER + "/api/appeals/seed",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userInfoCtx.accessToken,
+          },
+          body: JSON.stringify({
+            name: nameRef.current.value,
+            type: appealTypeRef.current.value,
+            imageURL: imageRef.current.value,
+            contents: contentsRef.current.value,
+            createdAt: createdateRef.current.value,
+          }),
+        }
+      );
+
+      if (res.ok) {
+        nameRef.current.value = "";
+        appealTypeRef.current.value = "";
+        imageRef.current.value = "";
+        contentsRef.current.value = "";
+        createdateRef.current.value = "";
+      } else {
+        const data = await res.json();
+        alert(data.message);
+        console.error(data);
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
   return (
-    <div className="mrchin">
-      <p className="a-header">Appeals</p>
+    <div>
+      <p>Appeal Information</p>
       <hr />
-      <div>
-        <h3>Appeal for Next-of-Kin: Mr Chin Lai Hin</h3>
-        <p>23/10/2023 12:32PM </p>
-        <img src={mrchin} />
-        <p>
-          The Police are appealing for the next-of-kin for Mr Chin Lai Hin to
-          come forward.
-        </p>
-        <p>
-          Mr Chin, a former resident of Sunlove Home, passed away at Sengkang
-          General Hospital on 8 October 2023.
-        </p>
-        <p>
-          Anyone with information is requested to call the Police hotline at
-          1800-255-000 or submit information online or through the Police@SG
-          app. All information wil be kept strictly confidential.
-        </p>
+      <div className="appeal-details">
+        <h3 className="appeal-name">{appealData.name}</h3>
+        <div className="appeal-info">
+          <p className="appeal-type">Type: {appealData.type}</p>
+          <p className="appeal-contents">{appealData.contents}</p>
+          <p className="appeal-createdat">Created At: {appealData.createdAt}</p>
+        </div>
       </div>
-      {/* Stretch Goal */}
-      <div className="appeals-buttons">
-        <Link to="/IWitness">
-          <button>i-Witness Report</button>
-        </Link>
-        <button>Appeal Hotline</button>
-      </div>
-      <NavBar />
+      <img
+        className="appeal-image"
+        src={appealData.imageURL}
+        alt="Appeal Image"
+      />
     </div>
   );
 };
