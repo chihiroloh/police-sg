@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import minilogo from "../assets/minilogo.png";
 import bell from "../assets/bell.png";
 import question from "../assets/question.png";
-
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import crimebutton from "../assets/crimebutton.png";
@@ -20,10 +19,12 @@ import terms from "../assets/e-services/terms.png";
 import aboutpolice from "../assets/about.png";
 import privacypolicy from "../assets/privacy.png";
 import NavBar from "./NavBar";
+import UserContext from "../contexts/user";
 
 const Home = () => {
   const navigate = useNavigate();
   const [showAnnouncements, setShowAnnouncements] = useState(true);
+  const userInfoCtx = useContext(UserContext);
 
   const toggleAnnouncements = () => {
     setShowAnnouncements(!showAnnouncements);
@@ -68,7 +69,9 @@ const Home = () => {
         {showAnnouncements && (
           <div className="announcement-column">
             <div className="announcement-header">
-              <button className="close-button" onClick={toggleAnnouncements}>
+              <button
+                className="close-button"
+                onClick={toggleAnnouncements}>
                 x
               </button>
               <h3>Important Annoucements</h3>
@@ -84,41 +87,75 @@ const Home = () => {
       </div>
       {/* PartTwo */}
       <div>
-        <h2 className="welcome">Hello Hillary Ho Hui Hui,</h2>
+        <h2 className="welcome">Hello {userInfoCtx.userName},</h2>
         <p className="help">How can we help you today?</p>
       </div>
-      <button className="crimebutton" onClick={goToReportACrime}>
-        <img src={crimebutton} alt="crimebutton" />
+      <button
+        className="crimebutton"
+        onClick={goToReportACrime}>
+        <img
+          src={crimebutton}
+          alt="crimebutton"
+        />
       </button>
       <p className="eservices-header">e-Services</p>
       <div className="eservices">
         <button onClick={goToReportACrime}>
-          <img src={rac} alt="rac" />
+          <img
+            src={rac}
+            alt="rac"
+          />
         </button>
         <button onClick={goToLostNFound}>
-          <img src={lostnfound} alt="lostnfound" />
+          <img
+            src={lostnfound}
+            alt="lostnfound"
+          />
         </button>
         <button onClick={goToCaseStatus}>
-          <img src={casestatus} alt="casestatus" />
+          <img
+            src={casestatus}
+            alt="casestatus"
+          />
         </button>
       </div>
       {/* PartThree */}
       <div>
         <p className="cop">Become a Citizen On Patrol (COP)</p>
-        <button className="cop-button" onClick={goToCop}>
-          <img src={join} alt="join" />
+        <button
+          className="cop-button"
+          onClick={goToCop}>
+          <img
+            src={join}
+            alt="join"
+          />
         </button>
       </div>
       {/* PartFour */}
       <div>
-        <button className="about" onClick={goToAbout}>
-          <img src={aboutpolice} alt="about" />
+        <button
+          className="about"
+          onClick={goToAbout}>
+          <img
+            src={aboutpolice}
+            alt="about"
+          />
         </button>
-        <button className="toc" onClick={goToToc}>
-          <img src={terms} alt="toc" />
+        <button
+          className="toc"
+          onClick={goToToc}>
+          <img
+            src={terms}
+            alt="toc"
+          />
         </button>
-        <button className="privacy" onClick={goToPrivacy}>
-          <img src={privacypolicy} alt="privacy" />
+        <button
+          className="privacy"
+          onClick={goToPrivacy}>
+          <img
+            src={privacypolicy}
+            alt="privacy"
+          />
         </button>
       </div>
       <NavBar />
