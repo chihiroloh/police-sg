@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Tutorial.css";
 import reportcrime from "../assets/tutorial/reportcrime.png";
@@ -9,6 +9,10 @@ import appeals from "../assets/tutorial/appeals.png";
 import news from "../assets/tutorial/news.png";
 
 const Tutorial = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   const navigate = useNavigate();
   const [showTutorial, setShowTutorial] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);

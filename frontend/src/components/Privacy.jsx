@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "./NavBar";
 import "./Privacy.css";
+
 const Privacy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div>
       <p className="privacy-header ">POLICE@SG APP PRIVACY POLICY</p>

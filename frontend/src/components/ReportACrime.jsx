@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./ReportACrime.css";
 import { useNavigate } from "react-router-dom";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
+  //   const [currentStep, setCurrentStep] = useState(1);
+  const [reportTypes, setReportTypes] = useState();
   //   const [input1, setInput1] = useState("");
   //   const [input2, setInput2] = useState("");
 
@@ -28,6 +30,12 @@ const ReportACrime = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const handlePrevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
   };
 
   //   const handleInputChange = (event, inputRef) => {
@@ -96,6 +104,22 @@ const ReportACrime = () => {
     navigate("/Home");
   };
 
+  const getData = async () => {
+    try {
+      const res = await fetch(import.meta.env.VITE_SERVER + "/report_types");
+      const data = await res.json();
+      setReportTypes(data);
+      console.log(data);
+    } catch (error) {
+      alert("error");
+    }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    getData();
+  });
+
   return (
     <div className="container">
       {currentPage === "page1" && (
@@ -163,6 +187,7 @@ const ReportACrime = () => {
             type="text"
             placeholder="Enter Description"
             ref={stolenRef}
+            // value={stolenRef.current.value}
             // onChange={(event) => handleInputChange(event, stolenRef)}
           ></input>
           <br></br>
@@ -173,6 +198,7 @@ const ReportACrime = () => {
             type="text"
             placeholder="Enter Description"
             ref={costRef}
+            // value={costRef.current.value}
             // onChange={(event) => handleInputChange(event, costRef)}
           ></input>
           <br></br>
@@ -348,7 +374,7 @@ const ReportACrime = () => {
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input type="file" ref={uploadedImageRef}></input>
+          <input type="file" ref={uploadedImageRef} multiple></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-theft")}>Back</button>

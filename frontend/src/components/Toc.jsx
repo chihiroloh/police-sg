@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "./NavBar";
 import "./Toc.css";
 const Toc = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div>
       <p className="toc-header">Terms and Conditions of Use</p>

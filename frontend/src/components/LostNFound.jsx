@@ -13,10 +13,16 @@ const LostNFound = () => {
   const handlePage2Change = () => {
     if (LostNFoundRef.current.value === "lostItem") {
       setCurrentPage("page2-lostItem");
-    } else {
+    } else if (LostNFoundRef.current.value === "foundItem") {
       setCurrentPage("page2-foundItem");
+    } else {
+      alert("Please choose a category");
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <div className="container">
@@ -39,6 +45,12 @@ const LostNFound = () => {
             attention, please contact the Police directly using the emergency
             hotline at 999.
           </div>
+        </div>
+      )}
+
+      {currentPage === "page2-lostItem" && (
+        <div className="row">
+          <h3>Item Information*</h3>
         </div>
       )}
     </div>
