@@ -4,11 +4,11 @@ body {
   padding: 0;
 }
 
-.logo {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto 20px;
+.top-header {
+  font-size: 20px;
+  align-items: space-between;
+  justify-content: center;
+  display: flex;
 }
 
 h1 {
