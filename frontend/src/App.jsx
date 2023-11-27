@@ -19,7 +19,7 @@ import NewsContent from "./components/NewsContent";
 import AppealOne from "./components/AppealOne";
 import UserContext from "./contexts/user";
 import ViewUpdate from "./components/ViewUpdate";
-
+import IWitness from "./components/IWitness";
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [userId, setUserId] = useState("");
@@ -172,6 +172,14 @@ function App() {
               element={
                 <Layout>
                   <ViewUpdate />
+                </Layout>
+              }
+            />
+            <Route
+              path="/IWitness"
+              element={
+                <Layout>
+                  <IWitness />
                 </Layout>
               }
             />
