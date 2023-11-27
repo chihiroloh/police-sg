@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/user";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import "./Singpass.css";
 
 const Singpass = () => {
@@ -14,7 +14,7 @@ const Singpass = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch(import.meta.env + "/auth/login", {
+      const res = await fetch(import.meta.env.VITE_SERVER + "/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,8 +24,9 @@ const Singpass = () => {
           password: "password123",
         }),
       });
-      userInfoCtx.setAccessToken(res.data.access);
-      const decoded = jwtDecode(res.data.access);
+      const data = await res.json();
+      userInfoCtx.setAccessToken(data.access);
+      const decoded = jwtDecode(data.access);
       userInfoCtx.setUserId(decoded.id);
       userInfoCtx.setUserName(decoded.name);
     } catch (error) {
