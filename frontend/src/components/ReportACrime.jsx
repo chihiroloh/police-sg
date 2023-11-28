@@ -7,6 +7,7 @@ import UserContext from "../contexts/user";
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
   const [refId, setRefId] = useState();
+  const [file, setFile] = useState();
 
   const userInfoCtx = useContext(UserContext);
 
@@ -134,8 +135,8 @@ const ReportACrime = () => {
   };
 
   const addReport = async () => {
-    console.log(userInfoCtx.accessToken);
-    console.log(userInfoCtx.userId);
+    // console.log(userInfoCtx.accessToken);
+    // console.log(userInfoCtx.userId);
     const res = await fetch(
       import.meta.env.VITE_SERVER + `/api/reports/${userInfoCtx.userId}`,
       {
@@ -173,12 +174,35 @@ const ReportACrime = () => {
       locationRef.current = "";
       //   additionalInfoRef.current = "";
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       setRefId(data.refId);
     } else {
       alert(JSON.stringify(res.data));
       console.log(res.data);
     }
+  };
+
+  const handleUpload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("images", file);
+      const res = await fetch(import.meta.env.VITE_SERVER + "/api/upload", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: formData,
+      });
+      if (res.ok) {
+        console.log("ok");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
   };
 
   useEffect(() => {
@@ -216,7 +240,9 @@ const ReportACrime = () => {
             defaultValue={""}
             // ref={crimeTypeRef}
           >
-            <option value="" disabled>
+            <option
+              value=""
+              disabled>
               Select Category
             </option>
             <option value="Theft">
@@ -388,7 +414,9 @@ const ReportACrime = () => {
             id="type"
             defaultValue="other" /*ref={crimeTypeRef}*/
           >
-            <option value="" disabled>
+            <option
+              value=""
+              disabled>
               Select Category
             </option>
             <option value="theft">
@@ -455,9 +483,10 @@ const ReportACrime = () => {
           <div>Upload up to 3 images and/or videos</div>
           <input
             id="uploadedImage"
+            name="images"
             type="file"
             /*ref={uploadedImageRef}*/ multiple
-          ></input>
+            onChange={handleFileChange}></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-theft")}>Back</button>
@@ -507,8 +536,9 @@ const ReportACrime = () => {
           <div>Upload up to 3 images and/or videos</div>
           <input
             id="uploadedImage"
+            name="images"
             type="file" /*ref={uploadedImageRef}*/
-          ></input>
+            onChange={handleFileChange}></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-scams")}>Back</button>
@@ -544,8 +574,9 @@ const ReportACrime = () => {
           <div>Upload up to 3 images and/or videos</div>
           <input
             id="uploadedImage"
+            name="images"
             type="file" /*ref={uploadedImageRef}*/
-          ></input>
+            onChange={handleFileChange}></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-voyeurism")}>
@@ -575,16 +606,16 @@ const ReportACrime = () => {
             id="whatHappened"
             type="text"
             placeholder="Enter Description"
-            ref={whatHappenedRef}
-          ></input>
+            ref={whatHappenedRef}></input>
           <br></br>
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
           <input
             id="uploadedImage"
+            name="images"
             type="file" /*ref={uploadedImageRef}*/
-          ></input>
+            onChange={handleFileChange}></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-other")}>Back</button>
@@ -610,8 +641,7 @@ const ReportACrime = () => {
             id="date"
             type="date"
             // ref={dateRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -623,8 +653,7 @@ const ReportACrime = () => {
             id="time"
             type="time"
             // ref={timeRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -636,8 +665,7 @@ const ReportACrime = () => {
             id="location"
             type="text"
             // ref={locationRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-theft")}>Back</button>
@@ -663,8 +691,7 @@ const ReportACrime = () => {
             id="date"
             type="date"
             // ref={dateRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -676,8 +703,7 @@ const ReportACrime = () => {
             id="time"
             type="time"
             // ref={timeRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -689,8 +715,7 @@ const ReportACrime = () => {
             id="location"
             type="text"
             // ref={locationRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-scams")}>Back</button>
@@ -716,8 +741,7 @@ const ReportACrime = () => {
             id="date"
             type="date"
             // ref={dateRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -729,8 +753,7 @@ const ReportACrime = () => {
             id="time"
             type="time"
             // ref={timeRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -742,8 +765,7 @@ const ReportACrime = () => {
             id="location"
             type="text"
             // ref={locationRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-voyeurism")}>
@@ -771,8 +793,7 @@ const ReportACrime = () => {
             id="date"
             type="date"
             // ref={dateRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -784,8 +805,7 @@ const ReportACrime = () => {
             id="time"
             type="time"
             // ref={timeRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -797,8 +817,7 @@ const ReportACrime = () => {
             id="location"
             type="text"
             // ref={locationRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-other")}>Back</button>
@@ -824,8 +843,7 @@ const ReportACrime = () => {
             id="additionalInfo"
             type="text"
             // ref={additionalInfoRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-theft")}>Back</button>
@@ -833,8 +851,8 @@ const ReportACrime = () => {
             onClick={() => {
               handlePageChange("page7");
               addReport();
-            }}
-          >
+              handleUpload();
+            }}>
             Submit
           </button>
         </div>
@@ -856,8 +874,7 @@ const ReportACrime = () => {
             id="additionalInfo"
             type="text"
             // ref={additionalInfoRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-scams")}>Back</button>
@@ -865,8 +882,7 @@ const ReportACrime = () => {
             onClick={() => {
               handlePage6Change("page7");
               addReport();
-            }}
-          >
+            }}>
             Submit
           </button>
         </div>
@@ -888,8 +904,7 @@ const ReportACrime = () => {
             id="additionalInfo"
             type="text"
             // ref={additionalInfoRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-voyeurism")}>
@@ -899,8 +914,7 @@ const ReportACrime = () => {
             onClick={() => {
               handlePageChange("page7");
               addReport();
-            }}
-          >
+            }}>
             Submit
           </button>
         </div>
@@ -922,8 +936,7 @@ const ReportACrime = () => {
             id="additionalInfo"
             type="text"
             // ref={additionalInfoRef}
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-other")}>Back</button>
@@ -931,8 +944,8 @@ const ReportACrime = () => {
             onClick={() => {
               handlePageChange("page7");
               addReport();
-            }}
-          >
+              handleUpload();
+            }}>
             Submit
           </button>
         </div>
