@@ -4,16 +4,13 @@ import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
 
 const IWitness = () => {
+  const userInfoCtx = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState("page1");
   const [refId, setRefId] = useState("");
-
-  const userInfoCtx = useContext(UserContext);
-
   const navigate = useNavigate();
 
   const witnessTypeRef = useRef("");
   const primaryInfoRef = useRef("");
-  const secondaryInfoRef = useRef("");
   const mediaURL1Ref = useRef("");
   const mediaURL2Ref = useRef("");
   const mediaURL3Ref = useRef("");
@@ -90,13 +87,12 @@ const IWitness = () => {
         body: JSON.stringify({
           type: witnessTypeRef.current.value,
           primaryInfo: primaryInfoRef.current.value,
-          secondaryInfo: secondaryInfoRef.current.value,
           media: {
             mediaURL1: mediaURL1Ref.current.value,
             mediaURL2: mediaURL2Ref.current.value,
             mediaURL3: mediaURL3Ref.current.value,
           },
-          AddInfo: addInfoRef.current.value,
+          addInfo: addInfoRef.current.value,
           dateOccurred: dateOccurredRef.current.value,
           timeOccurred: timeOccurredRef.current.value,
           locationOccurred: locationOccurredRef.current.value,
@@ -132,8 +128,13 @@ const IWitness = () => {
         <div className="row">
           <h3>Respond to Appeals</h3>
           <br />
-          <select id="iWitness" name="type" defaultValue={""}>
-            <option value="" disabled>
+          <select
+            id="iWitness"
+            name="type"
+            defaultValue={""}>
+            <option
+              value=""
+              disabled>
               Select Category
             </option>
             <option value="missing">For Missing Persons</option>
@@ -166,13 +167,15 @@ const IWitness = () => {
           <input
             id="description"
             type="text"
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos.</div>
-          <input id="uploadedImage" type="file" multiple></input>
+          <input
+            id="uploadedImage"
+            type="file"
+            multiple></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page1")}>Back</button>
@@ -192,7 +195,10 @@ const IWitness = () => {
             If the incident happened over a period of time, please indicate the
             full range of dates.
           </div>
-          <input id="dateI" type="date" placeholder="Enter Description"></input>
+          <input
+            id="dateI"
+            type="date"
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -200,7 +206,10 @@ const IWitness = () => {
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
           </div>
-          <input id="timeI" type="time" placeholder="Enter Description"></input>
+          <input
+            id="timeI"
+            type="time"
+            placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -211,8 +220,7 @@ const IWitness = () => {
           <input
             id="locationI"
             type="text"
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-nextofkin")}>
@@ -237,8 +245,7 @@ const IWitness = () => {
           <input
             id="additionalInfoI"
             type="text"
-            placeholder="Enter Description"
-          ></input>
+            placeholder="Enter Description"></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-nextofkin")}>
@@ -248,8 +255,7 @@ const IWitness = () => {
             onClick={() => {
               handlePageChange("page5-nextofkin");
               addReport();
-            }}
-          >
+            }}>
             Submit
           </button>
         </div>
