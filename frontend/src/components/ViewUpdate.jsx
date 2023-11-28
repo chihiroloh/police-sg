@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
 import UpdateCard from "./UpdateCard";
+import "./ViewUpdate.css";
 
 const ViewUpdate = () => {
   const userInfoCtx = useContext(UserContext);
@@ -23,43 +24,57 @@ const ViewUpdate = () => {
 
   return (
     <div>
-      <p>Case Updates</p>
+      <p className="caseupdate-header">Case Updates</p>
       <hr />
-      <h2>Police Report Ref: {report.refId}</h2>
-      <div>
-        <h2>Report Details</h2>
-        <p>Submitted by: {userInfoCtx.userName}</p>
-        <p>Submitted on: {submittedDate}</p>
+      <div className="updates-container">
+        <p className="police-ref">Police Report Ref: {report.refId}</p>
         <div>
-          <p id="report-status">{report.status}</p>
-        </div>
-        {report.updates.length > 0 ? (
-          <>
-            <p>Handled by: {report.updates[report.updates.length - 1].io}</p>
+          <p className="report-details">Report Details</p>
+          <div className="part-one">
             <p>
-              Police Branch: {report.updates[report.updates.length - 1].branch}
+              <b className="submittedby">Submitted by: </b>
+              {userInfoCtx.userName}
             </p>
-          </>
-        ) : (
-          <p>No updates currently</p>
-        )}
-      </div>
-      <h2>All Updates</h2>
-      {report.updates.length > 0 ? (
-        report.updates.map((update) => {
-          return (
-            <UpdateCard
-              key={update._id}
-              update={update}
-              refId={report.refId}
-            />
-          );
-        })
-      ) : (
-        <p>No Updates</p>
-      )}
+            <p>
+              <b className="submittedon">Submitted on: </b>
+              {submittedDate}
+            </p>
+            <p id="report-status">{report.status}</p>
 
-      <NavBar />
+            {report.updates.length > 0 ? (
+              <>
+                <p>
+                  <b className="handledby">Handled by: </b>
+                  {report.updates[report.updates.length - 1].io}
+                </p>
+                <p>
+                  <b className="policebranch">Police Branch:</b>{" "}
+                  {report.updates[report.updates.length - 1].branch}
+                </p>
+              </>
+            ) : (
+              <p>No updates currently</p>
+            )}
+          </div>
+        </div>
+        <p className="all-updates">All Updates</p>
+        <div className="update-details">
+          {report.updates.length > 0 ? (
+            report.updates.map((update) => {
+              return (
+                <UpdateCard
+                  key={update._id}
+                  update={update}
+                  refId={report.refId}
+                />
+              );
+            })
+          ) : (
+            <p>No Updates</p>
+          )}
+        </div>
+        <NavBar />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,69 @@
+.caseupdate-header {
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.police-ref {
+  color: #1d1a60;
+  padding: 25px;
+  display: flex;
+  font-size: 20px;
+  margin-top: -1%;
+}
+
+.all-updates {
+  color: #555555;
+  padding: 18px;
+  display: flex;
+  font-size: 18px;
+  font-weight: 40%;
+  margin-bottom: -2%;
+}
+.report-details {
+  color: #555555;
+  padding: 20px;
+  display: flex;
+  font-size: 18px;
+  font-weight: 40%;
+  margin-bottom: -2%;
+  margin-top: -10%;
+}
+.part-one {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid #1d1a60;
+  width: 80%;
+  padding: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  margin: 0 auto;
+  display: block;
+  text-align: left;
+}
+.update-details {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid #1d1a60;
+  width: 80%;
+  padding: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  margin: 0 auto;
+  display: block;
+  text-align: left;
+}
+.updates-container {
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  text-align: left;
+}
+.submittedby,
+.submittedon,
+.handledby,
+.policebranch {
+  color: #1d1a60;
+}
