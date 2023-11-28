@@ -4,9 +4,7 @@
   height: 100vh;
   justify-content: space-between;
 }
-.loginsingpass {
-  background-color: transparent;
-}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -55,9 +53,56 @@
 .action-buttons {
   display: flex;
   justify-content: space-between;
+  background-color: transparent;
 }
 
 .action-buttons button {
   flex: 1;
   margin: 0 5px;
+}
+
+.singpass-button {
+  background-color: transparent;
+  margin-bottom: -20%;
+}
+.description {
+  color: #1d1a60;
+  text-align: center;
+  margin-top: 0%;
+}
+.logoanddesc {
+  margin-top: -10%;
+}
+.sms,
+.hotline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35%;
+}
+.one,
+.two,
+.three {
+  background-color: transparent;
+}
+
+.call {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #eb312e;
+  margin-top: 35%;
+}
+.emergencysms,
+.emergencycall,
+.policehotline {
+  font-size: 10px;
+  margin-top: -2%;
+  font-family: "Neue Montreal", sans-serif;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: local("Neue Montreal");
 }

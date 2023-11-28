@@ -22,6 +22,7 @@ import ViewUpdate from "./components/ViewUpdate";
 import IWitness from "./components/IWitness";
 import NearestCentres from "./components/NearestCentres";
 import Notification from "./components/Notification";
+
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [userId, setUserId] = useState("");
