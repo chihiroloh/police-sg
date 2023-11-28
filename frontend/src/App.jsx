@@ -20,6 +20,8 @@ import AppealOne from "./components/AppealOne";
 import UserContext from "./contexts/user";
 import ViewUpdate from "./components/ViewUpdate";
 import IWitness from "./components/IWitness";
+import NearestCentres from "./components/NearestCentres";
+
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [userId, setUserId] = useState("");
@@ -180,6 +182,14 @@ function App() {
               element={
                 <Layout>
                   <IWitness />
+                </Layout>
+              }
+            />
+            <Route
+              path="/NearestCentres"
+              element={
+                <Layout>
+                  <NearestCentres />
                 </Layout>
               }
             />

@@ -11,7 +11,7 @@ function ContactUs() {
       <hr />
       <div className="contactus">
         <Link to="/ContactUs">Hotline</Link>
-        <Link to="/nearest-centres">Nearest Centres</Link>
+        <Link to="/NearestCentres">Nearest Centres</Link>
       </div>
       <img src={contactus} alt="contactus" />
       <div className="contact-content">

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import minilogo from "../assets/minilogo.png";
 import bell from "../assets/bell.png";
 import question from "../assets/question.png";
@@ -57,10 +58,13 @@ const Home = () => {
     <div className="content-container">
       <div className="top-header">
         <img src={minilogo} />
-        <div className="side-content">
-          <img src={bell} />
+      </div>
+
+      <div className="side-content">
+        <img src={bell} />
+        <Link to="/Tutorial">
           <img src={question} />
-        </div>
+        </Link>
       </div>
 
       <br />
@@ -69,9 +73,7 @@ const Home = () => {
         {showAnnouncements && (
           <div className="announcement-column">
             <div className="announcement-header">
-              <button
-                className="close-button"
-                onClick={toggleAnnouncements}>
+              <button className="close-button" onClick={toggleAnnouncements}>
                 x
               </button>
               <h3>Important Annoucements</h3>
@@ -90,72 +92,38 @@ const Home = () => {
         <h2 className="welcome">Hello {userInfoCtx.userName},</h2>
         <p className="help">How can we help you today?</p>
       </div>
-      <button
-        className="crimebutton"
-        onClick={goToReportACrime}>
-        <img
-          src={crimebutton}
-          alt="crimebutton"
-        />
+      <button className="crimebutton" onClick={goToReportACrime}>
+        <img src={crimebutton} alt="crimebutton" />
       </button>
       <p className="eservices-header">e-Services</p>
       <div className="eservices">
         <button onClick={goToReportACrime}>
-          <img
-            src={rac}
-            alt="rac"
-          />
+          <img src={rac} alt="rac" />
         </button>
         <button onClick={goToLostNFound}>
-          <img
-            src={lostnfound}
-            alt="lostnfound"
-          />
+          <img src={lostnfound} alt="lostnfound" />
         </button>
         <button onClick={goToCaseStatus}>
-          <img
-            src={casestatus}
-            alt="casestatus"
-          />
+          <img src={casestatus} alt="casestatus" />
         </button>
       </div>
       {/* PartThree */}
       <div>
         <p className="cop">Become a Citizen On Patrol (COP)</p>
-        <button
-          className="cop-button"
-          onClick={goToCop}>
-          <img
-            src={join}
-            alt="join"
-          />
+        <button className="cop-button" onClick={goToCop}>
+          <img src={join} alt="join" />
         </button>
       </div>
       {/* PartFour */}
       <div>
-        <button
-          className="about"
-          onClick={goToAbout}>
-          <img
-            src={aboutpolice}
-            alt="about"
-          />
+        <button className="about" onClick={goToAbout}>
+          <img src={aboutpolice} alt="about" />
         </button>
-        <button
-          className="toc"
-          onClick={goToToc}>
-          <img
-            src={terms}
-            alt="toc"
-          />
+        <button className="toc" onClick={goToToc}>
+          <img src={terms} alt="toc" />
         </button>
-        <button
-          className="privacy"
-          onClick={goToPrivacy}>
-          <img
-            src={privacypolicy}
-            alt="privacy"
-          />
+        <button className="privacy" onClick={goToPrivacy}>
+          <img src={privacypolicy} alt="privacy" />
         </button>
       </div>
       <NavBar />
