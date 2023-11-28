@@ -61,7 +61,9 @@ const Home = () => {
       </div>
 
       <div className="side-content">
-        <img src={bell} />
+        <Link to="/Notification">
+          <img src={bell} />
+        </Link>
         <Link to="/Tutorial">
           <img src={question} />
         </Link>
