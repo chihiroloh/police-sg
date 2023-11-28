@@ -31,48 +31,45 @@ const ViewUpdate = () => {
         <div>
           <p className="report-details">Report Details</p>
           <div className="part-one">
-            <p>
+            <div className="first-half">
               <b className="submittedby">Submitted by: </b>
-              {userInfoCtx.userName}
-            </p>
-            <p>
+              <p className="case-updates-username">{userInfoCtx.userName}</p>
               <b className="submittedon">Submitted on: </b>
-              {submittedDate}
-            </p>
-            <p id="report-status">{report.status}</p>
-
-            {report.updates.length > 0 ? (
-              <>
-                <p>
-                  <b className="handledby">Handled by: </b>
-                  {report.updates[report.updates.length - 1].io}
-                </p>
-                <p>
-                  <b className="policebranch">Police Branch:</b>{" "}
-                  {report.updates[report.updates.length - 1].branch}
-                </p>
-              </>
-            ) : (
-              <p>No updates currently</p>
+              <p className="case-updates-submit-date">{submittedDate}</p>
+            </div>
+            {report.updates.length > 0 && (
+              <div className="second-half">
+                <>
+                  <b className="handled-by">Handled by: </b>
+                  <p className="io-name">
+                    IO {report.updates[report.updates.length - 1].io}
+                  </p>
+                  <b className="police-branch">Police Branch:</b>{" "}
+                  <p className="branch-name">
+                    {report.updates[report.updates.length - 1].branch}
+                  </p>
+                </>
+              </div>
             )}
+            <p className={`report-status ${report.status}`}>{report.status}</p>
           </div>
         </div>
         <p className="all-updates">All Updates</p>
-        <div className="update-details">
-          {report.updates.length > 0 ? (
-            report.updates.map((update) => {
-              return (
+        {report.updates.length > 0 ? (
+          report.updates.map((update) => {
+            return (
+              <div className="update-details">
                 <UpdateCard
                   key={update._id}
                   update={update}
                   refId={report.refId}
                 />
-              );
-            })
-          ) : (
-            <p>No Updates</p>
-          )}
-        </div>
+              </div>
+            );
+          })
+        ) : (
+          <p className="no-updates">No current updates</p>
+        )}
         <NavBar />
       </div>
     </div>

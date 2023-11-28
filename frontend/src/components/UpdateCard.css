@@ -1,0 +1,16 @@
+.submission-info {
+  display: flex;
+  justify-content: space-between;
+}
+.submission-info > p {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #555555;
+}
+.elapsed-time {
+  margin-right: auto;
+}
+.interpunct {
+  margin: 0 5px;
+}
