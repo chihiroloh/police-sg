@@ -9,9 +9,8 @@ import ms from "ms";
 const CaseStatus = () => {
   const userInfoCtx = useContext(UserContext);
   const [userReports, setUserReports] = useState([]);
-  const [elapsedTime, setElapsedTime] = useState();
 
-  const getReport = async () => {
+  const getReports = async () => {
     try {
       const res = await fetch(
         import.meta.env.VITE_SERVER + "/api/reports/" + userInfoCtx.userId,
@@ -25,55 +24,63 @@ const CaseStatus = () => {
       );
       const data = await res.json();
       setUserReports(data);
-
-      const currentDate = new Date();
-      const submittedDate = new Date(userReports[0].updates[0].createdAt);
-      const timeDiff = ms(currentDate - submittedDate);
-      setElapsedTime(timeDiff);
     } catch (error) {
       console.log(error.message);
     }
   };
 
+  const generateElapsedTime = (item) => {
+    const currentDate = new Date();
+    const submittedDate = new Date(
+      item.updates[item.updates.length - 1].createdAt
+    );
+    const elapsedTime = ms(currentDate - submittedDate);
+    return elapsedTime;
+  };
+
   useEffect(() => {
-    getReport();
+    getReports();
   }, []);
 
   return (
-    <div>
-      <p>Case Status</p>
+    <div className="case-status-container">
+      <p className="case-status-header">Case Status</p>
       <hr />
       <img src={caseimg} />
-      <p>{userInfoCtx.userName}</p>
-      <p>SXXXX567D</p>
-      <p>Police Report(s)</p>
+      <p className="case-status-username">{userInfoCtx.userName}</p>
+      <p className="case-status-nric">SXXXX567D</p>
+      <p className="case-status-police-report">Police Report(s)</p>
       <NavBar />
-      <div className="report">
-        {userReports.map((report) => {
-          return (
-            <div key={report._id}>
-              <p>Police Report Ref: {report.refId}</p>
-              <p>Police Report Type: {report.type}</p>
-              {report.updates.length > 0 && (
-                <p>
-                  Branch: {report.updates[report.updates.length - 1].branch}
-                </p>
-              )}
-              {report.updates.length > 0 && (
-                <p>IO: {report.updates[report.updates.length - 1].io}</p>
-              )}
-              {report.updates.length > 0 && (
-                <p>Last Updated: {elapsedTime} ago</p>
-              )}
-              {report.updates.length > 0 && (
-                <button>
-                  <Link to="/ViewUpdate">View Update</Link>
-                </button>
-              )}
+      {userReports.map((report) => {
+        return (
+          <div
+            key={report._id}
+            className="case">
+            <div className="case-first-half">
+              <p>Police Report Ref: </p>
+              <p>{report.refId}</p>
+              <p>Police Report Type: </p>
+              <p>{report.type}</p>
             </div>
-          );
-        })}
-      </div>
+            {report.updates.length > 0 && (
+              <p>Branch: {report.updates[report.updates.length - 1].branch}</p>
+            )}
+            {report.updates.length > 0 && (
+              <p>IO: {report.updates[report.updates.length - 1].io}</p>
+            )}
+            {report.updates.length > 0 && (
+              <p>Last Updated: {generateElapsedTime(report)} ago</p>
+            )}
+            <button>
+              <Link
+                to="/ViewUpdate"
+                state={report}>
+                View Update
+              </Link>
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 };

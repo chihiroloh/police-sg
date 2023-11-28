@@ -1,8 +1,46 @@
-.report {
-  flex: 1;
+.case-status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+
+.case-status-header {
+  font-size: 20px;
+}
+
+.case-status-username {
+  font-size: 25px;
+  color: #1d1a60;
+  align-self: flex-start;
+  margin-bottom: 0;
+}
+
+.case-status-nric {
+  font-size: 23px;
+  color: #555555;
+  align-self: flex-start;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.case-status-police-report {
+  font-size: 18px;
+  font-weight: 600;
+  color: #555555;
+  align-self: flex-start;
+}
+
+.case {
   background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid #1d1a60;
+  width: 363.99px;
   padding: 20px;
-  border-radius: 5px;
-  border: 1px solid #333;
-  max-width: 350px;
+  margin-bottom: 20px;
+}
+
+.case-first-half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
