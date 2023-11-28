@@ -4,13 +4,18 @@ import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
 
 const IWitness = () => {
-  const userInfoCtx = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState("page1");
   const [refId, setRefId] = useState("");
   const navigate = useNavigate();
 
+  const userInfoCtx = useContext(UserContext);
+
   const witnessTypeRef = useRef("");
-  const primaryInfoRef = useRef("");
+  const deceasedRelatedRef = useRef("");
+  const dateIRef = useRef("");
+  const timeIRef = useRef("");
+  const locationIRef = useRef("");
+  // const primaryInfoRef = useRef("");
   const mediaURL1Ref = useRef("");
   const mediaURL2Ref = useRef("");
   const mediaURL3Ref = useRef("");
@@ -24,58 +29,50 @@ const IWitness = () => {
   };
 
   const handlePage1Change = () => {
-    const selectedType = document.getElementById("iWitness").value;
-    witnessTypeRef.current = selectedType;
+    witnessTypeRef.current = document.querySelector("#iWitnessType").value;
 
-    if (selectedType === "nextofkin") {
+    if (witnessTypeRef.current === "nextofkin") {
       handlePageChange("page2-nextofkin");
+    } else {
+      alert("Please select a category of appeals");
     }
   };
+
   const handlePage2Change = () => {
-    const description = document.getElementById("description").value;
-    const uploadedImage = document.getElementById("uploadedImage").files;
+    deceasedRelatedRef.current =
+      document.querySelector("#deceasedRelated").value;
 
-    primaryInfoRef.current = description;
-    mediaURL1Ref.current = uploadedImage[0];
-
-    if (description.trim() === "") {
-      alert("Please provide a description.");
-      return;
+    if (deceasedRelatedRef.current) {
+      handlePageChange("page3-nextofkin");
+    } else {
+      alert("Please tell us how you are related to the deceased.");
     }
-
-    handlePageChange("page3-nextofkin");
   };
 
   const handlePage3Change = () => {
-    const dateValue = document.getElementById("dateI").value;
-    const timeValue = document.getElementById("timeI").value;
-    const locationValue = document.getElementById("locationI").value;
+    dateIRef.current = document.querySelector("#dateI").value;
+    timeIRef.current = document.querySelector("#timeI").value;
+    locationIRef.current = document.querySelector("#locationI").value;
 
-    dateOccurredRef.current = dateValue;
-    timeOccurredRef.current = timeValue;
-    locationOccurredRef.current = locationValue;
-
-    if (!dateValue || !timeValue || !locationValue) {
+    if (dateIRef.current && timeIRef.current && locationIRef.current) {
+      handlePageChange("page4-nextofkin");
+    } else {
       alert("Please fill in all required fields.");
-      return;
     }
-
-    handlePageChange("page4-nextofkin");
-  };
-
-  const handlePage4Change = () => {
-    const additionalInfo = document.getElementById("additionalInfoI").value;
-
-    addInfoRef.current = additionalInfo;
-
-    handlePageChange("page5-nextofkin");
   };
 
   const returnToHomepage = () => {
     navigate("/Home");
   };
 
+  const primaryInfo = {
+    "How are you related to the deceased?": deceasedRelatedRef.current,
+    // "Supporting Media": uploadedImageRef.current,
+  };
+
   const addReport = async () => {
+    console.log(userInfoCtx.accessToken);
+    console.log(userInfoCtx.userId);
     const res = await fetch(
       `${import.meta.env.VITE_SERVER}/api/iWitness/${userInfoCtx.userId}`,
       {
@@ -85,56 +82,50 @@ const IWitness = () => {
           Authorization: `Bearer ${userInfoCtx.accessToken}`,
         },
         body: JSON.stringify({
-          type: witnessTypeRef.current.value,
-          primaryInfo: primaryInfoRef.current.value,
-          media: {
-            mediaURL1: mediaURL1Ref.current.value,
-            mediaURL2: mediaURL2Ref.current.value,
-            mediaURL3: mediaURL3Ref.current.value,
-          },
-          addInfo: addInfoRef.current.value,
-          dateOccurred: dateOccurredRef.current.value,
-          timeOccurred: timeOccurredRef.current.value,
-          locationOccurred: locationOccurredRef.current.value,
+          type: witnessTypeRef.current,
+          primaryInfo: primaryInfo,
+          // media: {
+          //   mediaURL1: mediaURL1Ref.current.value,
+          //   mediaURL2: mediaURL2Ref.current.value,
+          //   mediaURL3: mediaURL3Ref.current.value,
+          // },
+          addInfo: document.querySelector("#additionalInfoI").value,
+          dateOccurred: dateIRef.current,
+          timeOccurred: timeIRef.current,
+          locationOccurred: locationIRef.current,
         }),
       }
     );
-
     if (res.ok) {
+      witnessTypeRef.current = "";
+      deceasedRelatedRef.current = "";
+      dateIRef.current = "";
+      timeIRef.current = "";
+      locationIRef.current = "";
       const data = await res.json();
+      console.log(data);
       setRefId(data.refId);
-      witnessTypeRef.current.value = "";
-      primaryInfoRef.current.value = {};
-      secondaryInfoRef.current.value = "";
-      mediaURL1Ref.current.value = "";
-      mediaURL2Ref.current.value = "";
-      mediaURL3Ref.current.value = "";
-      addInfoRef.current.value = "";
-      dateOccurredRef.current.value = "";
-      timeOccurredRef.current.value = "";
-      locationOccurredRef.current.value = "";
     } else {
       alert("There was an error submitting your report.");
-      console.log(await res.json());
+      console.log(res.json());
     }
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
   return (
     <div className="container">
+      <div className="header">i-Witness Report</div>
+      <br></br>
+
       {currentPage === "page1" && (
         <div className="row">
-          <h3>Respond to Appeals</h3>
+          <h3>Respond to Appeals*</h3>
           <br />
-          <select
-            id="iWitness"
-            name="type"
-            defaultValue={""}>
-            <option
-              value=""
-              disabled>
+          <select id="iWitnessType" name="type" defaultValue={""}>
+            <option value="" disabled>
               Select Category
             </option>
             <option value="missing">For Missing Persons</option>
@@ -155,7 +146,6 @@ const IWitness = () => {
       {currentPage === "page2-nextofkin" && (
         <div className="row">
           <h3>Appeal Information*</h3>
-          <br></br>
           <img></img>
           <br></br>
 
@@ -165,17 +155,15 @@ const IWitness = () => {
             clear and specific as possible.
           </div>
           <input
-            id="description"
+            id="deceasedRelated"
             type="text"
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos.</div>
-          <input
-            id="uploadedImage"
-            type="file"
-            multiple></input>
+          <input id="uploadedImage" type="file" multiple></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page1")}>Back</button>
@@ -186,7 +174,6 @@ const IWitness = () => {
       {currentPage === "page3-nextofkin" && (
         <div className="row">
           <h3>Date, Time & Location*</h3>
-          <br></br>
           <img></img>
           <br></br>
 
@@ -195,10 +182,7 @@ const IWitness = () => {
             If the incident happened over a period of time, please indicate the
             full range of dates.
           </div>
-          <input
-            id="dateI"
-            type="date"
-            placeholder="Enter Description"></input>
+          <input id="dateI" type="date" placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -206,10 +190,7 @@ const IWitness = () => {
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
           </div>
-          <input
-            id="timeI"
-            type="time"
-            placeholder="Enter Description"></input>
+          <input id="timeI" type="time" placeholder="Enter Description"></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -220,10 +201,11 @@ const IWitness = () => {
           <input
             id="locationI"
             type="text"
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
-          <button onClick={() => handlePageChange("page3-nextofkin")}>
+          <button onClick={() => handlePageChange("page2-nextofkin")}>
             Back
           </button>
           <button onClick={handlePage3Change}>Confirm</button>
@@ -233,7 +215,6 @@ const IWitness = () => {
       {currentPage === "page4-nextofkin" && (
         <div className="row">
           <h3>Additional Information</h3>
-          <br></br>
           <img></img>
           <br></br>
 
@@ -245,7 +226,8 @@ const IWitness = () => {
           <input
             id="additionalInfoI"
             type="text"
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-nextofkin")}>
@@ -255,7 +237,8 @@ const IWitness = () => {
             onClick={() => {
               handlePageChange("page5-nextofkin");
               addReport();
-            }}>
+            }}
+          >
             Submit
           </button>
         </div>
@@ -264,7 +247,6 @@ const IWitness = () => {
       {currentPage === "page5-nextofkin" && (
         <div className="row">
           <h3>Complete</h3>
-          <br></br>
           <img></img>
           <br></br>
           <img></img>
