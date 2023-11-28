@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import "./LostNFound.css";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
