@@ -6,7 +6,6 @@ import UserContext from "../contexts/user";
 const LostNFound = () => {
   const [currentPage, setCurrentPage] = useState("page1");
   const [refId, setRefId] = useState();
-  const [reportType, setReportType] = useState();
 
   const userInfoCtx = useContext(UserContext);
 
@@ -112,20 +111,20 @@ const LostNFound = () => {
     }
   };
 
-  const getReportType = async () => {
-    const res = await fetch(import.meta.env.VITE_SERVER + "/report_types", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + userInfoCtx.accessToken,
-      },
-    });
-    if (res.ok) {
-      const data = await res.json();
-      console.log(data);
-      setReportType(data.sub_type);
-    }
-  };
+  //   const getReportType = async () => {
+  //     const res = await fetch(import.meta.env.VITE_SERVER + "/report_types", {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: "Bearer " + userInfoCtx.accessToken,
+  //       },
+  //     });
+  //     if (res.ok) {
+  //       const data = await res.json();
+  //       console.log(data);
+  //       setReportType(data);
+  //     }
+  //   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -133,6 +132,9 @@ const LostNFound = () => {
 
   return (
     <div className="container">
+      <p className="LostNFoundHeader">Lost & Found</p>
+      <hr></hr>
+
       {currentPage === "page1" && (
         <div className="row">
           <h3>Nature of Incident*</h3>
@@ -141,7 +143,7 @@ const LostNFound = () => {
             id="lostNFound"
             name="type"
             defaultValue={""}
-            // ref={LostNFoundRef}
+            // ref={lostNFoundRef}
           >
             <option value="" disabled>
               Select Category

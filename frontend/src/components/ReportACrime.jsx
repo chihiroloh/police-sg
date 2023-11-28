@@ -3,6 +3,13 @@ import "./ReportACrime.css";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
+import warningsign from "../assets/ReportACrime/Warning-Sign.png";
+import PI1 from "../assets/ReportACrime/Progress-Indicator-1.png";
+import PI2 from "../assets/ReportACrime/Progress-Indicator-2.png";
+import PI3 from "../assets/ReportACrime/Progress-Indicator-3.png";
+import PI4 from "../assets/ReportACrime/Progress-Indicator-4.png";
+import PI5 from "../assets/ReportACrime/Progress-Indicator-5.png";
+import tick from "../assets/ReportACrime/Tick.png";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -37,7 +44,9 @@ const ReportACrime = () => {
   const handlePage2Change = () => {
     crimeTypeRef.current = document.querySelector("#crimeType").value;
 
-    if (crimeTypeRef.current === "Theft") {
+    if (
+      crimeTypeRef.current === "Dishonest Misappropriation of Property (Theft)"
+    ) {
       setCurrentPage("page3-theft");
     } else if (crimeTypeRef.current === "Scams") {
       setCurrentPage("page3-scams");
@@ -212,9 +221,12 @@ const ReportACrime = () => {
 
   return (
     <div className="container">
+      <p className="ReportACrimeHeader">Report a Crime</p>
+      <hr></hr>
+
       {currentPage === "page1" && (
         <div className="row">
-          <img></img>
+          <img src={warningsign} />
           <h5>Important Notice: Making False Reports</h5>
           <div>
             Before proceeding with your report, please be aware that making a
@@ -245,7 +257,7 @@ const ReportACrime = () => {
               disabled>
               Select Category
             </option>
-            <option value="Theft">
+            <option value="Dishonest Misappropriation of Property (Theft)">
               Dishonest Misappropriation of Property (Theft)
             </option>
             <option value="Scams">Scams</option>
@@ -310,8 +322,7 @@ const ReportACrime = () => {
       {currentPage === "page3-scams" && (
         <div className="row">
           <h3>Financial Information*</h3>
-          <br></br>
-          <img></img>
+          <img src={PI1} alt="progress-indicator-1"></img>
           <br></br>
 
           <h3>How much money was involved?*</h3>
@@ -419,7 +430,7 @@ const ReportACrime = () => {
               disabled>
               Select Category
             </option>
-            <option value="theft">
+            <option value="Dishonest Misappropriation of Property (Theft)">
               Dishonest Misappropriation of Property (Theft)
             </option>
             <option value="scams">Scams</option>
@@ -499,8 +510,7 @@ const ReportACrime = () => {
       {currentPage === "page4-scams" && (
         <div className="row">
           <h3>Incident Information</h3>
-          <br></br>
-          <img></img>
+          <img src={PI2} alt="progress-indicator-2"></img>
           <br></br>
 
           <h3>Who was the scammer?</h3>
@@ -678,8 +688,7 @@ const ReportACrime = () => {
       {currentPage === "page5-scams" && (
         <div className="row">
           <h3>Date, Time & Location*</h3>
-          <br></br>
-          <img></img>
+          <img src={PI3} alt="progress-indicator-3"></img>
           <br></br>
 
           <h3>Date*</h3>
@@ -862,7 +871,7 @@ const ReportACrime = () => {
         <div className="row">
           <h3>Additional Information</h3>
           <br></br>
-          <img></img>
+          <img src={PI4} alt="progress-indicator-4"></img>
           <br></br>
 
           <h3>Additional Information (Optional)</h3>
@@ -880,7 +889,7 @@ const ReportACrime = () => {
           <button onClick={() => handlePageChange("page5-scams")}>Back</button>
           <button
             onClick={() => {
-              handlePage6Change("page7");
+              handlePageChange("page7");
               addReport();
             }}>
             Submit
@@ -954,10 +963,9 @@ const ReportACrime = () => {
       {currentPage === "page7" && (
         <div className="row">
           <h3>Complete</h3>
+          <img src={PI5} alt="progress-indicator-5"></img>
           <br></br>
-          <img></img>
-          <br></br>
-          <img></img>
+          <img src={tick} alt="tick"></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
