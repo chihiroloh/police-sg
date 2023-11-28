@@ -4,7 +4,9 @@
   height: 100vh;
   justify-content: space-between;
 }
-
+.loginsingpass {
+  background-color: transparent;
+}
 .content {
   display: flex;
   flex-direction: column;

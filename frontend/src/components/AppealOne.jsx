@@ -1,41 +1,51 @@
-import React from "react";
-import NavBar from "./NavBar";
-import mrchin from "../assets/appeals/appealone.png";
-import iwitness from "../assets/appeals/iwitness.png";
-import appealhotline from "../assets/appeals/appealhotline.png";
-import "./AppealOne.css";
+import React, { useEffect, useState, useContext } from "react";
+import UserContext from "../contexts/user";
 import { Link } from "react-router-dom";
-
+import "./AppealOne.css";
+import NavBar from "./NavBar";
 const AppealOne = () => {
+  const userInfoCtx = useContext(UserContext);
+  const [appeals, setAppeals] = useState([]);
+
+  const getAppeals = async () => {
+    try {
+      const res = await fetch(import.meta.env.VITE_SERVER + "/api/appeals", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userInfoCtx.accessToken,
+        },
+      });
+      const data = await res.json();
+      setAppeals(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getAppeals();
+  }, []);
+
   return (
-    <div className="mrchin">
-      <p className="a-header">Appeals</p>
+    <div>
+      <h2>Appeal for Lost Dog</h2>
       <hr />
-      <div>
-        <h3>Appeal for Next-of-Kin: Mr Chin Lai Hin</h3>
-        <p>23/10/2023 12:32PM </p>
-        <img src={mrchin} />
-        <p>
-          The Police are appealing for the next-of-kin for Mr Chin Lai Hin to
-          come forward.
-        </p>
-        <p>
-          Mr Chin, a former resident of Sunlove Home, passed away at Sengkang
-          General Hospital on 8 October 2023.
-        </p>
-        <p>
-          Anyone with information is requested to call the Police hotline at
-          1800-255-000 or submit information online or through the Police@SG
-          app. All information wil be kept strictly confidential.
-        </p>
+      <div className="appeal-list">
+        {appeals.map((appeal) => (
+          <div key={appeal._id} className="appeal-item">
+            <p>Created At: {new Date(appeal.createdAt).toLocaleString()}</p>
+            <img src={appeal.imageURL} alt="Appeal" />
+            <h2>{appeal.name}</h2>
+            <p>Type: {appeal.type}</p>
+            <p>Contents: {appeal.contents}</p>
+          </div>
+        ))}
       </div>
-      {/* Stretch Goal */}
-      <div className="appeals-buttons">
-        <Link to="/IWitness">
-          <button>i-Witness Report</button>
-        </Link>
-        <button>Appeal Hotline</button>
-      </div>
+      <Link to="/IWitness">
+        <button>i-Witness Report</button>
+      </Link>
+      <button>Appeal Hotline</button>
       <NavBar />
     </div>
   );

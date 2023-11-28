@@ -1,0 +1,9 @@
+.noti-container {
+  border: 2px solid black; /* Black border */
+  padding: 10px; /* Padding around the content */
+  margin: 10px 0; /* Margin to create spacing between each notification */
+  background-color: #f0f0f0; /* Background color for the container */
+  font-size: 16px; /* Font size */
+  font-family: Arial, sans-serif; /* Font family */
+  line-height: 1.5; /* Line height */
+}

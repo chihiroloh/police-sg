@@ -31,7 +31,7 @@ const LoginPage = () => {
         <h3>An initiative by the Singapore Police Force</h3>
         <br />
         <button className="singpass-button" onClick={navigateToSingpass}>
-          <img src={loginsingpass} alt="login"></img>
+          <img className="loginsingpass" src={loginsingpass} alt="login"></img>
         </button>
         <br />
         <div className="action-buttons">

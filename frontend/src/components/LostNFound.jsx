@@ -1,20 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
-import "./LostNFound.css";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
+import UserContext from "../contexts/user";
 
 const LostNFound = () => {
   const [currentPage, setCurrentPage] = useState("page1");
+  const [refId, setRefId] = useState();
+  const [reportType, setReportType] = useState();
 
-  const LostNFoundRef = useRef();
-  const lostItemRef = useRef();
-  const lostItemCostRef = useRef();
-  const whatHappenedLostRef = useRef();
-  const uploadedImageLostRef = useRef();
-  const dateLostRef = useRef();
-  const timeLostRef = useRef();
-  const locationLostRef = useRef();
-  const additionalInfoLostRef = useRef();
+  const userInfoCtx = useContext(UserContext);
+
+  const lostNFoundRef = useRef();
+  const lostItemRef = useRef("");
+  const lostItemCostRef = useRef("");
+  const whatHappenedLostRef = useRef("");
+  //   const uploadedImageLostRef = useRef();
+  const dateLostRef = useRef("");
+  const timeLostRef = useRef("");
+  const locationLostRef = useRef("");
+  //   const additionalInfoLostRef = useRef();
 
   const navigate = useNavigate();
 
@@ -23,17 +27,22 @@ const LostNFound = () => {
   };
 
   const handlePage1Change = () => {
-    if (LostNFoundRef.current.value === "lostItem") {
+    lostNFoundRef.current = document.querySelector("#lostNFound").value;
+
+    if (lostNFoundRef.current === "lostItem") {
       setCurrentPage("page2-lostItem");
-    } else if (LostNFoundRef.current.value === "foundItem") {
-      setCurrentPage("page2-foundItem");
+    } else if (lostNFoundRef.current === "foundItem") {
+      navigate("/Home");
     } else {
       alert("Please choose a category");
     }
   };
 
   const handlePage2Change = () => {
-    if (lostItemRef.current.value && lostItemCostRef.current.value) {
+    lostItemRef.current = document.querySelector("#lostItem").value;
+    lostItemCostRef.current = document.querySelector("#lostItemCost").value;
+
+    if (lostItemRef.current && lostItemCostRef.current) {
       setCurrentPage("page3-lostItem");
     } else {
       alert("Please fill up all mandatory fields");
@@ -41,11 +50,11 @@ const LostNFound = () => {
   };
 
   const handlePage4Change = () => {
-    if (
-      dateLostRef.current.value &&
-      timeLostRef.current.value &&
-      locationLostRef.current.value
-    ) {
+    dateLostRef.current = document.querySelector("#dateLost").value;
+    timeLostRef.current = document.querySelector("#timeLost").value;
+    locationLostRef.current = document.querySelector("#locationLost").value;
+
+    if (dateLostRef.current && timeLostRef.current && locationLostRef.current) {
       setCurrentPage("page5-lostItem");
     } else {
       alert("Please fill up all mandatory fields");
@@ -54,6 +63,68 @@ const LostNFound = () => {
 
   const returnToHomepage = () => {
     navigate("/Home");
+  };
+
+  const primaryInfo = {
+    "What was lost?": lostItemRef.current,
+    "How much did the item cost?": lostItemCostRef.current,
+    "What happened?": whatHappenedLostRef.current,
+    // "Supporting Media": uploadedImageRef.current,
+  };
+
+  const addReport = async () => {
+    console.log(userInfoCtx.accessToken);
+    console.log(userInfoCtx.userId);
+    const res = await fetch(
+      import.meta.env.VITE_SERVER + `/api/reports/${userInfoCtx.userId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userInfoCtx.accessToken,
+        },
+        body: JSON.stringify({
+          type: lostNFoundRef.current,
+          primaryInfo: primaryInfo,
+          addInfo: document.querySelector("#additionalInfoLost").value,
+          dateOccurred: dateLostRef.current,
+          timeOccurred: timeLostRef.current,
+          locationOccurred: locationLostRef.current,
+        }),
+      }
+    );
+    if (res.ok) {
+      lostNFoundRef.current = "";
+      lostItemRef.current = "";
+      lostItemCostRef.current = "";
+      whatHappenedLostRef.current = "";
+      //   uploadedImageRef.current = "";
+      dateLostRef.current = "";
+      timeLostRef.current = "";
+      locationLostRef.current = "";
+      //   additionalInfoRef.current = "";
+      const data = await res.json();
+      console.log(data);
+      setRefId(data.refId);
+    } else {
+      alert(JSON.stringify(res.data));
+      console.log(res.data);
+    }
+  };
+
+  const getReportType = async () => {
+    const res = await fetch(import.meta.env.VITE_SERVER + "/report_types", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + userInfoCtx.accessToken,
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      console.log(data);
+      setReportType(data.sub_type);
+    }
   };
 
   useEffect(() => {
@@ -66,7 +137,12 @@ const LostNFound = () => {
         <div className="row">
           <h3>Nature of Incident*</h3>
           <br></br>
-          <select name="type" id="type" defaultValue={""} ref={LostNFoundRef}>
+          <select
+            id="lostNFound"
+            name="type"
+            defaultValue={""}
+            // ref={LostNFoundRef}
+          >
             <option value="" disabled>
               Select Category
             </option>
@@ -97,18 +173,20 @@ const LostNFound = () => {
             number, size, etc.) Be as clear and specific as possible.
           </div>
           <input
+            id="lostItem"
             type="text"
             placeholder="Enter Description"
-            ref={lostItemRef}
+            // ref={lostItemRef}
           ></input>
           <br></br>
 
           <h3>How much did the item cost?*</h3>
           <div>If you are unsure, please provide an estimated amount.</div>
           <input
+            id="lostItemCost"
             type="text"
             placeholder="Enter Description"
-            ref={lostItemCostRef}
+            // ref={lostItemCostRef}
           ></input>
           <br></br>
 
@@ -131,15 +209,21 @@ const LostNFound = () => {
             as possible.
           </div>
           <input
+            id="whatHappened"
             type="text"
             placeholder="Enter Description"
-            ref={whatHappenedLostRef}
+            // ref={whatHappenedLostRef}
           ></input>
           <br></br>
 
           <h3>Supporting Media</h3>
           <div>Upload up to 3 images and/or videos.</div>
-          <input type="file" ref={uploadedImageLostRef} multiple></input>
+          <input
+            id="uploadedImage"
+            type="file"
+            // ref={uploadedImageLostRef}
+            multiple
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page2-lostItem")}>
@@ -164,8 +248,9 @@ const LostNFound = () => {
             full range of dates.
           </div>
           <input
+            id="dateLost"
             type="date"
-            ref={dateLostRef}
+            // ref={dateLostRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -176,8 +261,9 @@ const LostNFound = () => {
             indicate as “unsure”.
           </div>
           <input
+            id="timeLost"
             type="time"
-            ref={timeLostRef}
+            // ref={timeLostRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -188,8 +274,9 @@ const LostNFound = () => {
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
           <input
+            id="locationLost"
             type="text"
-            ref={locationLostRef}
+            // ref={locationLostRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -214,8 +301,9 @@ const LostNFound = () => {
             situation so that we can help you better.
           </div>
           <input
+            id="additionalInfoLost"
             type="text"
-            ref={additionalInfoLostRef}
+            // ref={additionalInfoLostRef}
             placeholder="Enter Description"
           ></input>
           <br></br>
@@ -223,7 +311,12 @@ const LostNFound = () => {
           <button onClick={() => handlePageChange("page4-lostItem")}>
             Back
           </button>
-          <button onClick={() => handlePageChange("page6-lostItem")}>
+          <button
+            onClick={() => {
+              handlePageChange("page6-lostItem");
+              addReport();
+            }}
+          >
             Submit
           </button>
         </div>
@@ -238,7 +331,7 @@ const LostNFound = () => {
           <img></img>
           <br></br>
 
-          <div>Police Report Ref:</div>
+          <div>Police Report Ref: {refId}</div>
           <br></br>
 
           <h3>Thank you for submitting a report.</h3>

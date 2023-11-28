@@ -125,3 +125,11 @@ p {
   background-color: transparent;
   border: none;
 }
+.top-header {
+  display: flex;
+  justify-content: space-between;
+}
+.side-content {
+  display: flex;
+  justify-content: flex-end;
+}

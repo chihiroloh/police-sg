@@ -8,8 +8,8 @@ const Singpass = () => {
   const navigate = useNavigate();
   const userInfoCtx = useContext(UserContext);
 
-  const navigateToTutorial = () => {
-    navigate("/tutorial");
+  const navigateToHome = () => {
+    navigate("/home");
   };
 
   const handleLogin = async () => {
@@ -41,7 +41,7 @@ const Singpass = () => {
         className="loginbutton"
         onClick={() => {
           handleLogin();
-          navigateToTutorial();
+          navigateToHome();
         }}
       >
         Log-in
