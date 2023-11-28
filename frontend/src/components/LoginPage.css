@@ -16,11 +16,10 @@
 .login-page {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align content at the top */
-  align-items: center; /* Center horizontally */
+  justify-content: flex-start;
+  align-items: center;
   height: 100vh;
-  overflow: hidden; /* Prevent scrolling */
-  /* Other styles for LoginPage */
+  overflow: hidden;
 }
 
 .notification-tab {
