@@ -49,14 +49,19 @@ const CaseStatus = () => {
       <p className="case-status-header">Case Status</p>
       <hr />
       <div className="container">
-        <img className="caseimg" src={caseimg} />
+        <img
+          className="caseimg"
+          src={caseimg}
+        />
         <p className="case-status-username">{userInfoCtx.userName}</p>
         <p className="case-status-nric">SXXXX567D</p>
         <p className="case-status-police-report">Police Report(s)</p>
         <NavBar />
         {userReports.map((report) => {
           return (
-            <div key={report._id} className="case">
+            <div
+              key={report._id}
+              className="case">
               <div className="case-first-half">
                 <div className="redid">
                   <p className="ref">Police Report Ref: </p>
@@ -70,8 +75,12 @@ const CaseStatus = () => {
               <div className="pinandio">
                 {report.updates.length > 0 && (
                   <div className="update1">
-                    <p>
-                      <img className="pin" src={pin} alt="Pin icon" />
+                    <p className="case-status-branch">
+                      <img
+                        className="pin"
+                        src={pin}
+                        alt="Pin icon"
+                      />
                       {report.updates[report.updates.length - 1].branch}
                     </p>
                   </div>
@@ -79,7 +88,12 @@ const CaseStatus = () => {
                 {report.updates.length > 0 && (
                   <div className="update2">
                     <p>
-                      <img className="io" src={io} alt="IO icon" />
+                      <img
+                        className="io"
+                        src={io}
+                        alt="IO icon"
+                      />
+                      Investigation Officer{" "}
                       {report.updates[report.updates.length - 1].io}
                     </p>
                   </div>
@@ -91,11 +105,13 @@ const CaseStatus = () => {
                   Last Updated: {generateElapsedTime(report)} ago
                 </p>
               )}
-              <button className="viewupdate">
-                <Link to="/ViewUpdate" state={report}>
+              <Link
+                to="/ViewUpdate"
+                state={report}>
+                <button className="viewupdate">
                   <p className="view">View Update</p>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           );
         })}

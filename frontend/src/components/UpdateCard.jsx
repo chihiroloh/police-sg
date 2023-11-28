@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ms from "ms";
+import "./UpdateCard.css";
 
 const UpdateCard = (props) => {
   const [time, setTime] = useState("");
@@ -37,9 +38,12 @@ const UpdateCard = (props) => {
             Your police report has been assigned to Investigation Officer{" "}
             {props.update.io} of {props.update.branch}.
           </p>
-          <p>{generateElapsedTime()} ago</p>
-          <p>{time}</p>
-          <p>{date}</p>
+          <div className="submission-info">
+            <p className="elapsed-time">{generateElapsedTime()} ago</p>
+            <p className="submission-time">{time}</p>
+            <p className="interpunct">&#183;</p>
+            <p className="submission-date">{date}</p>
+          </div>
         </div>
       )}
     </>

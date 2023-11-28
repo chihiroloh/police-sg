@@ -34,6 +34,7 @@
   font-weight: 600;
   color: #555555;
   align-self: flex-start;
+  margin-bottom: 10px;
 }
 
 .case {
@@ -90,6 +91,7 @@
   width: 350px;
   max-height: 50px;
   background-color: #1d1a60;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,6 +99,7 @@
 
 .view {
   color: #ffff;
+  margin: 10px 0;
 }
 
 .update1 {
@@ -104,4 +107,8 @@
 }
 .lastupdate {
   margin-top: 0%;
+}
+
+.case-status-branch {
+  margin-bottom: 7px;
 }

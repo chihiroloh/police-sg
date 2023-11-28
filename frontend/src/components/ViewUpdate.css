@@ -9,7 +9,7 @@
   color: #1d1a60;
   padding: 25px;
   display: flex;
-  font-size: 20px;
+  font-size: 25px;
   margin-top: -1%;
 }
 
@@ -41,17 +41,54 @@
   margin: 0 auto;
   display: block;
   text-align: left;
+  position: relative;
+}
+.first-half {
+  display: grid;
+  grid-template-columns: max-content auto;
+  align-items: center;
+}
+.second-half {
+  display: grid;
+  grid-template-columns: max-content auto;
+  align-items: center;
+  margin-top: 10px;
+}
+.case-updates-username,
+.case-updates-submit-date,
+.io-name,
+.branch-name {
+  margin: 0 0 0 10px;
+}
+.report-status {
+  font-weight: bold;
+  width: fit-content;
+  height: fit-content;
+  padding: 0 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+.Pending {
+  background-color: rgb(238, 178, 13);
+  color: #f8f8f8;
+}
+.Active {
+  background-color: #1d1a60;
+  color: white;
 }
 .update-details {
-  background-color: transparent;
-  border-radius: 10px;
-  border: 1px solid #1d1a60;
-  width: 80%;
-  padding: 20px;
-  margin-bottom: 20px;
-  align-items: center;
-  margin: 0 auto;
   display: block;
+  background-color: transparent;
+  width: 80%;
+  border: 1px solid #1d1a60;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 3px #c5c5c5;
+  align-items: center;
   text-align: left;
 }
 .updates-container {
@@ -61,9 +98,15 @@
   display: inline-block;
   text-align: left;
 }
+.no-updates {
+  font-size: 17px;
+  color: #555555;
+  text-align: center;
+  font-style: italic;
+}
 .submittedby,
 .submittedon,
-.handledby,
-.policebranch {
+.handled-by,
+.police-branch {
   color: #1d1a60;
 }
