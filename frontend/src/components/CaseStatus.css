@@ -1,11 +1,16 @@
 .case-status-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 25px;
+  margin: 0 auto;
+  display: block;
 }
-
+.container {
+  padding: 20px;
+}
 .case-status-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
   font-size: 20px;
 }
 
@@ -41,6 +46,62 @@
 }
 
 .case-first-half {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+}
+
+.caseimg {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  margin-top: -8%;
+}
+
+.pinandio {
+  display: flex;
+  flex-direction: column;
+}
+
+.pin,
+.io {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.ref,
+.ref + p,
+.type,
+.type + p {
+  display: inline-block;
+  margin-right: 10px;
+}
+.lastupdate {
+  font-size: 13px;
+}
+.ref,
+.type {
+  color: #1d1a60;
+  font-weight: bold;
+}
+.reporttype {
+  margin-top: -5%;
+}
+.viewupdate {
+  width: 350px;
+  max-height: 50px;
+  background-color: #1d1a60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view {
+  color: #ffff;
+}
+
+.update1 {
+  margin-bottom: -5%;
+}
+.lastupdate {
+  margin-top: 0%;
 }

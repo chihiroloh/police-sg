@@ -5,6 +5,8 @@ import caseimg from "../assets/casestatus.png";
 import { Link } from "react-router-dom";
 import UserContext from "../contexts/user";
 import ms from "ms";
+import io from "../assets/io.png";
+import pin from "../assets/pin.png";
 
 const CaseStatus = () => {
   const userInfoCtx = useContext(UserContext);
@@ -46,41 +48,58 @@ const CaseStatus = () => {
     <div className="case-status-container">
       <p className="case-status-header">Case Status</p>
       <hr />
-      <img src={caseimg} />
-      <p className="case-status-username">{userInfoCtx.userName}</p>
-      <p className="case-status-nric">SXXXX567D</p>
-      <p className="case-status-police-report">Police Report(s)</p>
-      <NavBar />
-      {userReports.map((report) => {
-        return (
-          <div
-            key={report._id}
-            className="case">
-            <div className="case-first-half">
-              <p>Police Report Ref: </p>
-              <p>{report.refId}</p>
-              <p>Police Report Type: </p>
-              <p>{report.type}</p>
+      <div className="container">
+        <img className="caseimg" src={caseimg} />
+        <p className="case-status-username">{userInfoCtx.userName}</p>
+        <p className="case-status-nric">SXXXX567D</p>
+        <p className="case-status-police-report">Police Report(s)</p>
+        <NavBar />
+        {userReports.map((report) => {
+          return (
+            <div key={report._id} className="case">
+              <div className="case-first-half">
+                <div className="redid">
+                  <p className="ref">Police Report Ref: </p>
+                  <p>{report.refId}</p>
+                </div>
+                <div className="reporttype">
+                  <p className="type">Police Report Type: </p>
+                  <p>{report.type}</p>
+                </div>
+              </div>
+              <div className="pinandio">
+                {report.updates.length > 0 && (
+                  <div className="update1">
+                    <p>
+                      <img className="pin" src={pin} alt="Pin icon" />
+                      {report.updates[report.updates.length - 1].branch}
+                    </p>
+                  </div>
+                )}
+                {report.updates.length > 0 && (
+                  <div className="update2">
+                    <p>
+                      <img className="io" src={io} alt="IO icon" />
+                      {report.updates[report.updates.length - 1].io}
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {report.updates.length > 0 && (
+                <p className="lastupdate">
+                  Last Updated: {generateElapsedTime(report)} ago
+                </p>
+              )}
+              <button className="viewupdate">
+                <Link to="/ViewUpdate" state={report}>
+                  <p className="view">View Update</p>
+                </Link>
+              </button>
             </div>
-            {report.updates.length > 0 && (
-              <p>Branch: {report.updates[report.updates.length - 1].branch}</p>
-            )}
-            {report.updates.length > 0 && (
-              <p>IO: {report.updates[report.updates.length - 1].io}</p>
-            )}
-            {report.updates.length > 0 && (
-              <p>Last Updated: {generateElapsedTime(report)} ago</p>
-            )}
-            <button>
-              <Link
-                to="/ViewUpdate"
-                state={report}>
-                View Update
-              </Link>
-            </button>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -40,8 +40,8 @@ p {
 }
 .header-image {
   max-width: 90%;
-  margin: 0 auto; /* Center horizontally */
-  display: block; /* Ensure block-level element behavior */
+  margin: 0 auto;
+  display: block;
 }
 .home-container {
   display: flex;
@@ -50,7 +50,7 @@ p {
   color: #1d1a60;
 }
 .announcement-column {
-  flex: 1; /* Take up all available space */
+  flex: 1;
   background-color: #e6ecf7;
   padding: 20px;
   padding-top: 0%;
