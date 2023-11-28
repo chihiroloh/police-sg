@@ -6,6 +6,7 @@ import UserContext from "../contexts/user";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
+  const [refId, setRefId] = useState();
 
   const userInfoCtx = useContext(UserContext);
 
@@ -171,6 +172,9 @@ const ReportACrime = () => {
       timeRef.current = "";
       locationRef.current = "";
       //   additionalInfoRef.current = "";
+      const data = await res.json();
+      console.log(data);
+      setRefId(data.refId);
     } else {
       alert(JSON.stringify(res.data));
       console.log(res.data);
@@ -943,7 +947,7 @@ const ReportACrime = () => {
           <img></img>
           <br></br>
 
-          <div>Police Report Ref: {userInfoCtx.refId}</div>
+          <div>Police Report Ref: {refId}</div>
           <br></br>
 
           <h3>Thank you for submitting a report.</h3>

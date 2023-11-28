@@ -6,6 +6,8 @@ import UserContext from "../contexts/user";
 
 const LostNFound = () => {
   const [currentPage, setCurrentPage] = useState("page1");
+  const [refId, setRefId] = useState();
+  const [reportType, setReportType] = useState();
 
   const userInfoCtx = useContext(UserContext);
 
@@ -92,7 +94,6 @@ const LostNFound = () => {
         }),
       }
     );
-
     if (res.ok) {
       lostNFoundRef.current = "";
       lostItemRef.current = "";
@@ -103,9 +104,27 @@ const LostNFound = () => {
       timeLostRef.current = "";
       locationLostRef.current = "";
       //   additionalInfoRef.current = "";
+      const data = await res.json();
+      console.log(data);
+      setRefId(data.refId);
     } else {
       alert(JSON.stringify(res.data));
       console.log(res.data);
+    }
+  };
+
+  const getReportType = async () => {
+    const res = await fetch(import.meta.env.VITE_SERVER + "/report_types", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + userInfoCtx.accessToken,
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      console.log(data);
+      setReportType(data.sub_type);
     }
   };
 
@@ -313,7 +332,7 @@ const LostNFound = () => {
           <img></img>
           <br></br>
 
-          <div>Police Report Ref:</div>
+          <div>Police Report Ref: {refId}</div>
           <br></br>
 
           <h3>Thank you for submitting a report.</h3>
