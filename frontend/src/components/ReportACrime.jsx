@@ -197,11 +197,9 @@ const ReportACrime = () => {
       formData.append("images", file);
       const res = await fetch(import.meta.env.VITE_SERVER + "/api/upload", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: formData,
       });
+      console.log(file);
       if (res.ok) {
         console.log("ok");
       }
@@ -322,7 +320,9 @@ const ReportACrime = () => {
       {currentPage === "page3-scams" && (
         <div className="row">
           <h3>Financial Information*</h3>
-          <img src={PI1} alt="progress-indicator-1"></img>
+          <img
+            src={PI1}
+            alt="progress-indicator-1"></img>
           <br></br>
 
           <h3>How much money was involved?*</h3>
@@ -510,7 +510,9 @@ const ReportACrime = () => {
       {currentPage === "page4-scams" && (
         <div className="row">
           <h3>Incident Information</h3>
-          <img src={PI2} alt="progress-indicator-2"></img>
+          <img
+            src={PI2}
+            alt="progress-indicator-2"></img>
           <br></br>
 
           <h3>Who was the scammer?</h3>
@@ -650,6 +652,7 @@ const ReportACrime = () => {
           <input
             id="date"
             type="date"
+            max={new Date().toISOString().split("T")[0]}
             // ref={dateRef}
             placeholder="Enter Description"></input>
           <br></br>
@@ -688,7 +691,9 @@ const ReportACrime = () => {
       {currentPage === "page5-scams" && (
         <div className="row">
           <h3>Date, Time & Location*</h3>
-          <img src={PI3} alt="progress-indicator-3"></img>
+          <img
+            src={PI3}
+            alt="progress-indicator-3"></img>
           <br></br>
 
           <h3>Date*</h3>
@@ -699,6 +704,7 @@ const ReportACrime = () => {
           <input
             id="date"
             type="date"
+            max={new Date().toISOString().split("T")[0]}
             // ref={dateRef}
             placeholder="Enter Description"></input>
           <br></br>
@@ -749,6 +755,7 @@ const ReportACrime = () => {
           <input
             id="date"
             type="date"
+            max={new Date().toISOString().split("T")[0]}
             // ref={dateRef}
             placeholder="Enter Description"></input>
           <br></br>
@@ -801,6 +808,7 @@ const ReportACrime = () => {
           <input
             id="date"
             type="date"
+            max={new Date().toISOString().split("T")[0]}
             // ref={dateRef}
             placeholder="Enter Description"></input>
           <br></br>
@@ -871,7 +879,9 @@ const ReportACrime = () => {
         <div className="row">
           <h3>Additional Information</h3>
           <br></br>
-          <img src={PI4} alt="progress-indicator-4"></img>
+          <img
+            src={PI4}
+            alt="progress-indicator-4"></img>
           <br></br>
 
           <h3>Additional Information (Optional)</h3>
@@ -963,9 +973,13 @@ const ReportACrime = () => {
       {currentPage === "page7" && (
         <div className="row">
           <h3>Complete</h3>
-          <img src={PI5} alt="progress-indicator-5"></img>
+          <img
+            src={PI5}
+            alt="progress-indicator-5"></img>
           <br></br>
-          <img src={tick} alt="tick"></img>
+          <img
+            src={tick}
+            alt="tick"></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
