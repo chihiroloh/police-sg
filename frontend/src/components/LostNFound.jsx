@@ -8,6 +8,7 @@ import PIL2 from "../assets/LostNFound/LostItem/PIL2.png";
 import PIL3 from "../assets/LostNFound/LostItem/PIL3.png";
 import PIL4 from "../assets/LostNFound/LostItem/PIL4.png";
 import PIL5 from "../assets/LostNFound/LostItem/PIL5.png";
+import tick from "../assets/ReportACrime/Tick.png";
 
 const LostNFound = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -326,7 +327,7 @@ const LostNFound = () => {
           <h3>Complete</h3>
           <img src={PIL5}></img>
           <br></br>
-          <img></img>
+          <img src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
