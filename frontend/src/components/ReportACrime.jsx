@@ -10,6 +10,20 @@ import PIS2 from "../assets/ReportACrime/Scams/PIS2.png";
 import PIS3 from "../assets/ReportACrime/Scams/PIS3.png";
 import PIS4 from "../assets/ReportACrime/Scams/PIS4.png";
 import PIS5 from "../assets/ReportACrime/Scams/PIS5.png";
+import PIT1 from "../assets/ReportACrime/Theft/PIT1.png";
+import PIT2 from "../assets/ReportACrime/Theft/PIT2.png";
+import PIT3 from "../assets/ReportACrime/Theft/PIT3.png";
+import PIT4 from "../assets/ReportACrime/Theft/PIT4.png";
+import PIT5 from "../assets/ReportACrime/Theft/PIT5.png";
+import PIV1 from "../assets/ReportACrime/Voyeurism/PIV1.png";
+import PIV2 from "../assets/ReportACrime/Voyeurism/PIV2.png";
+import PIV3 from "../assets/ReportACrime/Voyeurism/PIV3.png";
+import PIV4 from "../assets/ReportACrime/Voyeurism/PIV4.png";
+import PIV5 from "../assets/ReportACrime/Voyeurism/PIV5.png";
+import PIO1 from "../assets/ReportACrime/Other/PIO1.png";
+import PIO2 from "../assets/ReportACrime/Other/PIO2.png";
+import PIO3 from "../assets/ReportACrime/Other/PIO3.png";
+import PIO4 from "../assets/ReportACrime/Other/PIO4.png";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -118,17 +132,6 @@ const ReportACrime = () => {
   const returnToHomepage = () => {
     navigate("/Home");
   };
-
-  /* const getReport = async () => {
-      try {
-        const res = await fetch(import.meta.env.VITE_SERVER + "/report_types");
-        const data = await res.json();
-        setReportTypes(data);
-        console.log(data);
-      } catch (error) {
-        alert("error");
-      }
-    }; */
 
   const primaryInfo = {
     "What was stolen?": stolenRef.current,
@@ -304,7 +307,7 @@ const ReportACrime = () => {
       {currentPage === "page3-theft" && (
         <div className="row">
           <h3>Item Information*</h3>
-          <img></img>
+          <img src={PIT1}></img>
           <br></br>
 
           <h3>What was stolen?*</h3>
@@ -341,6 +344,157 @@ const ReportACrime = () => {
           >
             Confirm
           </button>
+        </div>
+      )}
+
+      {currentPage === "page4-theft" && (
+        <div className="row">
+          <h3>Incident Information</h3>
+          <img src={PIT2}></img>
+          <br></br>
+
+          <h3>What happened?</h3>
+          <div>
+            Provide details about the incident (e.g. people involved, sequence
+            of activites, other relevant information). Be as clear and specific
+            as possible.
+          </div>
+          <br></br>
+          <input
+            id="whatHappened"
+            type="text"
+            placeholder="Enter Description"
+            // ref={whatHappenedRef}
+          ></input>
+          <br></br>
+
+          <h3>Supporting Media</h3>
+          <div>Upload up to 3 images and/or videos</div>
+          <input
+            id="uploadedImage"
+            name="images"
+            type="file"
+            /*ref={uploadedImageRef}*/ multiple
+            onChange={handleFileChange}
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page3-theft")}>Back</button>
+          <button onClick={() => handlePageChange("page5-theft")}>
+            Confirm
+          </button>
+        </div>
+      )}
+
+      {currentPage === "page5-theft" && (
+        <div className="row">
+          <h3>Date, Time & Location*</h3>
+          <img src={PIT3}></img>
+          <br></br>
+
+          <h3>Date*</h3>
+          <div>
+            If the incident happened over a period of time, please indicate the
+            full range of dates.
+          </div>
+          <input
+            id="date"
+            type="date"
+            max={new Date().toISOString().split("T")[0]}
+            // ref={dateRef}
+            placeholder="Enter Description"
+          ></input>
+          <br></br>
+
+          <h3>Time*</h3>
+          <div>
+            If uncertain about the exact time, please provide an estimate or
+            indicate as “unsure”.
+          </div>
+          <input
+            id="time"
+            type="time"
+            // ref={timeRef}
+            placeholder="Enter Description"
+          ></input>
+          <br></br>
+
+          <h3>Location*</h3>
+          <div>
+            Provide details about where it happened (e.g. building, floor, unit
+            number, vehicle information ,etc.). Be as specific as possible.
+          </div>
+          <input
+            id="location"
+            type="text"
+            // ref={locationRef}
+            placeholder="Enter Description"
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page4-theft")}>Back</button>
+          <button onClick={() => handlePage5Change("page6-theft")}>
+            Confirm
+          </button>
+        </div>
+      )}
+
+      {currentPage === "page6-theft" && (
+        <div className="row">
+          <h3>Additional Information</h3>
+          <img src={PIT4}></img>
+          <br></br>
+
+          <h3>Additional Information (Optional)</h3>
+          <div>
+            Additional information that would deepen our understanding of the
+            situation so that we can help you better.
+          </div>
+          <input
+            id="additionalInfo"
+            type="text"
+            // ref={additionalInfoRef}
+            placeholder="Enter Description"
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page5-theft")}>Back</button>
+          <button
+            onClick={() => {
+              handlePageChange("page7-theft");
+              addReport();
+              handleUpload();
+            }}
+          >
+            Submit
+          </button>
+        </div>
+      )}
+
+      {currentPage === "page7-theft" && (
+        <div className="row">
+          <h3>Complete</h3>
+          <img src={PIT5}></img>
+          <br></br>
+          <img src={tick} alt="tick"></img>
+          <br></br>
+
+          <div>Police Report Ref: {refId}</div>
+          <br></br>
+
+          <h3>Thank you for submitting a report.</h3>
+          <div>
+            Police will review your report and assess if investigations will be
+            initiated. If investigations are initiated, a preliminary update
+            will be provided to you within 7 working days. An official copy of
+            your report and details about your assigned Investigation Officer
+            will be sent to your email soon. If you require immediate Police
+            assistance, please call the Police Emergency number (999) or the
+            Police Hotline (6255 0000) .
+          </div>
+          <br></br>
+
+          <button onClick={returnToHomepage}>Return to Home</button>
         </div>
       )}
 
@@ -396,141 +550,6 @@ const ReportACrime = () => {
         </div>
       )}
 
-      {currentPage === "page3-voyeurism" && (
-        <div className="row">
-          <h3>Perpetrator & Witness Information</h3>
-          <br></br>
-          <img></img>
-          <br></br>
-
-          <h3>Who was the perpetrator?* </h3>
-          <div>
-            Provide any information about the perpetrator (e.g. physical
-            appearance, clothing, other identifying features). Be as clear and
-            specific as possible.
-          </div>
-          <input
-            id="perpetrator"
-            type="text"
-            placeholder="Enter Description"
-            // ref={perpetratorRef}
-            // onChange={(event) => handleInputChange(event, stolenRef)}
-          ></input>
-          <br></br>
-
-          <h3>Were there any witnesses?</h3>
-          <div>
-            Include details of anywitnesses who were present during the
-            incident, if applicable.
-          </div>
-          <input
-            id="witness"
-            type="text"
-            placeholder="Enter Description"
-            // ref={witnessRef}
-            // onChange={(event) => handleInputChange(event, costRef)}
-          ></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page2")}>Back</button>
-          <button
-            onClick={handlePage3ChangeVoyeurism}
-            // disabled={!stolenRef.current || !costRef.current}
-          >
-            Confirm
-          </button>
-        </div>
-      )}
-
-      {currentPage === "page3-other" && (
-        <div className="row">
-          <h3>Nature of Incident*</h3>
-          <select
-            name="type"
-            id="type"
-            defaultValue="other" /*ref={crimeTypeRef}*/
-          >
-            <option value="" disabled>
-              Select Category
-            </option>
-            <option value="Dishonest Misappropriation of Property (Theft)">
-              Dishonest Misappropriation of Property (Theft)
-            </option>
-            <option value="scams">Scams</option>
-            <option value="voyeurism">Voyeurism</option>
-            <option value="other">Other</option>
-          </select>
-          <br></br>
-
-          <h3>What type of incident was it?*</h3>
-          <div>
-            Provide any information about what happened. Be as clear and
-            specific as possible.
-          </div>
-          <input
-            id="otherIncident"
-            type="text"
-            placeholder="Enter Description"
-            // ref={otherIncidentRef}
-            // onChange={(event) => handleInputChange(event, stolenRef)}
-          ></input>
-          <br></br>
-
-          <button
-            onClick={handlePage3ChangeOther}
-            // disabled={!crimeTypeRef.current}
-          >
-            Confirm
-          </button>
-          <br></br>
-          <div>
-            For urgent and time-sensitive matters that require immediate
-            attention, please contact the Police directly using the emergency
-            hotline at 999.
-          </div>
-        </div>
-      )}
-
-      {currentPage === "page4-theft" && (
-        <div className="row">
-          <h3>Incident Information</h3>
-          <br></br>
-          <img></img>
-          <br></br>
-
-          <h3>What happened?</h3>
-          <div>
-            Provide details about the incident (e.g. people involved, sequence
-            of activites, other relevant information). Be as clear and specific
-            as possible.
-          </div>
-          <br></br>
-          <input
-            id="whatHappened"
-            type="text"
-            placeholder="Enter Description"
-            // ref={whatHappenedRef}
-          ></input>
-          <br></br>
-
-          <h3>Supporting Media</h3>
-          <div>Upload up to 3 images and/or videos</div>
-          <input
-            id="uploadedImage"
-            name="images"
-            type="file"
-            /*ref={uploadedImageRef}*/ multiple
-            onChange={handleFileChange}
-          ></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page3-theft")}>Back</button>
-          <button onClick={() => handlePageChange("page5-theft")}>
-            Confirm
-          </button>
-        </div>
-      )}
-
       {currentPage === "page4-scams" && (
         <div className="row">
           <h3>Incident Information</h3>
@@ -578,140 +597,6 @@ const ReportACrime = () => {
 
           <button onClick={() => handlePageChange("page3-scams")}>Back</button>
           <button onClick={() => handlePageChange("page5-scams")}>
-            Confirm
-          </button>
-        </div>
-      )}
-
-      {currentPage === "page4-voyeurism" && (
-        <div className="row">
-          <h3>Incident Information</h3>
-          <br></br>
-          <img></img>
-          <br></br>
-
-          <h3>What happened?</h3>
-          <div>
-            Provide details about the incident (e.g. people involved, sequence
-            of activites, other relevant information). Be as clear and specific
-            as possible.
-          </div>
-          <br></br>
-          <input
-            id="whatHappened"
-            type="text"
-            placeholder="Enter Description"
-            // ref={whatHappenedRef}
-          ></input>
-          <br></br>
-
-          <h3>Supporting Media</h3>
-          <div>Upload up to 3 images and/or videos</div>
-          <input
-            id="uploadedImage"
-            name="images"
-            type="file" /*ref={uploadedImageRef}*/
-            onChange={handleFileChange}
-          ></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page3-voyeurism")}>
-            Back
-          </button>
-          <button onClick={() => handlePageChange("page5-voyeurism")}>
-            Confirm
-          </button>
-        </div>
-      )}
-
-      {currentPage === "page4-other" && (
-        <div className="row">
-          <h3>Incident Information</h3>
-          <br></br>
-          <img></img>
-          <br></br>
-
-          <h3>What happened?</h3>
-          <div>
-            Provide details about the incident (e.g. people involved, sequence
-            of activites, other relevant information). Be as clear and specific
-            as possible.
-          </div>
-          <br></br>
-          <input
-            id="whatHappened"
-            type="text"
-            placeholder="Enter Description"
-            ref={whatHappenedRef}
-          ></input>
-          <br></br>
-
-          <h3>Supporting Media</h3>
-          <div>Upload up to 3 images and/or videos</div>
-          <input
-            id="uploadedImage"
-            name="images"
-            type="file" /*ref={uploadedImageRef}*/
-            onChange={handleFileChange}
-          ></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page3-other")}>Back</button>
-          <button onClick={() => handlePageChange("page5-other")}>
-            Confirm
-          </button>
-        </div>
-      )}
-
-      {currentPage === "page5-theft" && (
-        <div className="row">
-          <h3>Date, Time & Location*</h3>
-          <br></br>
-          <img></img>
-          <br></br>
-
-          <h3>Date*</h3>
-          <div>
-            If the incident happened over a period of time, please indicate the
-            full range of dates.
-          </div>
-          <input
-            id="date"
-            type="date"
-            max={new Date().toISOString().split("T")[0]}
-            // ref={dateRef}
-            placeholder="Enter Description"
-          ></input>
-          <br></br>
-
-          <h3>Time*</h3>
-          <div>
-            If uncertain about the exact time, please provide an estimate or
-            indicate as “unsure”.
-          </div>
-          <input
-            id="time"
-            type="time"
-            // ref={timeRef}
-            placeholder="Enter Description"
-          ></input>
-          <br></br>
-
-          <h3>Location*</h3>
-          <div>
-            Provide details about where it happened (e.g. building, floor, unit
-            number, vehicle information ,etc.). Be as specific as possible.
-          </div>
-          <input
-            id="location"
-            type="text"
-            // ref={locationRef}
-            placeholder="Enter Description"
-          ></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page4-theft")}>Back</button>
-          <button onClick={() => handlePage5Change("page6-theft")}>
             Confirm
           </button>
         </div>
@@ -770,11 +655,154 @@ const ReportACrime = () => {
         </div>
       )}
 
+      {currentPage === "page6-scams" && (
+        <div className="row">
+          <h3>Additional Information</h3>
+          <br></br>
+          <img src={PIS4} alt="progress-indicator-4"></img>
+          <br></br>
+
+          <h3>Additional Information (Optional)</h3>
+          <div>
+            Additional information that would deepen our understanding of the
+            situation so that we can help you better.
+          </div>
+          <input
+            id="additionalInfo"
+            type="text"
+            // ref={additionalInfoRef}
+            placeholder="Enter Description"
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page5-scams")}>Back</button>
+          <button
+            onClick={() => {
+              handlePageChange("page7-scams");
+              addReport();
+            }}
+          >
+            Submit
+          </button>
+        </div>
+      )}
+
+      {currentPage === "page7-scams" && (
+        <div className="row">
+          <h3>Complete</h3>
+          <img src={PIS5}></img>
+          <br></br>
+          <img src={tick} alt="tick"></img>
+          <br></br>
+
+          <div>Police Report Ref: {refId}</div>
+          <br></br>
+
+          <h3>Thank you for submitting a report.</h3>
+          <div>
+            Police will review your report and assess if investigations will be
+            initiated. If investigations are initiated, a preliminary update
+            will be provided to you within 7 working days. An official copy of
+            your report and details about your assigned Investigation Officer
+            will be sent to your email soon. If you require immediate Police
+            assistance, please call the Police Emergency number (999) or the
+            Police Hotline (6255 0000) .
+          </div>
+          <br></br>
+
+          <button onClick={returnToHomepage}>Return to Home</button>
+        </div>
+      )}
+
+      {currentPage === "page3-voyeurism" && (
+        <div className="row">
+          <h3>Perpetrator & Witness Information</h3>
+          <img src={PIV1}></img>
+          <br></br>
+
+          <h3>Who was the perpetrator?* </h3>
+          <div>
+            Provide any information about the perpetrator (e.g. physical
+            appearance, clothing, other identifying features). Be as clear and
+            specific as possible.
+          </div>
+          <input
+            id="perpetrator"
+            type="text"
+            placeholder="Enter Description"
+            // ref={perpetratorRef}
+            // onChange={(event) => handleInputChange(event, stolenRef)}
+          ></input>
+          <br></br>
+
+          <h3>Were there any witnesses?</h3>
+          <div>
+            Include details of anywitnesses who were present during the
+            incident, if applicable.
+          </div>
+          <input
+            id="witness"
+            type="text"
+            placeholder="Enter Description"
+            // ref={witnessRef}
+            // onChange={(event) => handleInputChange(event, costRef)}
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page2")}>Back</button>
+          <button
+            onClick={handlePage3ChangeVoyeurism}
+            // disabled={!stolenRef.current || !costRef.current}
+          >
+            Confirm
+          </button>
+        </div>
+      )}
+
+      {currentPage === "page4-voyeurism" && (
+        <div className="row">
+          <h3>Incident Information</h3>
+          <img src={PIV2}></img>
+          <br></br>
+
+          <h3>What happened?</h3>
+          <div>
+            Provide details about the incident (e.g. people involved, sequence
+            of activites, other relevant information). Be as clear and specific
+            as possible.
+          </div>
+          <br></br>
+          <input
+            id="whatHappened"
+            type="text"
+            placeholder="Enter Description"
+            // ref={whatHappenedRef}
+          ></input>
+          <br></br>
+
+          <h3>Supporting Media</h3>
+          <div>Upload up to 3 images and/or videos</div>
+          <input
+            id="uploadedImage"
+            name="images"
+            type="file" /*ref={uploadedImageRef}*/
+            onChange={handleFileChange}
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page3-voyeurism")}>
+            Back
+          </button>
+          <button onClick={() => handlePageChange("page5-voyeurism")}>
+            Confirm
+          </button>
+        </div>
+      )}
+
       {currentPage === "page5-voyeurism" && (
         <div className="row">
           <h3>Date, Time & Location*</h3>
-          <br></br>
-          <img></img>
+          <img src={PIV3}></img>
           <br></br>
 
           <h3>Date*</h3>
@@ -826,11 +854,157 @@ const ReportACrime = () => {
         </div>
       )}
 
+      {currentPage === "page6-voyeurism" && (
+        <div className="row">
+          <h3>Additional Information</h3>
+          <img src={PIV4}></img>
+          <br></br>
+
+          <h3>Additional Information (Optional)</h3>
+          <div>
+            Additional information that would deepen our understanding of the
+            situation so that we can help you better.
+          </div>
+          <input
+            id="additionalInfo"
+            type="text"
+            // ref={additionalInfoRef}
+            placeholder="Enter Description"
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page5-voyeurism")}>
+            Back
+          </button>
+          <button
+            onClick={() => {
+              handlePageChange("page7-voyeurism");
+              addReport();
+            }}
+          >
+            Submit
+          </button>
+        </div>
+      )}
+
+      {currentPage === "page7-voyeurism" && (
+        <div className="row">
+          <h3>Complete</h3>
+          <img src={PIV5}></img>
+          <br></br>
+          <img src={tick} alt="tick"></img>
+          <br></br>
+
+          <div>Police Report Ref: {refId}</div>
+          <br></br>
+
+          <h3>Thank you for submitting a report.</h3>
+          <div>
+            Police will review your report and assess if investigations will be
+            initiated. If investigations are initiated, a preliminary update
+            will be provided to you within 7 working days. An official copy of
+            your report and details about your assigned Investigation Officer
+            will be sent to your email soon. If you require immediate Police
+            assistance, please call the Police Emergency number (999) or the
+            Police Hotline (6255 0000) .
+          </div>
+          <br></br>
+
+          <button onClick={returnToHomepage}>Return to Home</button>
+        </div>
+      )}
+
+      {currentPage === "page3-other" && (
+        <div className="row">
+          <h3>Nature of Incident*</h3>
+          <select
+            name="type"
+            id="type"
+            defaultValue="other" /*ref={crimeTypeRef}*/
+          >
+            <option value="" disabled>
+              Select Category
+            </option>
+            <option value="Dishonest Misappropriation of Property (Theft)">
+              Dishonest Misappropriation of Property (Theft)
+            </option>
+            <option value="scams">Scams</option>
+            <option value="voyeurism">Voyeurism</option>
+            <option value="other">Other</option>
+          </select>
+          <br></br>
+
+          <h3>What type of incident was it?*</h3>
+          <div>
+            Provide any information about what happened. Be as clear and
+            specific as possible.
+          </div>
+          <input
+            id="otherIncident"
+            type="text"
+            placeholder="Enter Description"
+            // ref={otherIncidentRef}
+            // onChange={(event) => handleInputChange(event, stolenRef)}
+          ></input>
+          <br></br>
+
+          <button
+            onClick={handlePage3ChangeOther}
+            // disabled={!crimeTypeRef.current}
+          >
+            Confirm
+          </button>
+          <br></br>
+          <div>
+            For urgent and time-sensitive matters that require immediate
+            attention, please contact the Police directly using the emergency
+            hotline at 999.
+          </div>
+        </div>
+      )}
+
+      {currentPage === "page4-other" && (
+        <div className="row">
+          <h3>Incident Information</h3>
+          <img src={PIO1}></img>
+          <br></br>
+
+          <h3>What happened?</h3>
+          <div>
+            Provide details about the incident (e.g. people involved, sequence
+            of activites, other relevant information). Be as clear and specific
+            as possible.
+          </div>
+          <br></br>
+          <input
+            id="whatHappened"
+            type="text"
+            placeholder="Enter Description"
+            ref={whatHappenedRef}
+          ></input>
+          <br></br>
+
+          <h3>Supporting Media</h3>
+          <div>Upload up to 3 images and/or videos</div>
+          <input
+            id="uploadedImage"
+            name="images"
+            type="file" /*ref={uploadedImageRef}*/
+            onChange={handleFileChange}
+          ></input>
+          <br></br>
+
+          <button onClick={() => handlePageChange("page3-other")}>Back</button>
+          <button onClick={() => handlePageChange("page5-other")}>
+            Confirm
+          </button>
+        </div>
+      )}
+
       {currentPage === "page5-other" && (
         <div className="row">
           <h3>Date, Time & Location*</h3>
-          <br></br>
-          <img></img>
+          <img src={PIO2}></img>
           <br></br>
 
           <h3>Date*</h3>
@@ -880,110 +1054,10 @@ const ReportACrime = () => {
         </div>
       )}
 
-      {currentPage === "page6-theft" && (
-        <div className="row">
-          <h3>Additional Information</h3>
-          <br></br>
-          <img></img>
-          <br></br>
-
-          <h3>Additional Information (Optional)</h3>
-          <div>
-            Additional information that would deepen our understanding of the
-            situation so that we can help you better.
-          </div>
-          <input
-            id="additionalInfo"
-            type="text"
-            // ref={additionalInfoRef}
-            placeholder="Enter Description"
-          ></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page5-theft")}>Back</button>
-          <button
-            onClick={() => {
-              handlePageChange("page7");
-              addReport();
-              handleUpload();
-            }}
-          >
-            Submit
-          </button>
-        </div>
-      )}
-
-      {currentPage === "page6-scams" && (
-        <div className="row">
-          <h3>Additional Information</h3>
-          <br></br>
-          <img src={PIS4} alt="progress-indicator-4"></img>
-          <br></br>
-
-          <h3>Additional Information (Optional)</h3>
-          <div>
-            Additional information that would deepen our understanding of the
-            situation so that we can help you better.
-          </div>
-          <input
-            id="additionalInfo"
-            type="text"
-            // ref={additionalInfoRef}
-            placeholder="Enter Description"
-          ></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page5-scams")}>Back</button>
-          <button
-            onClick={() => {
-              handlePageChange("page7");
-              addReport();
-            }}
-          >
-            Submit
-          </button>
-        </div>
-      )}
-
-      {currentPage === "page6-voyeurism" && (
-        <div className="row">
-          <h3>Additional Information</h3>
-          <br></br>
-          <img></img>
-          <br></br>
-
-          <h3>Additional Information (Optional)</h3>
-          <div>
-            Additional information that would deepen our understanding of the
-            situation so that we can help you better.
-          </div>
-          <input
-            id="additionalInfo"
-            type="text"
-            // ref={additionalInfoRef}
-            placeholder="Enter Description"
-          ></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page5-voyeurism")}>
-            Back
-          </button>
-          <button
-            onClick={() => {
-              handlePageChange("page7");
-              addReport();
-            }}
-          >
-            Submit
-          </button>
-        </div>
-      )}
-
       {currentPage === "page6-other" && (
         <div className="row">
           <h3>Additional Information</h3>
-          <br></br>
-          <img></img>
+          <img src={PIO3}></img>
           <br></br>
 
           <h3>Additional Information (Optional)</h3>
@@ -1002,7 +1076,7 @@ const ReportACrime = () => {
           <button onClick={() => handlePageChange("page5-other")}>Back</button>
           <button
             onClick={() => {
-              handlePageChange("page7");
+              handlePageChange("page7-other");
               addReport();
               handleUpload();
             }}
@@ -1012,10 +1086,10 @@ const ReportACrime = () => {
         </div>
       )}
 
-      {currentPage === "page7-theft" && (
+      {currentPage === "page7-other" && (
         <div className="row">
           <h3>Complete</h3>
-          <img src={PIS5} alt="progress-indicator-5"></img>
+          <img src={PIO4}></img>
           <br></br>
           <img src={tick} alt="tick"></img>
           <br></br>
