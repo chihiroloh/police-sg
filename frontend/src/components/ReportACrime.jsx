@@ -331,6 +331,8 @@ const ReportACrime = () => {
               id="stolen"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
+
               // ref={stolenRef}
               // value={stolenRef.current}
               // onChange={(event) => handleInputChange(event, stolenRef)}
@@ -348,6 +350,8 @@ const ReportACrime = () => {
               id="cost"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
+
               // ref={costRef}
               // value={costRef.current}
               // onChange={(event) => handleInputChange(event, costRef)}
@@ -394,6 +398,8 @@ const ReportACrime = () => {
               id="whatHappened"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
+
               // ref={whatHappenedRef}
             ></input>
             <br></br>
@@ -485,6 +491,7 @@ const ReportACrime = () => {
               type="text"
               // ref={locationRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -523,6 +530,7 @@ const ReportACrime = () => {
               type="text"
               // ref={additionalInfoRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -596,6 +604,8 @@ const ReportACrime = () => {
               id="money"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
+
               // ref={moneyRef}
               // onChange={(event) => handleInputChange(event, stolenRef)}
             ></input>
@@ -614,6 +624,8 @@ const ReportACrime = () => {
               id="transferred"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
+
               // ref={transferredRef}
               // onChange={(event) => handleInputChange(event, costRef)}
             ></input>
@@ -630,6 +642,8 @@ const ReportACrime = () => {
               id="accounts"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
+
               // ref={accountsRef}
               // onChange={(event) => handleInputChange(event, costRef)}
             ></input>
@@ -671,6 +685,8 @@ const ReportACrime = () => {
               id="scammer"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
+
               // ref={scammerRef}
             ></input>
           </div>
@@ -689,6 +705,8 @@ const ReportACrime = () => {
               id="whatHappened"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
+
               // ref={whatHappenedRef}
             ></input>
           </div>
@@ -745,6 +763,7 @@ const ReportACrime = () => {
               max={new Date().toISOString().split("T")[0]}
               // ref={dateRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -763,6 +782,7 @@ const ReportACrime = () => {
               type="time"
               // ref={timeRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -781,6 +801,7 @@ const ReportACrime = () => {
               type="text"
               // ref={locationRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
