@@ -1,0 +1,120 @@
+.ReportACrimeHeader {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.row-two {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.warningsign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: auto;
+  margin: auto;
+  margin-top: 15%;
+}
+.sub {
+  font-size: 18px;
+  color: #1d1a60;
+  font-weight: bold;
+  margin-top: 10%;
+  padding: 20px;
+  margin-top: 1%;
+}
+.button-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-top: -10%;
+}
+
+.acknowledge {
+  width: 350px;
+  max-height: 50px;
+  background-color: #1d1a60;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffff;
+  margin: 10px 0;
+  flex-direction: column;
+}
+.roc-paragraph {
+  color: #3a3a3a;
+  padding: 20px;
+  margin-top: -12%;
+}
+.roc-important {
+  padding: 10px;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: local("Neue Montreal");
+}
+.container {
+  margin: 0;
+  padding: 0;
+}
+.incident {
+  font-size: 25px;
+  padding: 8%;
+  text-align: left;
+  margin-top: 0%;
+}
+.star {
+  color: #eb312e;
+}
+.select {
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  display: flex;
+  margin-top: -15%;
+}
+.large-select {
+  width: 350px;
+  height: 39.69px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-direction: column;
+  font-size: 15px;
+  color: #1d1a60;
+}
+.confirm {
+  width: 350px;
+  max-height: 50px;
+  background-color: #1d1a60;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffff;
+  margin: 10px 0;
+  flex-direction: column;
+  margin-bottom: -10%;
+  margin-top: 5%;
+}
+.urgent {
+  color: #eb312e;
+  text-align: left;
+  padding: 3%;
+  margin-top: 5%;
+}
+.crime-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-direction: column;
+  padding: 20px;
+  text-align: left;
+}
