@@ -45,22 +45,22 @@ const Notification = () => {
         <p className="ic">SXXXX567D</p>
         <img src={notificationImage} alt="Notification" />
         <img src={policeNotificationImage} alt="Police Notification" />
-        <p className="notifications">Notifications</p>
+        {/* <p className="notifications">Notifications</p>
         <div>
           <div className="noti-map">
             {notifications.map((notification, index) => (
-              <Link to="/ViewUpdate" key={index}>
-                <p className="noti-container">
-                  There is a new update on your case{" "}
+              
+                <div key={index} className="noti-container">
+                  There is a new update on your case
                   <p className="noti-ref">
                     (Police Report Ref: {notification.refId}).
                   </p>
                   Click here to view the latest update.
-                </p>
-              </Link>
+                </div>
+              
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
       <NavBar />
     </div>
