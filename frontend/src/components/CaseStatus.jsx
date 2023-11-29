@@ -50,57 +50,76 @@ const CaseStatus = () => {
       <p className="case-status-header">Case Status</p>
       <hr />
       <div className="container">
-        <img className="caseimg" src={caseimg} />
+        <img
+          className="caseimg"
+          src={caseimg}
+        />
         <p className="case-status-username">{userInfoCtx.userName}</p>
         <p className="case-status-nric">SXXXX567D</p>
         <p className="case-status-police-report">Police Report(s)</p>
         <NavBar />
-        {userReports.map((report) => {
-          return (
-            <div key={report._id} className="case">
-              <div className="case-first-half">
-                <div className="redid">
-                  <p className="ref">Police Report Ref: </p>
-                  <p>{report.refId}</p>
-                </div>
-                <div className="reporttype">
-                  <p className="type">Police Report Type: </p>
-                  <p>{report.type}</p>
-                </div>
-              </div>
-              <div className="pinandio">
-                {report.updates.length > 0 && (
-                  <div className="update1">
-                    <p className="case-status-branch">
-                      <img className="pin" src={pin} alt="Pin icon" />
-                      {report.updates[report.updates.length - 1].branch}
-                    </p>
+        {userReports.length > 0 ? (
+          userReports.map((report) => {
+            return (
+              <div
+                key={report._id}
+                className="case">
+                <div className="case-first-half">
+                  <div className="redid">
+                    <p className="ref">Police Report Ref: </p>
+                    <p>{report.refId}</p>
                   </div>
-                )}
-                {report.updates.length > 0 && (
-                  <div className="update2">
-                    <p>
-                      <img className="io" src={io} alt="IO icon" />
-                      Investigation Officer{" "}
-                      {report.updates[report.updates.length - 1].io}
-                    </p>
+                  <div className="reporttype">
+                    <p className="type">Police Report Type: </p>
+                    <p>{report.type}</p>
                   </div>
-                )}
-              </div>
+                </div>
+                <div className="pinandio">
+                  {report.updates.length > 0 && (
+                    <div className="update1">
+                      <p className="case-status-branch">
+                        <img
+                          className="pin"
+                          src={pin}
+                          alt="Pin icon"
+                        />
+                        {report.updates[report.updates.length - 1].branch}
+                      </p>
+                    </div>
+                  )}
+                  {report.updates.length > 0 && (
+                    <div className="update2">
+                      <p>
+                        <img
+                          className="io"
+                          src={io}
+                          alt="IO icon"
+                        />
+                        Investigation Officer{" "}
+                        {report.updates[report.updates.length - 1].io}
+                      </p>
+                    </div>
+                  )}
+                </div>
 
-              {report.updates.length > 0 && (
-                <p className="lastupdate">
-                  Last Updated: {generateElapsedTime(report)} ago
-                </p>
-              )}
-              <Link to="/ViewUpdate" state={report}>
-                <button className="viewupdate">
-                  <p className="view">View Update</p>
-                </button>
-              </Link>
-            </div>
-          );
-        })}
+                {report.updates.length > 0 && (
+                  <p className="lastupdate">
+                    Last Updated: {generateElapsedTime(report)} ago
+                  </p>
+                )}
+                <Link
+                  to="/ViewUpdate"
+                  state={report}>
+                  <button className="viewupdate">
+                    <p className="view">View Update</p>
+                  </button>
+                </Link>
+              </div>
+            );
+          })
+        ) : (
+          <p>No reports</p>
+        )}
       </div>
     </div>
   );
