@@ -124,7 +124,9 @@ const IWitness = () => {
 
       {currentPage === "page1" && (
         <div className="row">
-          <h3 className="info">Respond to Appeals*</h3>
+          <h3 className="info">
+            Respond to Appeals<span className="star">*</span>
+          </h3>
           <br />
           <div className="input-description">
             <select id="iWitnessType" name="type" defaultValue={""}>
@@ -156,11 +158,15 @@ const IWitness = () => {
 
       {currentPage === "page2-nextofkin" && (
         <div className="row">
-          <h3 className="info">Appeal Information*</h3>
+          <h3 className="info">
+            Appeal Information<span className="star">*</span>
+          </h3>
           <img src={PIN1}></img>
           <br></br>
 
-          <h3 className="info">How are you related to the deceased?*</h3>
+          <h3 className="info">
+            How are you related to the deceased?<span className="star">*</span>
+          </h3>
           <div className="description">
             Provide details about your relationship with the deceased. Be as
             clear and specific as possible.
@@ -199,11 +205,15 @@ const IWitness = () => {
 
       {currentPage === "page3-nextofkin" && (
         <div className="row">
-          <h3 className="info">Date, Time & Location*</h3>
+          <h3 className="info">
+            Date, Time & Location<span className="star">*</span>
+          </h3>
           <img src={PIN2}></img>
           <br></br>
 
-          <h3 className="info">Date*</h3>
+          <h3 className="info">
+            Date<span className="star">*</span>
+          </h3>
           <div>
             If the incident happened over a period of time, please indicate the
             full range of dates.
@@ -211,7 +221,9 @@ const IWitness = () => {
           <input id="dateI" type="date" placeholder="Enter Description"></input>
           <br></br>
 
-          <h3 className="info">Time*</h3>
+          <h3 className="info">
+            Time<span className="star">*</span>
+          </h3>
           <div>
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
@@ -219,7 +231,9 @@ const IWitness = () => {
           <input id="timeI" type="time" placeholder="Enter Description"></input>
           <br></br>
 
-          <h3 className="info">Location*</h3>
+          <h3 className="info">
+            Location<span className="star">*</span>
+          </h3>
           <div>
             Provide details about where it happened (e.g. building, floor, unit
             number, vehicle information ,etc.). Be as specific as possible.
