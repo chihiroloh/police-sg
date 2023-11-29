@@ -227,6 +227,7 @@ const IWitness = () => {
             type="date"
             placeholder="Enter Description"
             max={new Date().toISOString().split("T")[0]}
+            className="custom-input"
           ></input>
           <br></br>
 
@@ -237,7 +238,12 @@ const IWitness = () => {
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
           </div>
-          <input id="timeI" type="time" placeholder="Enter Description"></input>
+          <input
+            id="timeI"
+            type="time"
+            placeholder="Enter Description"
+            className="custom-input"
+          ></input>
           <br></br>
 
           <h3 className="info">
@@ -251,6 +257,7 @@ const IWitness = () => {
             id="locationI"
             type="text"
             placeholder="Enter Description"
+            className="custom-input"
           ></input>
           <br></br>
           <div className="handle-container">
@@ -282,6 +289,7 @@ const IWitness = () => {
             id="additionalInfoI"
             type="text"
             placeholder="Enter Description"
+            className="custom-input"
           ></input>
           <br></br>
           <div className="handle-container">
