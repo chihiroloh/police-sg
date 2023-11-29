@@ -7,7 +7,7 @@ import "./Cop.css";
 
 const Cop = () => {
   return (
-    <div>
+    <div className="join">
       <p className="cop-header">Citizens On Patrol</p>
       <hr />
       <img src={jointheteam} alt="jointheteam" />

@@ -9,9 +9,43 @@
   font-size: 18px;
   margin-bottom: -2%;
   margin-top: -2%;
+  font-weight: bold;
+  color: #1d1a60;
 }
 .people {
   display: block;
   justify-content: center;
   align-items: center;
+}
+.appealimg {
+  max-width: 100%;
+  height: auto;
+  padding: 20px;
+}
+.appeals-container {
+  border: black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 1px solid #1d1a60;
+  width: 150px;
+  height: 300px;
+  padding: 20px;
+  box-shadow: 0 4px 3px #c5c5c5;
+}
+.appealscontent {
+  vertical-align: text-top;
+  text-align: left;
+}
+.appealuser {
+  font-weight: bold;
+}
+.appealtype {
+  margin-top: -10%;
+}
+.appeal-list {
+  padding: 20px;
+  margin-top: -5%;
 }

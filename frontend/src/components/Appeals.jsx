@@ -37,22 +37,32 @@ const Appeals = () => {
     <div>
       <p className="appeals-header">Appeals</p>
       <hr />
-      <p className="appeals-text">
-        Please do not hesitate to call 999 if you have any information on the
-        following appeals:
-      </p>
-      <div className="appeal-list">
-        {appeals.map((appeal) => (
-          <div
-            key={appeal._id}
-            className="appeal-item"
-            onClick={handleAppealClick}
-          >
-            <img src={appeal.imageURL} alt={appeal.name} />
-            <h2>{appeal.name}</h2>
-            <p>Type: {appeal.type}</p>
-          </div>
-        ))}
+      <div className="appeals-content">
+        <p className="appeals-text">
+          Please do not hesitate to call 999 if you have any information on the
+          following appeals:
+        </p>
+        <div className="appeal-list">
+          {appeals.map((appeal) => (
+            <div
+              key={appeal._id}
+              className="appeal-item"
+              onClick={handleAppealClick}
+            >
+              <div className="appeals-container">
+                <img
+                  className="appealimg"
+                  src={appeal.imageURL}
+                  alt={appeal.name}
+                />
+                <p className="appeal-user">
+                  <b>{appeal.name}</b>
+                </p>
+                <p className="appealtype">Type: {appeal.type}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <NavBar />
     </div>

@@ -12,3 +12,83 @@
 .mrchin {
   padding: 20px;
 }
+.nextofkin {
+  color: #1d1a60;
+}
+.nextofkin-header {
+  color: #555555;
+  font-size: 18px;
+}
+.appeal-time {
+  color: #555555;
+  font-size: 13px;
+  margin-top: -3%;
+}
+.appealone-img {
+  max-width: 35%;
+  height: auto;
+  padding: 20px;
+  border: black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 1px solid #1d1a60;
+  padding: 20px;
+  box-shadow: 0 4px 3px #c5c5c5;
+}
+.tan {
+  color: #555555;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0;
+}
+.appeal-des {
+  display: flex;
+  flex-direction: row;
+}
+.appealone-header {
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.nameandtype {
+  padding: 0 20px;
+}
+.tan-content {
+  padding: 10px 5px;
+}
+.iwitness-button {
+  color: #1d1a60;
+  background-color: transparent;
+  border: 1px solid #1d1a60;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: auto;
+}
+.appeal-hotline {
+  background-color: #1d1a60;
+  color: #ffffff;
+  height: 50px;
+  width: auto;
+}
+
+.button-icon {
+  margin-right: 5px; /* Adjust the margin as needed */
+}
+.appeal-hotline {
+  display: flex;
+  align-items: center;
+}
+.button-container {
+  flex-direction: row;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding-top: 0;
+  margin-top: -8%;
+  justify-content: space-evenly;
+}
