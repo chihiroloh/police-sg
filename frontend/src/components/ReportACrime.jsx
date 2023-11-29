@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
 import warningsign from "../assets/ReportACrime/Warning-Sign.png";
-import PI1 from "../assets/ReportACrime/Progress-Indicator-1.png";
-import PI2 from "../assets/ReportACrime/Progress-Indicator-2.png";
-import PI3 from "../assets/ReportACrime/Progress-Indicator-3.png";
-import PI4 from "../assets/ReportACrime/Progress-Indicator-4.png";
-import PI5 from "../assets/ReportACrime/Progress-Indicator-5.png";
 import tick from "../assets/ReportACrime/Tick.png";
+import PIS1 from "../assets/ReportACrime/Scams/PIS1.png";
+import PIS2 from "../assets/ReportACrime/Scams/PIS2.png";
+import PIS3 from "../assets/ReportACrime/Scams/PIS3.png";
+import PIS4 from "../assets/ReportACrime/Scams/PIS4.png";
+import PIS5 from "../assets/ReportACrime/Scams/PIS5.png";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -224,12 +224,10 @@ const ReportACrime = () => {
         <p className="ReportACrimeHeader">Report a Crime</p>
         <hr />
       </div>
+
       {currentPage === "page1" && (
         <div className="row">
-          <img
-            className="warningsign"
-            src={warningsign}
-          />
+          <img className="warningsign" src={warningsign} />
           <div className="roc-important">
             <p className="sub">Important Notice: Making False Reports</p>
             <div className="roc-paragraph">
@@ -256,7 +254,8 @@ const ReportACrime = () => {
           <div className="button-container">
             <button
               className="acknowledge"
-              onClick={() => handlePageChange("page2")}>
+              onClick={() => handlePageChange("page2")}
+            >
               I acknowledge and wish to proceed
             </button>
           </div>
@@ -277,9 +276,7 @@ const ReportACrime = () => {
                 className="large-select"
                 // ref={crimeTypeRef}
               >
-                <option
-                  value=""
-                  disabled>
+                <option value="" disabled>
                   Select Category
                 </option>
                 <option value="Dishonest Misappropriation of Property (Theft)">
@@ -291,9 +288,7 @@ const ReportACrime = () => {
               </select>
               <br></br>
             </div>
-            <button
-              className="confirm"
-              onClick={handlePage2Change}>
+            <button className="confirm" onClick={handlePage2Change}>
               Confirm
             </button>
             <br></br>
@@ -309,7 +304,6 @@ const ReportACrime = () => {
       {currentPage === "page3-theft" && (
         <div className="row">
           <h3>Item Information*</h3>
-          <br></br>
           <img></img>
           <br></br>
 
@@ -353,9 +347,7 @@ const ReportACrime = () => {
       {currentPage === "page3-scams" && (
         <div className="row">
           <h3>Financial Information*</h3>
-          <img
-            src={PI1}
-            alt="progress-indicator-1"></img>
+          <img src={PIS1} alt="progress-indicator-1"></img>
           <br></br>
 
           <h3>How much money was involved?*</h3>
@@ -458,9 +450,7 @@ const ReportACrime = () => {
             id="type"
             defaultValue="other" /*ref={crimeTypeRef}*/
           >
-            <option
-              value=""
-              disabled>
+            <option value="" disabled>
               Select Category
             </option>
             <option value="Dishonest Misappropriation of Property (Theft)">
@@ -530,7 +520,8 @@ const ReportACrime = () => {
             name="images"
             type="file"
             /*ref={uploadedImageRef}*/ multiple
-            onChange={handleFileChange}></input>
+            onChange={handleFileChange}
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-theft")}>Back</button>
@@ -543,9 +534,7 @@ const ReportACrime = () => {
       {currentPage === "page4-scams" && (
         <div className="row">
           <h3>Incident Information</h3>
-          <img
-            src={PI2}
-            alt="progress-indicator-2"></img>
+          <img src={PIS2} alt="progress-indicator-2"></img>
           <br></br>
 
           <h3>Who was the scammer?</h3>
@@ -583,7 +572,8 @@ const ReportACrime = () => {
             id="uploadedImage"
             name="images"
             type="file" /*ref={uploadedImageRef}*/
-            onChange={handleFileChange}></input>
+            onChange={handleFileChange}
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-scams")}>Back</button>
@@ -621,7 +611,8 @@ const ReportACrime = () => {
             id="uploadedImage"
             name="images"
             type="file" /*ref={uploadedImageRef}*/
-            onChange={handleFileChange}></input>
+            onChange={handleFileChange}
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-voyeurism")}>
@@ -651,7 +642,8 @@ const ReportACrime = () => {
             id="whatHappened"
             type="text"
             placeholder="Enter Description"
-            ref={whatHappenedRef}></input>
+            ref={whatHappenedRef}
+          ></input>
           <br></br>
 
           <h3>Supporting Media</h3>
@@ -660,7 +652,8 @@ const ReportACrime = () => {
             id="uploadedImage"
             name="images"
             type="file" /*ref={uploadedImageRef}*/
-            onChange={handleFileChange}></input>
+            onChange={handleFileChange}
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page3-other")}>Back</button>
@@ -687,7 +680,8 @@ const ReportACrime = () => {
             type="date"
             max={new Date().toISOString().split("T")[0]}
             // ref={dateRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -699,7 +693,8 @@ const ReportACrime = () => {
             id="time"
             type="time"
             // ref={timeRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -711,7 +706,8 @@ const ReportACrime = () => {
             id="location"
             type="text"
             // ref={locationRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-theft")}>Back</button>
@@ -724,9 +720,7 @@ const ReportACrime = () => {
       {currentPage === "page5-scams" && (
         <div className="row">
           <h3>Date, Time & Location*</h3>
-          <img
-            src={PI3}
-            alt="progress-indicator-3"></img>
+          <img src={PIS3} alt="progress-indicator-3"></img>
           <br></br>
 
           <h3>Date*</h3>
@@ -739,7 +733,8 @@ const ReportACrime = () => {
             type="date"
             max={new Date().toISOString().split("T")[0]}
             // ref={dateRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -751,7 +746,8 @@ const ReportACrime = () => {
             id="time"
             type="time"
             // ref={timeRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -763,7 +759,8 @@ const ReportACrime = () => {
             id="location"
             type="text"
             // ref={locationRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-scams")}>Back</button>
@@ -790,7 +787,8 @@ const ReportACrime = () => {
             type="date"
             max={new Date().toISOString().split("T")[0]}
             // ref={dateRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -802,7 +800,8 @@ const ReportACrime = () => {
             id="time"
             type="time"
             // ref={timeRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -814,7 +813,8 @@ const ReportACrime = () => {
             id="location"
             type="text"
             // ref={locationRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-voyeurism")}>
@@ -843,7 +843,8 @@ const ReportACrime = () => {
             type="date"
             max={new Date().toISOString().split("T")[0]}
             // ref={dateRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Time*</h3>
@@ -855,7 +856,8 @@ const ReportACrime = () => {
             id="time"
             type="time"
             // ref={timeRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <h3>Location*</h3>
@@ -867,7 +869,8 @@ const ReportACrime = () => {
             id="location"
             type="text"
             // ref={locationRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page4-other")}>Back</button>
@@ -893,7 +896,8 @@ const ReportACrime = () => {
             id="additionalInfo"
             type="text"
             // ref={additionalInfoRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-theft")}>Back</button>
@@ -902,7 +906,8 @@ const ReportACrime = () => {
               handlePageChange("page7");
               addReport();
               handleUpload();
-            }}>
+            }}
+          >
             Submit
           </button>
         </div>
@@ -912,9 +917,7 @@ const ReportACrime = () => {
         <div className="row">
           <h3>Additional Information</h3>
           <br></br>
-          <img
-            src={PI4}
-            alt="progress-indicator-4"></img>
+          <img src={PIS4} alt="progress-indicator-4"></img>
           <br></br>
 
           <h3>Additional Information (Optional)</h3>
@@ -926,7 +929,8 @@ const ReportACrime = () => {
             id="additionalInfo"
             type="text"
             // ref={additionalInfoRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-scams")}>Back</button>
@@ -934,7 +938,8 @@ const ReportACrime = () => {
             onClick={() => {
               handlePageChange("page7");
               addReport();
-            }}>
+            }}
+          >
             Submit
           </button>
         </div>
@@ -956,7 +961,8 @@ const ReportACrime = () => {
             id="additionalInfo"
             type="text"
             // ref={additionalInfoRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-voyeurism")}>
@@ -966,7 +972,8 @@ const ReportACrime = () => {
             onClick={() => {
               handlePageChange("page7");
               addReport();
-            }}>
+            }}
+          >
             Submit
           </button>
         </div>
@@ -988,7 +995,8 @@ const ReportACrime = () => {
             id="additionalInfo"
             type="text"
             // ref={additionalInfoRef}
-            placeholder="Enter Description"></input>
+            placeholder="Enter Description"
+          ></input>
           <br></br>
 
           <button onClick={() => handlePageChange("page5-other")}>Back</button>
@@ -997,22 +1005,19 @@ const ReportACrime = () => {
               handlePageChange("page7");
               addReport();
               handleUpload();
-            }}>
+            }}
+          >
             Submit
           </button>
         </div>
       )}
 
-      {currentPage === "page7" && (
+      {currentPage === "page7-theft" && (
         <div className="row">
           <h3>Complete</h3>
-          <img
-            src={PI5}
-            alt="progress-indicator-5"></img>
+          <img src={PIS5} alt="progress-indicator-5"></img>
           <br></br>
-          <img
-            src={tick}
-            alt="tick"></img>
+          <img src={tick} alt="tick"></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>

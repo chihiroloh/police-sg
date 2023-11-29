@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
+import "./LostNFound.css";
 
 const LostNFound = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -30,11 +31,13 @@ const LostNFound = () => {
 
     if (lostNFoundRef.current === "lostItem") {
       setCurrentPage("page2-lostItem");
-    } else if (lostNFoundRef.current === "foundItem") {
-      navigate("/Home");
-    } else {
-      alert("Please choose a category");
     }
+    // else if (lostNFoundRef.current === "foundItem") {
+    //   navigate("/Home");
+    // }
+    // else {
+    //   alert("Please choose a category");
+    // }
   };
 
   const handlePage2Change = () => {
@@ -134,34 +137,41 @@ const LostNFound = () => {
     <div className="container">
       <p className="LostNFoundHeader">Lost & Found</p>
       <hr></hr>
-
-      {currentPage === "page1" && (
-        <div className="row">
-          <h3>Nature of Incident*</h3>
-          <br></br>
-          <select
-            id="lostNFound"
-            name="type"
-            defaultValue={""}
-            // ref={lostNFoundRef}
-          >
-            <option value="" disabled>
-              Select Category
-            </option>
-            <option value="lostItem">I lost an item</option>
-            <option value="foundItem">I found an item</option>
-          </select>
-          <br></br>
-          <button onClick={handlePage1Change}>Confirm</button>
-          <br></br>
-          <div>
-            For urgent and time-sensitive matters that require immediate
-            attention, please contact the Police directly using the emergency
-            hotline at 999.
+      <div className="container-lnf">
+        {currentPage === "page1" && (
+          <div className="row">
+            <p className="incident-header">
+              Nature of Incident<span className="i-star">*</span>
+            </p>
+            <br></br>
+            <div className="input-lnf">
+              <select
+                id="lostNFound"
+                name="type"
+                defaultValue={""}
+                className="select-lnf"
+                // ref={lostNFoundRef}
+              >
+                <option value="" disabled>
+                  Select Category
+                </option>
+                <option value="lostItem">I lost an item</option>
+                <option value="disabled">I found an item</option>
+              </select>
+              <br></br>
+              <button className="confirm-lnf" onClick={handlePage1Change}>
+                Confirm
+              </button>
+              <br></br>
+              <div className="urgent-lnf">
+                For urgent and time-sensitive matters that require immediate
+                attention, please contact the Police directly using the
+                emergency hotline at 999.
+              </div>
+            </div>
           </div>
-        </div>
-      )}
-
+        )}
+      </div>
       {currentPage === "page2-lostItem" && (
         <div className="row">
           <h3>Item Information*</h3>

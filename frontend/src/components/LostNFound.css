@@ -1,0 +1,69 @@
+.LostNFoundHeader {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: local("Neue Montreal");
+}
+.incident-header {
+  color: #1d1a60;
+  font-size: 25px;
+  padding: 3%;
+  text-align: left;
+  margin-top: 0%;
+}
+i-star {
+  color: #eb312e;
+}
+.select-lnf {
+  width: 350px;
+  height: 39.69px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-direction: column;
+  font-size: 15px;
+  color: #1d1a60;
+  margin-top: -5%;
+}
+.confirm-lnf {
+  width: 350px;
+  max-height: 50px;
+  background-color: #1d1a60;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffff;
+  margin: 10px 0;
+  flex-direction: column;
+  margin-bottom: -10%;
+  margin-top: 0;
+}
+.urgent-lnf {
+  color: #eb312e;
+  text-align: left;
+  padding: 3%;
+  margin-top: 5%;
+}
+.container-lnf {
+  padding: 20px;
+  text-align: left;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.input-lnf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+}

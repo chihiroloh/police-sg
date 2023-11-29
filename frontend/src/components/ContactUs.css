@@ -23,3 +23,7 @@
   padding: 20px;
   margin-top: -5%;
 }
+@font-face {
+  font-family: "Neue Montreal";
+  src: local("Neue Montreal");
+}

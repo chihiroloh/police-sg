@@ -1,0 +1,57 @@
+.nearby {
+  font-size: 18px;
+  color: #7b7b7b;
+  margin-top: -2%;
+}
+.maps-nearby {
+  padding: 20px;
+}
+.s,
+.h,
+.sn {
+  color: #1d1a60;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.s-ad,
+.h-ad,
+.sn-ad {
+  color: #040404;
+  font-size: 13px;
+  margin-top: -4%;
+}
+.s-time,
+.h-time,
+.sn-time {
+  color: #555555;
+  font-size: 12px;
+  margin-top: -4%;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: local("Neue Montreal");
+}
+/* Style for each set of icons */
+.icons-one,
+.icons-two,
+.icons-three {
+  display: flex;
+  align-items: center;
+  margin-left: 80%;
+  margin-top: -10%;
+}
+
+/* Style for each text element */
+.s,
+.h,
+.sn {
+  display: inline-block;
+  width: 80%; /* Adjust the width as needed to control text/icon placement */
+}
+
+.sn-one,
+.sn-two,
+.sn-three {
+  vertical-align: text-top;
+}
