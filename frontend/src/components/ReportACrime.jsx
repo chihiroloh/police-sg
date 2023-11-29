@@ -154,8 +154,16 @@ const ReportACrime = () => {
   };
 
   const addReport = async () => {
+    const reportData = {
+      type: crimeTypeRef.current,
+      primaryInfo,
+      addInfo: document.querySelector("#additionalInfo").value,
+      dateOccurred: dateRef.current,
+      timeOccurred: timeRef.current,
+      locationOccurred: locationRef.current,
+    };
     if (filePath) {
-      primaryInfo.media = { mediaURL1: filePath };
+      reportData.media = { mediaURL1: filePath };
     }
     const res = await fetch(
       import.meta.env.VITE_SERVER + `/api/reports/${userInfoCtx.userId}`,
@@ -165,14 +173,7 @@ const ReportACrime = () => {
           "Content-Type": "application/json",
           Authorization: "Bearer " + userInfoCtx.accessToken,
         },
-        body: JSON.stringify({
-          type: crimeTypeRef.current,
-          primaryInfo: primaryInfo,
-          addInfo: document.querySelector("#additionalInfo").value,
-          dateOccurred: dateRef.current,
-          timeOccurred: timeRef.current,
-          locationOccurred: locationRef.current,
-        }),
+        body: JSON.stringify(reportData),
       }
     );
 
