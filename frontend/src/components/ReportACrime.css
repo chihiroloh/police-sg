@@ -4,6 +4,12 @@
   justify-content: space-around;
   align-items: center;
 }
+.page1-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .row-two {
   display: flex;
   flex-direction: column;
