@@ -129,7 +129,7 @@ const LostNFound = () => {
         {currentPage === "page1" && (
           <div className="row">
             <p className="incident-header">
-              Nature of Incident<span className="i-star">*</span>
+              Nature of Incident<span className="star">*</span>
             </p>
             <br></br>
             <div className="input-lnf">

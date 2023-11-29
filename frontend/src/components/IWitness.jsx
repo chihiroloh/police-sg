@@ -73,8 +73,6 @@ const IWitness = () => {
   };
 
   const addIWitness = async () => {
-    console.log(userInfoCtx.accessToken);
-    console.log(userInfoCtx.userId);
     const res = await fetch(
       `${import.meta.env.VITE_SERVER}/api/iWitness/${userInfoCtx.userId}`,
       {
@@ -105,7 +103,6 @@ const IWitness = () => {
       timeIRef.current = "";
       locationIRef.current = "";
       const data = await res.json();
-      console.log(data);
       setRefId(data.refId);
     } else {
       alert("There was an error submitting your report.");
@@ -125,8 +122,9 @@ const IWitness = () => {
       {currentPage === "page1" && (
         <div className="row">
           <h3 className="info">
-            <p className="incident">Respond to Appeals</p>
-            <span className="star">*</span>
+            <p className="incident-header">
+              Respond to Appeals<span className="star">*</span>
+            </p>
           </h3>
           <br />
           <div className="input-description">
@@ -148,7 +146,7 @@ const IWitness = () => {
           <br />
 
           <div className="handle-container">
-            <button className="confirmbutton" onClick={handlePage1Change}>
+            <button className="confirm-lnf" onClick={handlePage1Change}>
               Confirm
             </button>
           </div>
@@ -224,7 +222,12 @@ const IWitness = () => {
             If the incident happened over a period of time, please indicate the
             full range of dates.
           </div>
-          <input id="dateI" type="date" placeholder="Enter Description"></input>
+          <input
+            id="dateI"
+            type="date"
+            placeholder="Enter Description"
+            max={new Date().toISOString().split("T")[0]}
+          ></input>
           <br></br>
 
           <h3 className="info">
@@ -304,7 +307,7 @@ const IWitness = () => {
       {currentPage === "page5-nextofkin" && (
         <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIO4}></img>
+          <img src={PIN4}></img>
           <br></br>
           <img className="tick" src={tick}></img>
           <br></br>
