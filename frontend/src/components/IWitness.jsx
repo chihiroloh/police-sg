@@ -125,11 +125,17 @@ const IWitness = () => {
       {currentPage === "page1" && (
         <div className="row">
           <h3 className="info">
-            Respond to Appeals<span className="star">*</span>
+            <p className="incident">Respond to Appeals</p>
+            <span className="star">*</span>
           </h3>
           <br />
           <div className="input-description">
-            <select id="iWitnessType" name="type" defaultValue={""}>
+            <select
+              id="iWitnessType"
+              name="type"
+              className="large-select"
+              defaultValue={""}
+            >
               <option value="" disabled>
                 Select Category
               </option>
@@ -148,7 +154,7 @@ const IWitness = () => {
           </div>
 
           <br />
-          <div className="description">
+          <div className="urgent">
             For urgent and time-sensitive matters that require immediate
             attention, please contact the Police directly using the emergency
             hotline at 999.
@@ -244,11 +250,17 @@ const IWitness = () => {
             placeholder="Enter Description"
           ></input>
           <br></br>
-
-          <button onClick={() => handlePageChange("page2-nextofkin")}>
-            Back
-          </button>
-          <button onClick={handlePage3Change}>Confirm</button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page2-nextofkin")}
+            >
+              Back
+            </button>
+            <button className="confirmbutton" onClick={handlePage3Change}>
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
@@ -290,11 +302,11 @@ const IWitness = () => {
       )}
 
       {currentPage === "page5-nextofkin" && (
-        <div className="row">
+        <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIN4}></img>
+          <img src={PIO4}></img>
           <br></br>
-          <img src={tick}></img>
+          <img className="tick" src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
@@ -311,11 +323,13 @@ const IWitness = () => {
             Police Hotline (6255 0000) .
           </div>
           <br></br>
-
-          <button onClick={returnToHomepage}>Return to Home</button>
+          <div className="return-container">
+            <button className="return" onClick={returnToHomepage}>
+              Return to Home
+            </button>
+          </div>
         </div>
       )}
-
       <NavBar />
     </div>
   );
