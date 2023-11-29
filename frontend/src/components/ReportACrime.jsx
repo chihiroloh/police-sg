@@ -558,7 +558,7 @@ const ReportACrime = () => {
       {currentPage === "page7-theft" && (
         <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIL5}></img>
+          <img src={PIT5}></img>
           <br></br>
           <img className="tick" src={tick}></img>
           <br></br>
@@ -868,7 +868,7 @@ const ReportACrime = () => {
       {currentPage === "page7-scams" && (
         <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIL5}></img>
+          <img src={PIS5}></img>
           <br></br>
           <img className="tick" src={tick}></img>
           <br></br>
@@ -1135,7 +1135,7 @@ const ReportACrime = () => {
       {currentPage === "page7-voyeurism" && (
         <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIL5}></img>
+          <img src={PIV5}></img>
           <br></br>
           <img className="tick" src={tick}></img>
           <br></br>
