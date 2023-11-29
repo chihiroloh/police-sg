@@ -1380,7 +1380,7 @@ const ReportACrime = () => {
       {currentPage === "page7-other" && (
         <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIL5}></img>
+          <img src={PIO4}></img>
           <br></br>
           <img className="tick" src={tick}></img>
           <br></br>
