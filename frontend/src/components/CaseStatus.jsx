@@ -118,7 +118,7 @@ const CaseStatus = () => {
             );
           })
         ) : (
-          <p>No reports</p>
+          <p className="no-reports">No reports</p>
         )}
       </div>
     </div>

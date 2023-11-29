@@ -112,3 +112,8 @@
 .case-status-branch {
   margin-bottom: 7px;
 }
+.no-reports {
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+}
