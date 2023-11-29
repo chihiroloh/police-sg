@@ -1164,8 +1164,8 @@ const ReportACrime = () => {
 
       {currentPage === "page3-other" && (
         <div className="row">
-          <h3 className="info">
-            Nature of Incident<span className="star">*</span>
+          <h3 className="incident-header">
+            Nature of Incident<span className="i-star">*</span>
           </h3>
           <div className="input-description">
             <select
