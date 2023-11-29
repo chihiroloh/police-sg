@@ -1,4 +1,5 @@
 .ReportACrimeHeader {
+  margin-bottom: 10px;
   font-size: 20px;
   display: flex;
   justify-content: space-around;
@@ -87,7 +88,7 @@
 .large-select {
   width: 350px;
   height: 39.69px;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,4 +126,15 @@
   flex-direction: column;
   padding: 20px;
   text-align: left;
+}
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header img {
+  left: 30px;
+  position: absolute;
+  height: 15px;
 }

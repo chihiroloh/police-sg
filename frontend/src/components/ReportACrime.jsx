@@ -24,6 +24,7 @@ import PIO1 from "../assets/ReportACrime/Other/PIO1.png";
 import PIO2 from "../assets/ReportACrime/Other/PIO2.png";
 import PIO3 from "../assets/ReportACrime/Other/PIO3.png";
 import PIO4 from "../assets/ReportACrime/Other/PIO4.png";
+import back from "../assets/back.png";
 
 const ReportACrime = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -223,10 +224,12 @@ const ReportACrime = () => {
 
   return (
     <div className="container">
-      <div>
+      <div className="header">
+        <img src={back}></img>
         <p className="ReportACrimeHeader">Report a Crime</p>
-        <hr />
+        <div></div>
       </div>
+      <hr />
 
       {currentPage === "page1" && (
         <div className="row page1-container">
