@@ -81,9 +81,10 @@ const ReportACrime = () => {
 
     if (stolenRef.current && costRef.current) {
       setCurrentPage("page4-theft");
-    } else {
-      alert("Please fill up all mandatory fields");
     }
+    // else {
+    //   alert("Please fill up all mandatory fields");
+    // }
   };
 
   const handlePage3ChangeScams = () => {
@@ -93,9 +94,10 @@ const ReportACrime = () => {
 
     if (moneyRef.current && accountsRef.current && transferredRef.current) {
       setCurrentPage("page4-scams");
-    } else {
-      alert("Please fill up all mandatory fields");
     }
+    // else {
+    //   alert("Please fill up all mandatory fields");
+    // }
   };
 
   const handlePage3ChangeVoyeurism = () => {
@@ -103,9 +105,10 @@ const ReportACrime = () => {
 
     if (perpetratorRef.current) {
       setCurrentPage("page4-voyeurism");
-    } else {
-      alert("Please fill up all mandatory fields");
     }
+    // else {
+    //   alert("Please fill up all mandatory fields");
+    // }
   };
 
   const handlePage3ChangeOther = () => {
@@ -113,9 +116,10 @@ const ReportACrime = () => {
 
     if (otherIncidentRef.current) {
       setCurrentPage("page4-other");
-    } else {
-      alert("Please fill up all mandatory fields");
     }
+    // else {
+    //   alert("Please fill up all mandatory fields");
+    // }
   };
 
   const handlePage5Change = (page) => {
@@ -125,9 +129,10 @@ const ReportACrime = () => {
 
     if (dateRef.current && timeRef.current && locationRef.current) {
       setCurrentPage(page);
-    } else {
-      alert("Please fill up all mandatory fields");
     }
+    // else {
+    //   alert("Please fill up all mandatory fields");
+    // }
   };
 
   const returnToHomepage = () => {
@@ -233,10 +238,7 @@ const ReportACrime = () => {
 
       {currentPage === "page1" && (
         <div className="row page1-container">
-          <img
-            className="warningsign"
-            src={warningsign}
-          />
+          <img className="warningsign" src={warningsign} />
           <div className="roc-important">
             <p className="sub">Important Notice: Making False Reports</p>
             <div className="roc-paragraph">
@@ -263,7 +265,8 @@ const ReportACrime = () => {
           <div className="button-container">
             <button
               className="acknowledge"
-              onClick={() => handlePageChange("page2")}>
+              onClick={() => handlePageChange("page2")}
+            >
               I acknowledge and wish to proceed
             </button>
           </div>
@@ -284,9 +287,7 @@ const ReportACrime = () => {
                 className="large-select"
                 // ref={crimeTypeRef}
               >
-                <option
-                  value=""
-                  disabled>
+                <option value="" disabled>
                   Select Category
                 </option>
                 <option value="Dishonest Misappropriation of Property (Theft)">
@@ -298,9 +299,7 @@ const ReportACrime = () => {
               </select>
               <br></br>
             </div>
-            <button
-              className="confirm"
-              onClick={handlePage2Change}>
+            <button className="confirm" onClick={handlePage2Change}>
               Confirm
             </button>
             <br></br>
@@ -315,173 +314,243 @@ const ReportACrime = () => {
 
       {currentPage === "page3-theft" && (
         <div className="row">
-          <h3>Item Information*</h3>
+          <h3 className="info">
+            Item Information<span className="star">*</span>
+          </h3>
           <img src={PIT1}></img>
           <br></br>
-
-          <h3>What was stolen?*</h3>
-          <div>
+          <h3 className="info">
+            What was stolen?<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about the item (e.g. brand, colour, model, serial
             number, size, etc.) Be as clear and specific as possible.
           </div>
-          <input
-            id="stolen"
-            type="text"
-            placeholder="Enter Description"
-            // ref={stolenRef}
-            // value={stolenRef.current}
-            // onChange={(event) => handleInputChange(event, stolenRef)}
-          ></input>
+          <div className="input-description">
+            <input
+              id="stolen"
+              type="text"
+              placeholder="Enter Description"
+              // ref={stolenRef}
+              // value={stolenRef.current}
+              // onChange={(event) => handleInputChange(event, stolenRef)}
+            ></input>
+          </div>
           <br></br>
-
-          <h3>How much did the item cost?*</h3>
-          <div>If you are unsure, please provide an estimated amount.</div>
-          <input
-            id="cost"
-            type="text"
-            placeholder="Enter Description"
-            // ref={costRef}
-            // value={costRef.current}
-            // onChange={(event) => handleInputChange(event, costRef)}
-          ></input>
+          <h3 className="info">
+            How much did the item cost?<span className="star">*</span>
+          </h3>
+          <div className="description">
+            If you are unsure, please provide an estimated amount.
+          </div>
+          <div className="input-description">
+            <input
+              id="cost"
+              type="text"
+              placeholder="Enter Description"
+              // ref={costRef}
+              // value={costRef.current}
+              // onChange={(event) => handleInputChange(event, costRef)}
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page2")}>Back</button>
-          <button
-            onClick={handlePage3ChangeTheft}
-            // disabled={!stolenRef.current || !costRef.current}
-          >
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page2")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={handlePage3ChangeTheft}
+              // disabled={!stolenRef.current || !costRef.current}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page4-theft" && (
         <div className="row">
-          <h3>Incident Information</h3>
+          <h3 className="info">
+            Incident Information<span className="star">*</span>
+          </h3>
           <img src={PIT2}></img>
           <br></br>
 
-          <h3>What happened?</h3>
-          <div>
+          <h3 className="info">
+            What happened?<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about the incident (e.g. people involved, sequence
             of activites, other relevant information). Be as clear and specific
             as possible.
           </div>
           <br></br>
-          <input
-            id="whatHappened"
-            type="text"
-            placeholder="Enter Description"
-            // ref={whatHappenedRef}
-          ></input>
+          <div className="input-description">
+            <input
+              id="whatHappened"
+              type="text"
+              placeholder="Enter Description"
+              // ref={whatHappenedRef}
+            ></input>
+            <br></br>
+          </div>
+          <h3 className="info">Supporting Media</h3>
+          <div className="description">Upload up to 3 images and/or videos</div>
+          <div className="input-description">
+            <input
+              id="uploadedImage"
+              name="images"
+              type="file"
+              /*ref={uploadedImageRef}*/ multiple
+              onChange={handleFileChange}
+            ></input>
+          </div>
           <br></br>
-
-          <h3>Supporting Media</h3>
-          <div>Upload up to 3 images and/or videos</div>
-          <input
-            id="uploadedImage"
-            name="images"
-            type="file"
-            /*ref={uploadedImageRef}*/ multiple
-            onChange={handleFileChange}></input>
-          <br></br>
-
-          <button onClick={() => handlePageChange("page3-theft")}>Back</button>
-          <button onClick={() => handlePageChange("page5-theft")}>
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page3-theft")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePageChange("page5-theft")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page5-theft" && (
         <div className="row">
-          <h3>Date, Time & Location*</h3>
+          <h3 className="info">
+            Date, Time & Location<span className="star">*</span>
+          </h3>
           <img src={PIT3}></img>
           <br></br>
 
-          <h3>Date*</h3>
-          <div>
+          <h3 className="info">
+            Date<span className="star">*</span>
+          </h3>
+          <div className="description">
             If the incident happened over a period of time, please indicate the
             full range of dates.
           </div>
-          <input
-            id="date"
-            type="date"
-            max={new Date().toISOString().split("T")[0]}
-            // ref={dateRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="date"
+              type="date"
+              max={new Date().toISOString().split("T")[0]}
+              // ref={dateRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Time*</h3>
-          <div>
+          <h3 className="info">
+            Time<span className="star">*</span>
+          </h3>
+          <div className="description">
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
           </div>
-          <input
-            id="time"
-            type="time"
-            // ref={timeRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="time"
+              type="time"
+              // ref={timeRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Location*</h3>
-          <div>
+          <h3 className="info">
+            Location<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about where it happened (e.g. building, floor, unit
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
-          <input
-            id="location"
-            type="text"
-            // ref={locationRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="location"
+              type="text"
+              // ref={locationRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page4-theft")}>Back</button>
-          <button onClick={() => handlePage5Change("page6-theft")}>
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page4-theft")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePage5Change("page6-theft")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page6-theft" && (
         <div className="row">
-          <h3>Additional Information</h3>
+          <h3 className="info">Additional Information</h3>
           <img src={PIT4}></img>
           <br></br>
 
-          <h3>Additional Information (Optional)</h3>
-          <div>
+          <h3 className="info">Additional Information (Optional)</h3>
+          <div className="description">
             Additional information that would deepen our understanding of the
             situation so that we can help you better.
           </div>
-          <input
-            id="additionalInfo"
-            type="text"
-            // ref={additionalInfoRef}
-            placeholder="Enter Description"></input>
-          <br></br>
 
-          <button onClick={() => handlePageChange("page5-theft")}>Back</button>
-          <button
-            onClick={() => {
-              handlePageChange("page7-theft");
-              addReport();
-              handleUpload();
-            }}>
-            Submit
-          </button>
+          <div className="input-description">
+            <input
+              id="additionalInfo"
+              type="text"
+              // ref={additionalInfoRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
+          <br></br>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page5-theft")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => {
+                handlePageChange("page7-theft");
+                addReport();
+                handleUpload();
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page7-theft" && (
-        <div className="row">
+        <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIT5}></img>
+          <img src={PIL5}></img>
           <br></br>
-          <img
-            src={tick}
-            alt="tick"></img>
+          <img className="tick" src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
@@ -498,210 +567,287 @@ const ReportACrime = () => {
             Police Hotline (6255 0000) .
           </div>
           <br></br>
-
-          <button onClick={returnToHomepage}>Return to Home</button>
+          <div className="return-container">
+            <button className="return" onClick={returnToHomepage}>
+              Return to Home
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page3-scams" && (
         <div className="row">
-          <h3>Financial Information*</h3>
-          <img
-            src={PIS1}
-            alt="progress-indicator-1"></img>
+          <h3 className="info">
+            Financial Information<span className="star">*</span>
+          </h3>
+          <img src={PIS1} alt="progress-indicator-1"></img>
           <br></br>
 
-          <h3>How much money was involved?*</h3>
-          <div>If you are uncertain, please provide an estimated amount.</div>
-          <input
-            id="money"
-            type="text"
-            placeholder="Enter Description"
-            // ref={moneyRef}
-            // onChange={(event) => handleInputChange(event, stolenRef)}
-          ></input>
+          <h3 className="info">
+            How much money was involved?<span className="star">*</span>
+          </h3>
+          <div className="description">
+            If you are uncertain, please provide an estimated amount.
+          </div>
+          <div className="input-description">
+            <input
+              id="money"
+              type="text"
+              placeholder="Enter Description"
+              // ref={moneyRef}
+              // onChange={(event) => handleInputChange(event, stolenRef)}
+            ></input>
+          </div>
           <br></br>
 
-          <h3>How was the money transferred?*</h3>
-          <div>
+          <h3 className="info">
+            How was the money transferred?<span className="star">*</span>
+          </h3>
+          <div className="description">
             E.g. bank transfer, credit card, PayNow, PayLah!, etc. Please
             include transaction numbers, if relevant.
           </div>
-          <input
-            id="transferred"
-            type="text"
-            placeholder="Enter Description"
-            // ref={transferredRef}
-            // onChange={(event) => handleInputChange(event, costRef)}
-          ></input>
+          <div className="input-description">
+            <input
+              id="transferred"
+              type="text"
+              placeholder="Enter Description"
+              // ref={transferredRef}
+              // onChange={(event) => handleInputChange(event, costRef)}
+            ></input>
+          </div>
+
           <br></br>
 
-          <h3>What accounts are affected?*</h3>
-          <div>E.g. bank, account number, etc. </div>
-          <input
-            id="accounts"
-            type="text"
-            placeholder="Enter Description"
-            // ref={accountsRef}
-            // onChange={(event) => handleInputChange(event, costRef)}
-          ></input>
+          <h3 className="info">
+            What accounts are affected?<span className="star">*</span>
+          </h3>
+          <div className="description">E.g. bank, account number, etc. </div>
+          <div className="input-description">
+            <input
+              id="accounts"
+              type="text"
+              placeholder="Enter Description"
+              // ref={accountsRef}
+              // onChange={(event) => handleInputChange(event, costRef)}
+            ></input>
+          </div>
           <br></br>
 
-          <button onClick={() => handlePageChange("page2")}>Back</button>
-          <button
-            onClick={handlePage3ChangeScams}
-            // disabled={!stolenRef.current || !costRef.current}
-          >
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page2")}
+            >
+              Back
+            </button>
+            className="backbutton"
+            <button
+              className="confirmbutton"
+              onClick={handlePage3ChangeScams}
+              // disabled={!stolenRef.current || !costRef.current}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page4-scams" && (
         <div className="row">
-          <h3>Incident Information</h3>
-          <img
-            src={PIS2}
-            alt="progress-indicator-2"></img>
+          <h3 className="info">Incident Information</h3>
+          <img src={PIS2} alt="progress-indicator-2"></img>
           <br></br>
 
-          <h3>Who was the scammer?</h3>
-          <div>
+          <h3 className="info">Who was the scammer?</h3>
+          <div className="description">
             Provide details (e.g. name, email address, phone number, other
             identifying information).
           </div>
           <br></br>
-          <input
-            id="scammer"
-            type="text"
-            placeholder="Enter Description"
-            // ref={scammerRef}
-          ></input>
+          <div className="input-description">
+            <input
+              id="scammer"
+              type="text"
+              placeholder="Enter Description"
+              // ref={scammerRef}
+            ></input>
+          </div>
           <br></br>
 
-          <h3>What happened?</h3>
-          <div>
+          <h3 className="info">What happened?</h3>
+          <div className="description">
             Provide details about the incident (e.g. people involved, sequence
             of activites, other relevant information). Be as clear and specific
             as possible.
           </div>
           <br></br>
-          <input
-            id="whatHappened"
-            type="text"
-            placeholder="Enter Description"
-            // ref={whatHappenedRef}
-          ></input>
+
+          <div className="input-description">
+            <input
+              id="whatHappened"
+              type="text"
+              placeholder="Enter Description"
+              // ref={whatHappenedRef}
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Supporting Media</h3>
-          <div>Upload up to 3 images and/or videos</div>
-          <input
-            id="uploadedImage"
-            name="images"
-            type="file" /*ref={uploadedImageRef}*/
-            onChange={handleFileChange}></input>
+          <h3 className="info">Supporting Media</h3>
+          <div className="description">Upload up to 3 images and/or videos</div>
+          <div className="input-description">
+            <input
+              id="uploadedImage"
+              name="images"
+              type="file" /*ref={uploadedImageRef}*/
+              onChange={handleFileChange}
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page3-scams")}>Back</button>
-          <button onClick={() => handlePageChange("page5-scams")}>
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page3-scams")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePageChange("page5-scams")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page5-scams" && (
         <div className="row">
-          <h3>Date, Time & Location*</h3>
-          <img
-            src={PIS3}
-            alt="progress-indicator-3"></img>
+          <h3 className="info">
+            Date, Time & Location<span className="star">*</span>
+          </h3>
+          <img src={PIS3} alt="progress-indicator-3"></img>
           <br></br>
 
-          <h3>Date*</h3>
-          <div>
+          <h3 className="info">
+            Date<span className="star">*</span>
+          </h3>
+          <div className="description">
             If the incident happened over a period of time, please indicate the
             full range of dates.
           </div>
-          <input
-            id="date"
-            type="date"
-            max={new Date().toISOString().split("T")[0]}
-            // ref={dateRef}
-            placeholder="Enter Description"></input>
+
+          <div className="input-description">
+            <input
+              id="date"
+              type="date"
+              max={new Date().toISOString().split("T")[0]}
+              // ref={dateRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Time*</h3>
-          <div>
+          <h3 className="info">
+            Time<span className="star">*</span>
+          </h3>
+          <div className="description">
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
           </div>
-          <input
-            id="time"
-            type="time"
-            // ref={timeRef}
-            placeholder="Enter Description"></input>
+
+          <div className="input-description">
+            <input
+              id="time"
+              type="time"
+              // ref={timeRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Location*</h3>
-          <div>
+          <h3 className="info">
+            Location<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about where it happened (e.g. building, floor, unit
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
-          <input
-            id="location"
-            type="text"
-            // ref={locationRef}
-            placeholder="Enter Description"></input>
+
+          <div className="input-description">
+            <input
+              id="location"
+              type="text"
+              // ref={locationRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <button onClick={() => handlePageChange("page4-scams")}>Back</button>
-          <button onClick={() => handlePage5Change("page6-scams")}>
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page4-scams")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePage5Change("page6-scams")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page6-scams" && (
         <div className="row">
-          <h3>Additional Information</h3>
+          <h3 className="info">Additional Information</h3>
           <br></br>
-          <img
-            src={PIS4}
-            alt="progress-indicator-4"></img>
+          <img src={PIS4} alt="progress-indicator-4"></img>
           <br></br>
 
-          <h3>Additional Information (Optional)</h3>
-          <div>
+          <h3 className="info">Additional Information (Optional)</h3>
+          <div className="description">
             Additional information that would deepen our understanding of the
             situation so that we can help you better.
           </div>
-          <input
-            id="additionalInfo"
-            type="text"
-            // ref={additionalInfoRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="additionalInfo"
+              type="text"
+              // ref={additionalInfoRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page5-scams")}>Back</button>
-          <button
-            onClick={() => {
-              handlePageChange("page7-scams");
-              addReport();
-            }}>
-            Submit
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page5-scams")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => {
+                handlePageChange("page7-scams");
+                addReport();
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page7-scams" && (
-        <div className="row">
+        <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIS5}></img>
+          <img src={PIL5}></img>
           <br></br>
-          <img
-            src={tick}
-            alt="tick"></img>
+          <img className="tick" src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
@@ -718,186 +864,249 @@ const ReportACrime = () => {
             Police Hotline (6255 0000) .
           </div>
           <br></br>
-
-          <button onClick={returnToHomepage}>Return to Home</button>
+          <div className="return-container">
+            <button className="return" onClick={returnToHomepage}>
+              Return to Home
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page3-voyeurism" && (
         <div className="row">
-          <h3>Perpetrator & Witness Information</h3>
+          <h3 className="info">Perpetrator & Witness Information</h3>
           <img src={PIV1}></img>
           <br></br>
 
-          <h3>Who was the perpetrator?* </h3>
-          <div>
+          <h3 className="info">
+            Who was the perpetrator?<span className="star">*</span>{" "}
+          </h3>
+          <div className="description">
             Provide any information about the perpetrator (e.g. physical
             appearance, clothing, other identifying features). Be as clear and
             specific as possible.
           </div>
-          <input
-            id="perpetrator"
-            type="text"
-            placeholder="Enter Description"
-            // ref={perpetratorRef}
-            // onChange={(event) => handleInputChange(event, stolenRef)}
-          ></input>
+          <div className="input-description">
+            <input
+              id="perpetrator"
+              type="text"
+              placeholder="Enter Description"
+              // ref={perpetratorRef}
+              // onChange={(event) => handleInputChange(event, stolenRef)}
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Were there any witnesses?</h3>
-          <div>
+          <h3 className="info">Were there any witnesses?</h3>
+          <div className="description">
             Include details of anywitnesses who were present during the
             incident, if applicable.
           </div>
-          <input
-            id="witness"
-            type="text"
-            placeholder="Enter Description"
-            // ref={witnessRef}
-            // onChange={(event) => handleInputChange(event, costRef)}
-          ></input>
+
+          <div className="input-description">
+            <input
+              id="witness"
+              type="text"
+              placeholder="Enter Description"
+              // ref={witnessRef}
+              // onChange={(event) => handleInputChange(event, costRef)}
+            ></input>
+          </div>
           <br></br>
 
-          <button onClick={() => handlePageChange("page2")}>Back</button>
-          <button
-            onClick={handlePage3ChangeVoyeurism}
-            // disabled={!stolenRef.current || !costRef.current}
-          >
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page2")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={handlePage3ChangeVoyeurism}
+              // disabled={!stolenRef.current || !costRef.current}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page4-voyeurism" && (
         <div className="row">
-          <h3>Incident Information</h3>
+          <h3 className="info">Incident Information</h3>
           <img src={PIV2}></img>
           <br></br>
 
-          <h3>What happened?</h3>
-          <div>
+          <h3 className="info">What happened?</h3>
+          <div className="description">
             Provide details about the incident (e.g. people involved, sequence
             of activites, other relevant information). Be as clear and specific
             as possible.
           </div>
           <br></br>
-          <input
-            id="whatHappened"
-            type="text"
-            placeholder="Enter Description"
-            // ref={whatHappenedRef}
-          ></input>
+          <div className="input-description">
+            <input
+              id="whatHappened"
+              type="text"
+              placeholder="Enter Description"
+              // ref={whatHappenedRef}
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Supporting Media</h3>
-          <div>Upload up to 3 images and/or videos</div>
-          <input
-            id="uploadedImage"
-            name="images"
-            type="file" /*ref={uploadedImageRef}*/
-            onChange={handleFileChange}></input>
-          <br></br>
+          <h3 className="info">Supporting Media</h3>
+          <div className="description">Upload up to 3 images and/or videos</div>
 
-          <button onClick={() => handlePageChange("page3-voyeurism")}>
-            Back
-          </button>
-          <button onClick={() => handlePageChange("page5-voyeurism")}>
-            Confirm
-          </button>
+          <div className="input-description">
+            <input
+              id="uploadedImage"
+              name="images"
+              type="file" /*ref={uploadedImageRef}*/
+              onChange={handleFileChange}
+            ></input>
+          </div>
+          <br></br>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page3-voyeurism")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePageChange("page5-voyeurism")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page5-voyeurism" && (
         <div className="row">
-          <h3>Date, Time & Location*</h3>
+          <h3 className="info">
+            Date, Time & Location<span className="star">*</span>
+          </h3>
           <img src={PIV3}></img>
           <br></br>
 
-          <h3>Date*</h3>
-          <div>
+          <h3 className="info">
+            Date<span className="star">*</span>
+          </h3>
+          <div className="description">
             If the incident happened over a period of time, please indicate the
             full range of dates.
           </div>
-          <input
-            id="date"
-            type="date"
-            max={new Date().toISOString().split("T")[0]}
-            // ref={dateRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="date"
+              type="date"
+              max={new Date().toISOString().split("T")[0]}
+              // ref={dateRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Time*</h3>
-          <div>
+          <h3 className="info">
+            Time<span className="star">*</span>
+          </h3>
+          <div className="description">
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
           </div>
-          <input
-            id="time"
-            type="time"
-            // ref={timeRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="time"
+              type="time"
+              // ref={timeRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Location*</h3>
-          <div>
+          <h3 className="info">
+            Location<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about where it happened (e.g. building, floor, unit
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
-          <input
-            id="location"
-            type="text"
-            // ref={locationRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="location"
+              type="text"
+              // ref={locationRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <button onClick={() => handlePageChange("page4-voyeurism")}>
-            Back
-          </button>
-          <button onClick={() => handlePage5Change("page6-voyeurism")}>
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page4-voyeurism")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePage5Change("page6-voyeurism")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page6-voyeurism" && (
         <div className="row">
-          <h3>Additional Information</h3>
+          <h3 className="info">Additional Information</h3>
           <img src={PIV4}></img>
           <br></br>
 
-          <h3>Additional Information (Optional)</h3>
-          <div>
+          <h3 className="info">Additional Information (Optional)</h3>
+          <div className="description">
             Additional information that would deepen our understanding of the
             situation so that we can help you better.
           </div>
-          <input
-            id="additionalInfo"
-            type="text"
-            // ref={additionalInfoRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="additionalInfo"
+              type="text"
+              // ref={additionalInfoRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page5-voyeurism")}>
-            Back
-          </button>
-          <button
-            onClick={() => {
-              handlePageChange("page7-voyeurism");
-              addReport();
-            }}>
-            Submit
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page5-voyeurism")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => {
+                handlePageChange("page7-voyeurism");
+                addReport();
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page7-voyeurism" && (
-        <div className="row">
+        <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIV5}></img>
+          <img src={PIL5}></img>
           <br></br>
-          <img
-            src={tick}
-            alt="tick"></img>
+          <img className="tick" src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
@@ -914,186 +1123,251 @@ const ReportACrime = () => {
             Police Hotline (6255 0000) .
           </div>
           <br></br>
-
-          <button onClick={returnToHomepage}>Return to Home</button>
+          <div className="return-container">
+            <button className="return" onClick={returnToHomepage}>
+              Return to Home
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page3-other" && (
         <div className="row">
-          <h3>Nature of Incident*</h3>
-          <select
-            name="type"
-            id="type"
-            defaultValue="other" /*ref={crimeTypeRef}*/
-          >
-            <option
-              value=""
-              disabled>
-              Select Category
-            </option>
-            <option value="Dishonest Misappropriation of Property (Theft)">
-              Dishonest Misappropriation of Property (Theft)
-            </option>
-            <option value="scams">Scams</option>
-            <option value="voyeurism">Voyeurism</option>
-            <option value="other">Other</option>
-          </select>
+          <h3 className="info">
+            Nature of Incident<span className="star">*</span>
+          </h3>
+          <div className="input-description">
+            <select
+              name="type"
+              id="type"
+              defaultValue="other" /*ref={crimeTypeRef}*/
+            >
+              <option value="" disabled>
+                Select Category
+              </option>
+              <option value="Dishonest Misappropriation of Property (Theft)">
+                Dishonest Misappropriation of Property (Theft)
+              </option>
+              <option value="scams">Scams</option>
+              <option value="voyeurism">Voyeurism</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
           <br></br>
 
-          <h3>What type of incident was it?*</h3>
-          <div>
+          <h3 className="info">
+            What type of incident was it?<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide any information about what happened. Be as clear and
             specific as possible.
           </div>
-          <input
-            id="otherIncident"
-            type="text"
-            placeholder="Enter Description"
-            // ref={otherIncidentRef}
-            // onChange={(event) => handleInputChange(event, stolenRef)}
-          ></input>
+
+          <div className="input-description">
+            <input
+              id="otherIncident"
+              type="text"
+              placeholder="Enter Description"
+              // ref={otherIncidentRef}
+              // onChange={(event) => handleInputChange(event, stolenRef)}
+            ></input>
+          </div>
           <br></br>
 
-          <button
-            onClick={handlePage3ChangeOther}
-            // disabled={!crimeTypeRef.current}
-          >
-            Confirm
-          </button>
-          <br></br>
-          <div>
-            For urgent and time-sensitive matters that require immediate
-            attention, please contact the Police directly using the emergency
-            hotline at 999.
+          <div className="handle-container">
+            <button
+              className="confirmbutton"
+              onClick={handlePage3ChangeOther}
+              // disabled={!crimeTypeRef.current}
+            >
+              Confirm
+            </button>
+            <br></br>
+            <div className="description">
+              For urgent and time-sensitive matters that require immediate
+              attention, please contact the Police directly using the emergency
+              hotline at 999.
+            </div>
           </div>
         </div>
       )}
 
       {currentPage === "page4-other" && (
         <div className="row">
-          <h3>Incident Information</h3>
+          <h3 className="info">Incident Information</h3>
           <img src={PIO1}></img>
           <br></br>
 
-          <h3>What happened?</h3>
-          <div>
+          <h3 className="info">What happened?</h3>
+          <div className="description">
             Provide details about the incident (e.g. people involved, sequence
             of activites, other relevant information). Be as clear and specific
             as possible.
           </div>
           <br></br>
-          <input
-            id="whatHappened"
-            type="text"
-            placeholder="Enter Description"
-            ref={whatHappenedRef}></input>
+          <div className="input-description">
+            <input
+              id="whatHappened"
+              type="text"
+              placeholder="Enter Description"
+              ref={whatHappenedRef}
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Supporting Media</h3>
+          <h3 className="info">Supporting Media</h3>
           <div>Upload up to 3 images and/or videos</div>
-          <input
-            id="uploadedImage"
-            name="images"
-            type="file" /*ref={uploadedImageRef}*/
-            onChange={handleFileChange}></input>
-          <br></br>
 
-          <button onClick={() => handlePageChange("page3-other")}>Back</button>
-          <button onClick={() => handlePageChange("page5-other")}>
-            Confirm
-          </button>
+          <div className="input-description">
+            <input
+              id="uploadedImage"
+              name="images"
+              type="file" /*ref={uploadedImageRef}*/
+              onChange={handleFileChange}
+            ></input>
+          </div>
+          <br></br>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page3-other")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePageChange("page5-other")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page5-other" && (
         <div className="row">
-          <h3>Date, Time & Location*</h3>
+          <h3 className="info">
+            Date, Time & Location<span className="star">*</span>
+          </h3>
           <img src={PIO2}></img>
           <br></br>
 
-          <h3>Date*</h3>
-          <div>
+          <h3 className="info">
+            Date<span className="star">*</span>
+          </h3>
+          <div className="description">
             If the incident happened over a period of time, please indicate the
             full range of dates.
           </div>
-          <input
-            id="date"
-            type="date"
-            max={new Date().toISOString().split("T")[0]}
-            // ref={dateRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="date"
+              type="date"
+              max={new Date().toISOString().split("T")[0]}
+              // ref={dateRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Time*</h3>
-          <div>
+          <h3 className="info">
+            Time<span className="star">*</span>
+          </h3>
+          <div className="description">
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
           </div>
-          <input
-            id="time"
-            type="time"
-            // ref={timeRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="time"
+              type="time"
+              // ref={timeRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Location*</h3>
-          <div>
+          <h3 className="info">
+            Location<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about where it happened (e.g. building, floor, unit
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
-          <input
-            id="location"
-            type="text"
-            // ref={locationRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="location"
+              type="text"
+              // ref={locationRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
 
-          <button onClick={() => handlePageChange("page4-other")}>Back</button>
-          <button onClick={() => handlePage5Change("page6-other")}>
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page4-other")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePage5Change("page6-other")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page6-other" && (
         <div className="row">
-          <h3>Additional Information</h3>
+          <h3 className="info">Additional Information</h3>
           <img src={PIO3}></img>
           <br></br>
 
-          <h3>Additional Information (Optional)</h3>
-          <div>
+          <h3 className="info">Additional Information (Optional)</h3>
+          <div className="description">
             Additional information that would deepen our understanding of the
             situation so that we can help you better.
           </div>
-          <input
-            id="additionalInfo"
-            type="text"
-            // ref={additionalInfoRef}
-            placeholder="Enter Description"></input>
+          <div className="input-description">
+            <input
+              id="additionalInfo"
+              type="text"
+              // ref={additionalInfoRef}
+              placeholder="Enter Description"
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page5-other")}>Back</button>
-          <button
-            onClick={() => {
-              handlePageChange("page7-other");
-              addReport();
-              handleUpload();
-            }}>
-            Submit
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page5-other")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => {
+                handlePageChange("page7-other");
+                addReport();
+                handleUpload();
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page7-other" && (
-        <div className="row">
+        <div className="row lnf-complete">
           <h3>Complete</h3>
-          <img src={PIO4}></img>
+          <img src={PIL5}></img>
           <br></br>
-          <img
-            src={tick}
-            alt="tick"></img>
+          <img className="tick" src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
@@ -1110,11 +1384,13 @@ const ReportACrime = () => {
             Police Hotline (6255 0000) .
           </div>
           <br></br>
-
-          <button onClick={returnToHomepage}>Return to Home</button>
+          <div className="return-container">
+            <button className="return" onClick={returnToHomepage}>
+              Return to Home
+            </button>
+          </div>
         </div>
       )}
-
       <NavBar />
     </div>
   );
