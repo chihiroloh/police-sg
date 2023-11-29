@@ -70,7 +70,7 @@ const IWitness = () => {
     // "Supporting Media": uploadedImageRef.current,
   };
 
-  const addReport = async () => {
+  const addIWitness = async () => {
     console.log(userInfoCtx.accessToken);
     console.log(userInfoCtx.userId);
     const res = await fetch(
@@ -236,7 +236,7 @@ const IWitness = () => {
           <button
             onClick={() => {
               handlePageChange("page5-nextofkin");
-              addReport();
+              addIWitness();
             }}
           >
             Submit

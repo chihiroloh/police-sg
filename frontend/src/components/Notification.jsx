@@ -50,13 +50,13 @@ const Notification = () => {
           <div className="noti-map">
             {notifications.map((notification, index) => (
               <Link to="/ViewUpdate" key={index}>
-                <p className="noti-container">
+                <div className="noti-container">
                   There is a new update on your case{" "}
                   <p className="noti-ref">
                     (Police Report Ref: {notification.refId}).
                   </p>
                   Click here to view the latest update.
-                </p>
+                </div>
               </Link>
             ))}
           </div>
