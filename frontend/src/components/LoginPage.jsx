@@ -32,7 +32,7 @@ const LoginPage = () => {
       <div className="content">
         <div className="logoanddesc">
           <img src={logo} alt="logo" />
-          <p className="description">
+          <p className="description-login">
             An initiative by the Singapore Police Force
           </p>
         </div>
