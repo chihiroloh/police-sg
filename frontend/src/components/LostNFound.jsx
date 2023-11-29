@@ -82,8 +82,6 @@ const LostNFound = () => {
   };
 
   const addReport = async () => {
-    console.log(userInfoCtx.accessToken);
-    console.log(userInfoCtx.userId);
     const res = await fetch(
       import.meta.env.VITE_SERVER + `/api/reports/${userInfoCtx.userId}`,
       {
@@ -113,11 +111,9 @@ const LostNFound = () => {
       locationLostRef.current = "";
       //   additionalInfoRef.current = "";
       const data = await res.json();
-      console.log(data);
       setRefId(data.refId);
     } else {
       alert(JSON.stringify(res.data));
-      console.log(res.data);
     }
   };
 
@@ -144,16 +140,22 @@ const LostNFound = () => {
                 className="select-lnf"
                 // ref={lostNFoundRef}
               >
-                <option value="" disabled>
+                <option
+                  value=""
+                  disabled>
                   Select Category
                 </option>
                 <option value="Lost Item">I lost an item</option>
-                <option value="Found Item" disabled>
+                <option
+                  value="Found Item"
+                  disabled>
                   I found an item
                 </option>
               </select>
               <br></br>
-              <button className="confirm-lnf" onClick={handlePage1Change}>
+              <button
+                className="confirm-lnf"
+                onClick={handlePage1Change}>
                 Confirm
               </button>
               <br></br>
@@ -213,11 +215,12 @@ const LostNFound = () => {
           <div className="handle-container">
             <button
               className="backbutton"
-              onClick={() => handlePageChange("page1")}
-            >
+              onClick={() => handlePageChange("page1")}>
               Back
             </button>
-            <button className="confirmbutton" onClick={handlePage2Change}>
+            <button
+              className="confirmbutton"
+              onClick={handlePage2Change}>
               Confirm
             </button>
           </div>
@@ -255,20 +258,17 @@ const LostNFound = () => {
             id="uploadedImage"
             type="file"
             // ref={uploadedImageLostRef}
-            multiple
-          ></input>
+            multiple></input>
           <br></br>
           <div className="handle-container">
             <button
               className="backbutton"
-              onClick={() => handlePageChange("page2-lostItem")}
-            >
+              onClick={() => handlePageChange("page2-lostItem")}>
               Back
             </button>
             <button
               className="confirmbutton"
-              onClick={() => handlePageChange("page4-lostItem")}
-            >
+              onClick={() => handlePageChange("page4-lostItem")}>
               Confirm
             </button>
           </div>
@@ -296,8 +296,7 @@ const LostNFound = () => {
               type="date"
               // ref={dateLostRef}
               placeholder="Enter Description"
-              className="custom-input"
-            ></input>
+              className="custom-input"></input>
           </div>
           <br></br>
 
@@ -314,8 +313,7 @@ const LostNFound = () => {
               type="time"
               // ref={timeLostRef}
               placeholder="Enter Description"
-              className="custom-input"
-            ></input>
+              className="custom-input"></input>
           </div>
           <br></br>
 
@@ -332,18 +330,18 @@ const LostNFound = () => {
               type="text"
               // ref={locationLostRef}
               placeholder="Enter Description"
-              className="custom-input"
-            ></input>
+              className="custom-input"></input>
           </div>
           <br></br>
           <div className="handle-container">
             <button
               className="backbutton"
-              onClick={() => handlePageChange("page3-lostItem")}
-            >
+              onClick={() => handlePageChange("page3-lostItem")}>
               Back
             </button>
-            <button className="confirmbutton" onClick={handlePage4Change}>
+            <button
+              className="confirmbutton"
+              onClick={handlePage4Change}>
               Confirm
             </button>
           </div>
@@ -367,15 +365,13 @@ const LostNFound = () => {
               type="text"
               // ref={additionalInfoLostRef}
               placeholder="Enter Description"
-              className="custom-input"
-            ></input>
+              className="custom-input"></input>
           </div>
           <br></br>
           <div className="handle-container">
             <button
               className="backbutton"
-              onClick={() => handlePageChange("page4-lostItem")}
-            >
+              onClick={() => handlePageChange("page4-lostItem")}>
               Back
             </button>
             <button
@@ -383,8 +379,7 @@ const LostNFound = () => {
               onClick={() => {
                 handlePageChange("page6-lostItem");
                 addReport();
-              }}
-            >
+              }}>
               Submit
             </button>
           </div>
@@ -396,7 +391,9 @@ const LostNFound = () => {
           <h3>Complete</h3>
           <img src={PIL5}></img>
           <br></br>
-          <img className="tick" src={tick}></img>
+          <img
+            className="tick"
+            src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
@@ -414,7 +411,9 @@ const LostNFound = () => {
           </div>
           <br></br>
           <div className="return-container">
-            <button className="return" onClick={returnToHomepage}>
+            <button
+              className="return"
+              onClick={returnToHomepage}>
               Return to Home
             </button>
           </div>

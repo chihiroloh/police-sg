@@ -6,7 +6,6 @@ const IWitnessSchema = new mongoose.Schema(
     type: {
       type: String,
       required: true,
-      enum: ["witness", "NOK", "missing persons"],
     },
     primaryInfo: { type: Map, of: String, required: true },
     secondaryInfo: { type: String },
