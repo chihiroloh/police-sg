@@ -124,20 +124,31 @@ const IWitness = () => {
 
       {currentPage === "page1" && (
         <div className="row">
-          <h3>Respond to Appeals*</h3>
+          <h3 className="info">
+            Respond to Appeals<span className="star">*</span>
+          </h3>
           <br />
-          <select id="iWitnessType" name="type" defaultValue={""}>
-            <option value="" disabled>
-              Select Category
-            </option>
-            <option value="missing">For Missing Persons</option>
-            <option value="nextofkin">For Next-of-Kin</option>
-            <option value="witnesses">For Witnesses</option>
-          </select>
+          <div className="input-description">
+            <select id="iWitnessType" name="type" defaultValue={""}>
+              <option value="" disabled>
+                Select Category
+              </option>
+              <option value="missing">For Missing Persons</option>
+              <option value="nextofkin">For Next-of-Kin</option>
+              <option value="witnesses">For Witnesses</option>
+            </select>
+          </div>
+
           <br />
-          <button onClick={handlePage1Change}>Confirm</button>
+
+          <div className="handle-container">
+            <button className="confirmbutton" onClick={handlePage1Change}>
+              Confirm
+            </button>
+          </div>
+
           <br />
-          <div>
+          <div className="description">
             For urgent and time-sensitive matters that require immediate
             attention, please contact the Police directly using the emergency
             hotline at 999.
@@ -147,39 +158,62 @@ const IWitness = () => {
 
       {currentPage === "page2-nextofkin" && (
         <div className="row">
-          <h3>Appeal Information*</h3>
+          <h3 className="info">
+            Appeal Information<span className="star">*</span>
+          </h3>
           <img src={PIN1}></img>
           <br></br>
 
-          <h3>How are you related to the deceased?*</h3>
-          <div>
+          <h3 className="info">
+            How are you related to the deceased?<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about your relationship with the deceased. Be as
             clear and specific as possible.
           </div>
-          <input
-            id="deceasedRelated"
-            type="text"
-            placeholder="Enter Description"
-          ></input>
+          <div className="input-description">
+            <input
+              id="deceasedRelated"
+              type="text"
+              placeholder="Enter Description"
+              className="custom-input"
+            ></input>
+          </div>
+
           <br></br>
 
-          <h3>Supporting Media</h3>
-          <div>Upload up to 3 images and/or videos.</div>
+          <h3 className="info">Supporting Media</h3>
+          <div className="description">
+            Upload up to 3 images and/or videos.
+          </div>
           <input id="uploadedImage" type="file" multiple></input>
           <br></br>
 
-          <button onClick={() => handlePageChange("page1")}>Back</button>
-          <button onClick={handlePage2Change}>Confirm</button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page1")}
+            >
+              Back
+            </button>
+            <button className="confirmbutton" onClick={handlePage2Change}>
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page3-nextofkin" && (
         <div className="row">
-          <h3>Date, Time & Location*</h3>
+          <h3 className="info">
+            Date, Time & Location<span className="star">*</span>
+          </h3>
           <img src={PIN2}></img>
           <br></br>
 
-          <h3>Date*</h3>
+          <h3 className="info">
+            Date<span className="star">*</span>
+          </h3>
           <div>
             If the incident happened over a period of time, please indicate the
             full range of dates.
@@ -187,7 +221,9 @@ const IWitness = () => {
           <input id="dateI" type="date" placeholder="Enter Description"></input>
           <br></br>
 
-          <h3>Time*</h3>
+          <h3 className="info">
+            Time<span className="star">*</span>
+          </h3>
           <div>
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
@@ -195,7 +231,9 @@ const IWitness = () => {
           <input id="timeI" type="time" placeholder="Enter Description"></input>
           <br></br>
 
-          <h3>Location*</h3>
+          <h3 className="info">
+            Location<span className="star">*</span>
+          </h3>
           <div>
             Provide details about where it happened (e.g. building, floor, unit
             number, vehicle information ,etc.). Be as specific as possible.
@@ -216,11 +254,11 @@ const IWitness = () => {
 
       {currentPage === "page4-nextofkin" && (
         <div className="row">
-          <h3>Additional Information</h3>
+          <h3 className="info">Additional Information</h3>
           <img src={PIN3}></img>
           <br></br>
 
-          <h3>Additional Information (Optional)</h3>
+          <h3 className="info">Additional Information (Optional)</h3>
           <div>
             Additional information that would deepen our understanding of the
             situation so that we can help you better.
@@ -231,18 +269,23 @@ const IWitness = () => {
             placeholder="Enter Description"
           ></input>
           <br></br>
-
-          <button onClick={() => handlePageChange("page4-nextofkin")}>
-            Back
-          </button>
-          <button
-            onClick={() => {
-              handlePageChange("page5-nextofkin");
-              addIWitness();
-            }}
-          >
-            Submit
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page4-nextofkin")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => {
+                handlePageChange("page5-nextofkin");
+                addIWitness();
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       )}
 
