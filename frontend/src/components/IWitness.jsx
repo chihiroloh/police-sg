@@ -2,6 +2,11 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
+import PIN1 from "../assets/IWitness/Next-of-kin/PIN1.png";
+import PIN2 from "../assets/IWitness/Next-of-kin/PIN2.png";
+import PIN3 from "../assets/IWitness/Next-of-kin/PIN3.png";
+import PIN4 from "../assets/IWitness/Next-of-kin/PIN4.png";
+import tick from "../assets/ReportACrime/Tick.png";
 
 const IWitness = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -16,13 +21,10 @@ const IWitness = () => {
   const timeIRef = useRef("");
   const locationIRef = useRef("");
   // const primaryInfoRef = useRef("");
-  const mediaURL1Ref = useRef("");
-  const mediaURL2Ref = useRef("");
-  const mediaURL3Ref = useRef("");
-  const addInfoRef = useRef("");
-  const dateOccurredRef = useRef("");
-  const timeOccurredRef = useRef("");
-  const locationOccurredRef = useRef("");
+  // const mediaURL1Ref = useRef("");
+  // const mediaURL2Ref = useRef("");
+  // const mediaURL3Ref = useRef("");
+  // const addInfoRef = useRef("");
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -146,7 +148,7 @@ const IWitness = () => {
       {currentPage === "page2-nextofkin" && (
         <div className="row">
           <h3>Appeal Information*</h3>
-          <img></img>
+          <img src={PIN1}></img>
           <br></br>
 
           <h3>How are you related to the deceased?*</h3>
@@ -174,7 +176,7 @@ const IWitness = () => {
       {currentPage === "page3-nextofkin" && (
         <div className="row">
           <h3>Date, Time & Location*</h3>
-          <img></img>
+          <img src={PIN2}></img>
           <br></br>
 
           <h3>Date*</h3>
@@ -215,7 +217,7 @@ const IWitness = () => {
       {currentPage === "page4-nextofkin" && (
         <div className="row">
           <h3>Additional Information</h3>
-          <img></img>
+          <img src={PIN3}></img>
           <br></br>
 
           <h3>Additional Information (Optional)</h3>
@@ -247,9 +249,9 @@ const IWitness = () => {
       {currentPage === "page5-nextofkin" && (
         <div className="row">
           <h3>Complete</h3>
-          <img></img>
+          <img src={PIN4}></img>
           <br></br>
-          <img></img>
+          <img src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>

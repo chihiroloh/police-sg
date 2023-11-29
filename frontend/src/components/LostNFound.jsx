@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import UserContext from "../contexts/user";
 import "./LostNFound.css";
+import PIL1 from "../assets/LostNFound/LostItem/PIL1.png";
+import PIL2 from "../assets/LostNFound/LostItem/PIL2.png";
+import PIL3 from "../assets/LostNFound/LostItem/PIL3.png";
+import PIL4 from "../assets/LostNFound/LostItem/PIL4.png";
+import PIL5 from "../assets/LostNFound/LostItem/PIL5.png";
+import tick from "../assets/ReportACrime/Tick.png";
 
 const LostNFound = () => {
   const [currentPage, setCurrentPage] = useState("page1");
@@ -114,21 +120,6 @@ const LostNFound = () => {
     }
   };
 
-  //   const getReportType = async () => {
-  //     const res = await fetch(import.meta.env.VITE_SERVER + "/report_types", {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + userInfoCtx.accessToken,
-  //       },
-  //     });
-  //     if (res.ok) {
-  //       const data = await res.json();
-  //       console.log(data);
-  //       setReportType(data);
-  //     }
-  //   };
-
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -172,11 +163,11 @@ const LostNFound = () => {
           </div>
         )}
       </div>
+
       {currentPage === "page2-lostItem" && (
         <div className="row">
           <h3>Item Information*</h3>
-          <br></br>
-          <img></img>
+          <img src={PIL1}></img>
           <br></br>
 
           <h3>What was lost?*</h3>
@@ -210,8 +201,7 @@ const LostNFound = () => {
       {currentPage === "page3-lostItem" && (
         <div className="row">
           <h3>Incident Information</h3>
-          <br></br>
-          <img></img>
+          <img src={PIL2}></img>
           <br></br>
 
           <h3>What happened?</h3>
@@ -250,8 +240,7 @@ const LostNFound = () => {
       {currentPage === "page4-lostItem" && (
         <div className="row">
           <h3>Date, Time & Location*</h3>
-          <br></br>
-          <img></img>
+          <img src={PIL3}></img>
           <br></br>
 
           <h3>Date*</h3>
@@ -303,8 +292,7 @@ const LostNFound = () => {
       {currentPage === "page5-lostItem" && (
         <div className="row">
           <h3>Additional Information</h3>
-          <br></br>
-          <img></img>
+          <img src={PIL4}></img>
           <br></br>
 
           <h3>Additional Information (Optional)</h3>
@@ -337,10 +325,9 @@ const LostNFound = () => {
       {currentPage === "page6-lostItem" && (
         <div className="row">
           <h3>Complete</h3>
+          <img src={PIL5}></img>
           <br></br>
-          <img></img>
-          <br></br>
-          <img></img>
+          <img src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
