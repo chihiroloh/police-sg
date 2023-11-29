@@ -819,6 +819,7 @@ const ReportACrime = () => {
               type="text"
               // ref={additionalInfoRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -891,6 +892,7 @@ const ReportACrime = () => {
               id="perpetrator"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
               // ref={perpetratorRef}
               // onChange={(event) => handleInputChange(event, stolenRef)}
             ></input>
@@ -908,6 +910,7 @@ const ReportACrime = () => {
               id="witness"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
               // ref={witnessRef}
               // onChange={(event) => handleInputChange(event, costRef)}
             ></input>
@@ -950,6 +953,7 @@ const ReportACrime = () => {
               id="whatHappened"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
               // ref={whatHappenedRef}
             ></input>
           </div>
@@ -963,6 +967,7 @@ const ReportACrime = () => {
               id="uploadedImage"
               name="images"
               type="file" /*ref={uploadedImageRef}*/
+              className="custom-input"
               onChange={handleFileChange}
             ></input>
           </div>
@@ -1006,6 +1011,7 @@ const ReportACrime = () => {
               max={new Date().toISOString().split("T")[0]}
               // ref={dateRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -1023,6 +1029,7 @@ const ReportACrime = () => {
               type="time"
               // ref={timeRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -1040,6 +1047,7 @@ const ReportACrime = () => {
               type="text"
               // ref={locationRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -1078,6 +1086,7 @@ const ReportACrime = () => {
               type="text"
               // ref={additionalInfoRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -1168,6 +1177,7 @@ const ReportACrime = () => {
               id="otherIncident"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
               // ref={otherIncidentRef}
               // onChange={(event) => handleInputChange(event, stolenRef)}
             ></input>
@@ -1210,6 +1220,7 @@ const ReportACrime = () => {
               id="whatHappened"
               type="text"
               placeholder="Enter Description"
+              className="custom-input"
               ref={whatHappenedRef}
             ></input>
           </div>
@@ -1266,6 +1277,7 @@ const ReportACrime = () => {
               max={new Date().toISOString().split("T")[0]}
               // ref={dateRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -1283,6 +1295,7 @@ const ReportACrime = () => {
               type="time"
               // ref={timeRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -1300,6 +1313,7 @@ const ReportACrime = () => {
               type="text"
               // ref={locationRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -1338,6 +1352,7 @@ const ReportACrime = () => {
               type="text"
               // ref={additionalInfoRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
