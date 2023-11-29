@@ -52,9 +52,10 @@ const LostNFound = () => {
 
     if (lostItemRef.current && lostItemCostRef.current) {
       setCurrentPage("page3-lostItem");
-    } else {
-      alert("Please fill up all mandatory fields");
     }
+    // else {
+    //   alert("Please fill up all mandatory fields");
+    // }
   };
 
   const handlePage4Change = () => {
@@ -166,60 +167,88 @@ const LostNFound = () => {
 
       {currentPage === "page2-lostItem" && (
         <div className="row">
-          <h3>Item Information*</h3>
+          <h3 className="info">
+            Item Information<span className="star">*</span>
+          </h3>
           <img src={PIL1}></img>
           <br></br>
 
-          <h3>What was lost?*</h3>
-          <div>
+          <h3 className="info">
+            What was lost?<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about the item (e.g. brand, colour, model, serial
             number, size, etc.) Be as clear and specific as possible.
           </div>
-          <input
-            id="lostItem"
-            type="text"
-            placeholder="Enter Description"
-            // ref={lostItemRef}
-          ></input>
+          <div className="input-description">
+            <input
+              id="lostItem"
+              type="text"
+              placeholder="Enter Description"
+              // ref={lostItemRef}
+              className="custom-input"
+            />
+          </div>
+
           <br></br>
 
-          <h3>How much did the item cost?*</h3>
-          <div>If you are unsure, please provide an estimated amount.</div>
-          <input
-            id="lostItemCost"
-            type="text"
-            placeholder="Enter Description"
-            // ref={lostItemCostRef}
-          ></input>
+          <h3 className="info">
+            How much did the item cost?<span className="star">*</span>
+          </h3>
+          <div className="description">
+            If you are unsure, please provide an estimated amount.
+          </div>
+          <div className="input-description">
+            <input
+              id="lostItemCost"
+              type="text"
+              placeholder="Enter Description"
+              className="custom-input"
+              // ref={lostItemCostRef}
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page1")}>Back</button>
-          <button onClick={handlePage2Change}>Confirm</button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page1")}
+            >
+              Back
+            </button>
+            <button className="confirmbutton" onClick={handlePage2Change}>
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page3-lostItem" && (
         <div className="row">
-          <h3>Incident Information</h3>
+          <h3 className="info">Incident Information</h3>
           <img src={PIL2}></img>
           <br></br>
 
-          <h3>What happened?</h3>
-          <div>
+          <h3 className="info">What happened?</h3>
+          <div className="description">
             Provide details about the incident (e.g. people involved, sequence
             of activites, other relevant information). Be as clear and specific
             as possible.
           </div>
-          <input
-            id="whatHappened"
-            type="text"
-            placeholder="Enter Description"
-            // ref={whatHappenedLostRef}
-          ></input>
+          <div className="input-description">
+            <input
+              id="whatHappened"
+              type="text"
+              placeholder="Enter Description"
+              className="custom-input"
+              // ref={whatHappenedLostRef}
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Supporting Media</h3>
-          <div>Upload up to 3 images and/or videos.</div>
+          <h3 className="info">Supporting Media</h3>
+          <div className="description">
+            Upload up to 3 images and/or videos.
+          </div>
           <input
             id="uploadedImage"
             type="file"
@@ -227,107 +256,145 @@ const LostNFound = () => {
             multiple
           ></input>
           <br></br>
-
-          <button onClick={() => handlePageChange("page2-lostItem")}>
-            Back
-          </button>
-          <button onClick={() => handlePageChange("page4-lostItem")}>
-            Confirm
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page2-lostItem")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => handlePageChange("page4-lostItem")}
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page4-lostItem" && (
         <div className="row">
-          <h3>Date, Time & Location*</h3>
+          <h3 className="info">
+            Date, Time & Location<span className="star">*</span>
+          </h3>
           <img src={PIL3}></img>
           <br></br>
 
-          <h3>Date*</h3>
-          <div>
+          <h3 className="info">
+            Date<span className="star">*</span>
+          </h3>
+          <div className="description">
             If the incident happened over a period of time, please indicate the
             full range of dates.
           </div>
-          <input
-            id="dateLost"
-            type="date"
-            // ref={dateLostRef}
-            placeholder="Enter Description"
-          ></input>
+          <div className="input-description">
+            <input
+              id="dateLost"
+              type="date"
+              // ref={dateLostRef}
+              placeholder="Enter Description"
+              className="custom-input"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Time*</h3>
-          <div>
+          <h3 className="info">
+            Time<span className="star">*</span>
+          </h3>
+          <div className="description">
             If uncertain about the exact time, please provide an estimate or
             indicate as “unsure”.
           </div>
-          <input
-            id="timeLost"
-            type="time"
-            // ref={timeLostRef}
-            placeholder="Enter Description"
-          ></input>
+          <div className="input-description">
+            <input
+              id="timeLost"
+              type="time"
+              // ref={timeLostRef}
+              placeholder="Enter Description"
+              className="custom-input"
+            ></input>
+          </div>
           <br></br>
 
-          <h3>Location*</h3>
-          <div>
+          <h3 className="info">
+            Location<span className="star">*</span>
+          </h3>
+          <div className="description">
             Provide details about where it happened (e.g. building, floor, unit
             number, vehicle information ,etc.). Be as specific as possible.
           </div>
-          <input
-            id="locationLost"
-            type="text"
-            // ref={locationLostRef}
-            placeholder="Enter Description"
-          ></input>
+          <div className="input-description">
+            <input
+              id="locationLost"
+              type="text"
+              // ref={locationLostRef}
+              placeholder="Enter Description"
+              className="custom-input"
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page3-lostItem")}>
-            Back
-          </button>
-          <button onClick={handlePage4Change}>Confirm</button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page3-lostItem")}
+            >
+              Back
+            </button>
+            <button className="confirmbutton" onClick={handlePage4Change}>
+              Confirm
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page5-lostItem" && (
         <div className="row">
-          <h3>Additional Information</h3>
+          <h3 className="info">Additional Information</h3>
           <img src={PIL4}></img>
           <br></br>
 
-          <h3>Additional Information (Optional)</h3>
+          <h3 className="info">Additional Information (Optional)</h3>
           <div>
             Additional information that would deepen our understanding of the
             situation so that we can help you better.
           </div>
-          <input
-            id="additionalInfoLost"
-            type="text"
-            // ref={additionalInfoLostRef}
-            placeholder="Enter Description"
-          ></input>
+          <div className="input-description">
+            <input
+              id="additionalInfoLost"
+              type="text"
+              // ref={additionalInfoLostRef}
+              placeholder="Enter Description"
+              className="custom-input"
+            ></input>
+          </div>
           <br></br>
-
-          <button onClick={() => handlePageChange("page4-lostItem")}>
-            Back
-          </button>
-          <button
-            onClick={() => {
-              handlePageChange("page6-lostItem");
-              addReport();
-            }}
-          >
-            Submit
-          </button>
+          <div className="handle-container">
+            <button
+              className="backbutton"
+              onClick={() => handlePageChange("page4-lostItem")}
+            >
+              Back
+            </button>
+            <button
+              className="confirmbutton"
+              onClick={() => {
+                handlePageChange("page6-lostItem");
+                addReport();
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       )}
 
       {currentPage === "page6-lostItem" && (
-        <div className="row">
+        <div className="row lnf-complete">
           <h3>Complete</h3>
           <img src={PIL5}></img>
           <br></br>
-          <img src={tick}></img>
+          <img className="tick" src={tick}></img>
           <br></br>
 
           <div>Police Report Ref: {refId}</div>
@@ -344,8 +411,11 @@ const LostNFound = () => {
             Police Hotline (6255 0000) .
           </div>
           <br></br>
-
-          <button onClick={returnToHomepage}>Return to Home</button>
+          <div className="return-container">
+            <button className="return" onClick={returnToHomepage}>
+              Return to Home
+            </button>
+          </div>
         </div>
       )}
 

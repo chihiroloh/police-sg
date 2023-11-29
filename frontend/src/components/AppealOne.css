@@ -60,6 +60,20 @@
 .tan-content {
   padding: 10px 5px;
 }
+
+.button-icon {
+  margin-right: 5px;
+}
+
+.button-container {
+  flex-direction: row;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding-top: 0;
+  margin-top: -8%;
+  justify-content: space-evenly;
+}
 .iwitness-button {
   color: #1d1a60;
   background-color: transparent;
@@ -74,21 +88,6 @@
   color: #ffffff;
   height: 50px;
   width: auto;
-}
-
-.button-icon {
-  margin-right: 5px;
-}
-.appeal-hotline {
   display: flex;
   align-items: center;
-}
-.button-container {
-  flex-direction: row;
-  align-items: center;
-  background-color: transparent;
-  border: none;
-  padding-top: 0;
-  margin-top: -8%;
-  justify-content: space-evenly;
 }
