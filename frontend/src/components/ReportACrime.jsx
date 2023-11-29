@@ -154,7 +154,9 @@ const ReportACrime = () => {
   };
 
   const addReport = async () => {
-    if (filePath) primaryInfo.media = { mediaURL1: filePath };
+    if (filePath) {
+      primaryInfo.media = { mediaURL1: filePath };
+    }
     console.log(filePath);
     const res = await fetch(
       import.meta.env.VITE_SERVER + `/api/reports/${userInfoCtx.userId}`,
