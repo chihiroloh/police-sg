@@ -114,12 +114,12 @@ p {
   border: none;
   margin-top: -10%;
 }
-
-.about,
-.toc,
+.about-home,
+.toc-home,
 .privacy {
   background-color: transparent;
   border: none;
+  padding: 5px 20px;
 }
 .top-header {
   display: flex;

@@ -57,7 +57,10 @@ const Home = () => {
   return (
     <div className="content-container">
       <div className="top-header">
-        <img className="minilogo" src={minilogo} />
+        <img
+          className="minilogo"
+          src={minilogo}
+        />
 
         <div className="side-content">
           <Link to="/Notification">
@@ -75,7 +78,9 @@ const Home = () => {
         {showAnnouncements && (
           <div className="announcement-column">
             <div className="announcement-header">
-              <button className="close-button" onClick={toggleAnnouncements}>
+              <button
+                className="close-button"
+                onClick={toggleAnnouncements}>
                 x
               </button>
               <h3>Important Annoucements</h3>
@@ -94,38 +99,72 @@ const Home = () => {
         <h2 className="welcome">Hello {userInfoCtx.userName},</h2>
         <p className="help">How can we help you today?</p>
       </div>
-      <button className="crimebutton" onClick={goToReportACrime}>
-        <img src={crimebutton} alt="crimebutton" />
+      <button
+        className="crimebutton"
+        onClick={goToReportACrime}>
+        <img
+          src={crimebutton}
+          alt="crimebutton"
+        />
       </button>
       <p className="eservices-header">e-Services</p>
       <div className="eservices">
         <button onClick={goToReportACrime}>
-          <img src={rac} alt="rac" />
+          <img
+            src={rac}
+            alt="rac"
+          />
         </button>
         <button onClick={goToLostNFound}>
-          <img src={lostnfound} alt="lostnfound" />
+          <img
+            src={lostnfound}
+            alt="lostnfound"
+          />
         </button>
         <button onClick={goToCaseStatus}>
-          <img src={casestatus} alt="casestatus" />
+          <img
+            src={casestatus}
+            alt="casestatus"
+          />
         </button>
       </div>
       {/* PartThree */}
       <div>
         <p className="cop">Become a Citizen On Patrol (COP)</p>
-        <button className="cop-button" onClick={goToCop}>
-          <img src={join} alt="join" />
+        <button
+          className="cop-button"
+          onClick={goToCop}>
+          <img
+            src={join}
+            alt="join"
+          />
         </button>
       </div>
       {/* PartFour */}
       <div>
-        <button className="about" onClick={goToAbout}>
-          <img src={aboutpolice} alt="about" />
+        <button
+          className="about-home"
+          onClick={goToAbout}>
+          <img
+            src={aboutpolice}
+            alt="about"
+          />
         </button>
-        <button className="toc" onClick={goToToc}>
-          <img src={terms} alt="toc" />
+        <button
+          className="toc-home"
+          onClick={goToToc}>
+          <img
+            src={terms}
+            alt="toc"
+          />
         </button>
-        <button className="privacy" onClick={goToPrivacy}>
-          <img src={privacypolicy} alt="privacy" />
+        <button
+          className="privacy"
+          onClick={goToPrivacy}>
+          <img
+            src={privacypolicy}
+            alt="privacy"
+          />
         </button>
       </div>
       <NavBar />
