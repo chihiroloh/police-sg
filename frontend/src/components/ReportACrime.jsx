@@ -449,6 +449,7 @@ const ReportACrime = () => {
               max={new Date().toISOString().split("T")[0]}
               // ref={dateRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -466,6 +467,7 @@ const ReportACrime = () => {
               type="time"
               // ref={timeRef}
               placeholder="Enter Description"
+              className="custom-input"
             ></input>
           </div>
           <br></br>
@@ -641,7 +643,6 @@ const ReportACrime = () => {
             >
               Back
             </button>
-            className="backbutton"
             <button
               className="confirmbutton"
               onClick={handlePage3ChangeScams}
