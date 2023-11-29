@@ -27,12 +27,6 @@
   padding: 20px;
   margin-top: 1%;
 }
-.button-container {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  margin-top: -10%;
-}
 
 .acknowledge {
   width: 350px;
@@ -44,6 +38,13 @@
   align-items: center;
   color: #ffff;
   margin: 10px 0;
+  flex-direction: column;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10%;
   flex-direction: column;
 }
 .roc-paragraph {
