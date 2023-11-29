@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "./NavBar";
 import newsimg from "../assets/newsimg.png";
 const NewsContent = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <p>News</p>

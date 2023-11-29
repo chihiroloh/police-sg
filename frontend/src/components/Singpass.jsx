@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/user";
 import { jwtDecode } from "jwt-decode";
@@ -35,6 +35,10 @@ const Singpass = () => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* <div className="singpass-container"> */}
@@ -43,7 +47,8 @@ const Singpass = () => {
         onClick={() => {
           handleLogin();
           navigateToHome();
-        }}>
+        }}
+      >
         <img src={singPass}></img>
       </button>
       {/* </div> */}

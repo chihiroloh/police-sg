@@ -27,6 +27,7 @@ const UpdateCard = (props) => {
 
   useEffect(() => {
     generateDateTime();
+    window.scrollTo(0, 0);
   }, []);
 
   return (

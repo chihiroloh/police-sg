@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import logo from "../assets/logo.png";
@@ -26,6 +26,10 @@ const LoginPage = () => {
   const navigateToSingpass = () => {
     navigate("/singpass");
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="login-page">

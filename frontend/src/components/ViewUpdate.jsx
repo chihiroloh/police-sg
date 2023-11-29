@@ -20,6 +20,7 @@ const ViewUpdate = () => {
 
   useEffect(() => {
     generateDate();
+    window.scrollTo(0, 0);
   });
 
   return (

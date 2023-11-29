@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NearestCentres.css";
 import maps from "../assets/maps.png";
 import NavBar from "./NavBar";
@@ -7,6 +7,10 @@ import location from "../assets/location.png";
 import phone from "../assets/phone.png";
 
 const NearestCentres = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <p className="contact-header">Contact Us</p>

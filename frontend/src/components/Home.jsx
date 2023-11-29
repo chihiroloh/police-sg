@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import minilogo from "../assets/minilogo.png";
 import bell from "../assets/bell.png";
@@ -53,6 +53,10 @@ const Home = () => {
   const goToCop = () => {
     navigate("/Cop");
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <div className="content-container">

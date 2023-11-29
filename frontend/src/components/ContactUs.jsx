@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ContactUs.css";
 import contactus from "../assets/contactus.png";
 import NavBar from "./NavBar";
 
 function ContactUs() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <p className="contact-header">Contact Us</p>

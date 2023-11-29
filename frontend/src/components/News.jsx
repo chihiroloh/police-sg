@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 import "./News.css";
 
 const News = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <p className="news-header">Latest News</p>

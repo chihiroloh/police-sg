@@ -27,6 +27,7 @@ const Appeals = () => {
 
   useEffect(() => {
     getAppealCase();
+    window.scrollTo(0, 0);
   }, []);
 
   const handleAppealClick = () => {
@@ -47,7 +48,8 @@ const Appeals = () => {
             <div
               key={appeal._id}
               className="appeal-item"
-              onClick={handleAppealClick}>
+              onClick={handleAppealClick}
+            >
               <div className="appeals-container">
                 <img
                   className="appealimg"
