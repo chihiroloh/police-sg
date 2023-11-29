@@ -19,7 +19,7 @@ const createUserReport = async (req, res) => {
     const reports = await ReportsModel.find();
     const dateRef = new Date().toLocaleDateString().split("/").join("");
     const refId =
-      req.body.type === "Lost & Found"
+      req.body.type === "lostItem"
         ? `B/${dateRef}/${reports.length + 1}`
         : `A/${dateRef}/${reports.length + 1}`;
 
