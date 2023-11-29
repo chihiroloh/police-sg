@@ -118,7 +118,7 @@ const IWitness = () => {
   return (
     <div className="container">
       <div className="header">i-Witness Report</div>
-      <br></br>
+      <hr></hr>
 
       {currentPage === "page1" && (
         <div className="row">
