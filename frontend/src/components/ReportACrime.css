@@ -89,6 +89,7 @@
   flex-direction: column;
   font-size: 15px;
   color: #1d1a60;
+  align-content: center;
 }
 .confirm {
   width: 350px;
