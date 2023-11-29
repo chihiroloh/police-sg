@@ -138,3 +138,19 @@
   position: absolute;
   height: 15px;
 }
+.confirm-button {
+  width: 100%;
+  max-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1d1a60;
+  color: #ffffff;
+}
+.other-confirm {
+  width: 374px;
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+}

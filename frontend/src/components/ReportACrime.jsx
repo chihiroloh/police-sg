@@ -1164,14 +1164,17 @@ const ReportACrime = () => {
 
       {currentPage === "page3-other" && (
         <div className="row">
+          <br />
           <h3 className="incident-header">
             Nature of Incident<span className="i-star">*</span>
           </h3>
           <div className="input-description">
             <select
+              className="custom-input"
               name="type"
               id="type"
               defaultValue="other" /*ref={crimeTypeRef}*/
+              disabled
             >
               <option value="" disabled>
                 Select Category
@@ -1205,21 +1208,20 @@ const ReportACrime = () => {
             ></input>
           </div>
           <br></br>
-
-          <div className="handle-container">
+          <div className="other-confirm">
             <button
-              className="confirmbutton"
+              className="confirm-button"
               onClick={handlePage3ChangeOther}
               // disabled={!crimeTypeRef.current}
             >
               Confirm
             </button>
-            <br></br>
-            <div className="description">
-              For urgent and time-sensitive matters that require immediate
-              attention, please contact the Police directly using the emergency
-              hotline at 999.
-            </div>
+          </div>
+          <br></br>
+          <div className="urgent">
+            For urgent and time-sensitive matters that require immediate
+            attention, please contact the Police directly using the emergency
+            hotline at 999.
           </div>
         </div>
       )}
