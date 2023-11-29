@@ -294,7 +294,7 @@ const LostNFound = () => {
             <input
               id="dateLost"
               type="date"
-              // ref={dateLostRef}
+              max={new Date().toISOString().split("T")[0]}
               placeholder="Enter Description"
               className="custom-input"></input>
           </div>
