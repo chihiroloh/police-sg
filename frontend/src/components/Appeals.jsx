@@ -47,8 +47,7 @@ const Appeals = () => {
             <div
               key={appeal._id}
               className="appeal-item"
-              onClick={handleAppealClick}
-            >
+              onClick={handleAppealClick}>
               <div className="appeals-container">
                 <img
                   className="appealimg"
@@ -58,7 +57,7 @@ const Appeals = () => {
                 <p className="appeal-user">
                   <b>{appeal.name}</b>
                 </p>
-                <p className="appealtype">Type: {appeal.type}</p>
+                <p className="appealtype">Appeal for {appeal.type}</p>
               </div>
             </div>
           ))}
