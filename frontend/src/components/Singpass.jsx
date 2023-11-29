@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/user";
 import { jwtDecode } from "jwt-decode";
 import "./Singpass.css";
+import singPass from "../assets/singpass.png";
 
 const Singpass = () => {
   const navigate = useNavigate();
@@ -35,18 +36,18 @@ const Singpass = () => {
   };
 
   return (
-    <div className="singpass-container">
-      <h2>Log-in with Singpass</h2>
+    <>
+      {/* <div className="singpass-container"> */}
       <button
-        className="loginbutton"
+        className="login-button"
         onClick={() => {
           handleLogin();
           navigateToHome();
-        }}
-      >
-        Log-in
+        }}>
+        <img src={singPass}></img>
       </button>
-    </div>
+      {/* </div> */}
+    </>
   );
 };
 
