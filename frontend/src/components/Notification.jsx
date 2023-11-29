@@ -38,23 +38,28 @@ const Notification = () => {
 
   return (
     <div>
-      <p>Notifications</p>
+      <p className="noti-header">Notifications</p>
       <hr />
-      <p>{userInfoCtx.userName}</p>
-      <p>SXXXX567D</p>
-      <img src={notificationImage} alt="Notification" />
-      <img src={policeNotificationImage} alt="Police Notification" />
-      <p>Notifications</p>
-      <div>
-        <div className="noti">
-          {notifications.map((notification, index) => (
-            <Link to="/ViewUpdate" key={index}>
-              <p className="noti-container">
-                There is a new update on your case (Police Report Ref:{" "}
-                {notification.refId}). Click here to view the latest update.
-              </p>
-            </Link>
-          ))}
+      <div className="noti">
+        <p className="noti-user">{userInfoCtx.userName}</p>
+        <p className="ic">SXXXX567D</p>
+        <img src={notificationImage} alt="Notification" />
+        <img src={policeNotificationImage} alt="Police Notification" />
+        <p className="notifications">Notifications</p>
+        <div>
+          <div className="noti-map">
+            {notifications.map((notification, index) => (
+              <Link to="/ViewUpdate" key={index}>
+                <p className="noti-container">
+                  There is a new update on your case{" "}
+                  <p className="noti-ref">
+                    (Police Report Ref: {notification.refId}).
+                  </p>
+                  Click here to view the latest update.
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
       <NavBar />

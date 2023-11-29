@@ -6,4 +6,39 @@
   font-size: 16px; /* Font size */
   font-family: Arial, sans-serif; /* Font family */
   line-height: 1.5; /* Line height */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow at the bottom */
+  background-color: transparent;
+  color: #555555;
+}
+
+.noti-header {
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.noti {
+  padding: 20px;
+  margin-top: -5%;
+  text-align: left;
+}
+
+@font-face {
+  font-family: "Neue Montreal";
+  src: local("Neue Montreal");
+}
+.noti-user {
+  font-size: 25px;
+}
+.ic {
+  margin-top: -7%;
+  font-size: 18px;
+}
+.notifications {
+  font-size: 18px;
+  font-weight: bold;
+}
+.noti-ref {
+  color: #1d1a60;
 }
