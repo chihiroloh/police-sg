@@ -35,7 +35,7 @@ const LostNFound = () => {
   const handlePage1Change = () => {
     lostNFoundRef.current = document.querySelector("#lostNFound").value;
 
-    if (lostNFoundRef.current === "lostItem") {
+    if (lostNFoundRef.current === "Lost Item") {
       setCurrentPage("page2-lostItem");
     }
     // else if (lostNFoundRef.current === "foundItem") {
@@ -147,8 +147,10 @@ const LostNFound = () => {
                 <option value="" disabled>
                   Select Category
                 </option>
-                <option value="lostItem">I lost an item</option>
-                <option value="disabled">I found an item</option>
+                <option value="Lost Item">I lost an item</option>
+                <option value="Found Item" disabled>
+                  I found an item
+                </option>
               </select>
               <br></br>
               <button className="confirm-lnf" onClick={handlePage1Change}>
