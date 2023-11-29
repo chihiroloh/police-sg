@@ -57,16 +57,16 @@ const Home = () => {
   return (
     <div className="content-container">
       <div className="top-header">
-        <img src={minilogo} />
-      </div>
+        <img className="minilogo" src={minilogo} />
 
-      <div className="side-content">
-        <Link to="/Notification">
-          <img src={bell} />
-        </Link>
-        <Link to="/Tutorial">
-          <img src={question} />
-        </Link>
+        <div className="side-content">
+          <Link to="/Notification">
+            <img src={bell} />
+          </Link>
+          <Link to="/Tutorial">
+            <img src={question} />
+          </Link>
+        </div>
       </div>
 
       <br />

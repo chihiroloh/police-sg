@@ -70,7 +70,7 @@ const IWitness = () => {
     // "Supporting Media": uploadedImageRef.current,
   };
 
-  const addReport = async () => {
+  const addIWitness = async () => {
     console.log(userInfoCtx.accessToken);
     console.log(userInfoCtx.userId);
     const res = await fetch(
@@ -118,7 +118,7 @@ const IWitness = () => {
   return (
     <div className="container">
       <div className="header">i-Witness Report</div>
-      <br></br>
+      <hr></hr>
 
       {currentPage === "page1" && (
         <div className="row">
@@ -236,7 +236,7 @@ const IWitness = () => {
           <button
             onClick={() => {
               handlePageChange("page5-nextofkin");
-              addReport();
+              addIWitness();
             }}
           >
             Submit

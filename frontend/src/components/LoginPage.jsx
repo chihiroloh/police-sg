@@ -62,22 +62,6 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <div
-        className="notification-tab"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <span>Swipe up for latest news</span>
-      </div>
-
-      {isNewsVisible && (
-        <div className="news-overlay">
-          <div className="news-content">
-            <p>Latest news content...</p>
-            <button onClick={() => setIsNewsVisible(false)}>Close</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
