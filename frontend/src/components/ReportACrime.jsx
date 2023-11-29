@@ -287,15 +287,24 @@ const ReportACrime = () => {
                 className="large-select"
                 // ref={crimeTypeRef}
               >
-                <option value="" disabled>
+                <option value="" disabled className="large-select-option">
                   Select Category
                 </option>
-                <option value="Dishonest Misappropriation of Property (Theft)">
+                <option
+                  value="Dishonest Misappropriation of Property (Theft)"
+                  className="large-select-option"
+                >
                   Dishonest Misappropriation of Property (Theft)
                 </option>
-                <option value="Scams">Scams</option>
-                <option value="Voyeurism">Voyeurism</option>
-                <option value="Other">Other</option>
+                <option value="Scams" className="large-select-option">
+                  Scams
+                </option>
+                <option value="Voyeurism" className="large-select-option">
+                  Voyeurism
+                </option>
+                <option value="Other" className="large-select-option">
+                  Other
+                </option>
               </select>
               <br></br>
             </div>
