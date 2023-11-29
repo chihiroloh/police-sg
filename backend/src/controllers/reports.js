@@ -20,7 +20,7 @@ const createUserReport = async (req, res) => {
     const dateRef = new Date().toLocaleDateString().split("/").join("");
 
     let refId = "";
-    if (req.body.type === "lostItem" || req.body.type === "foundItem") {
+    if (req.body.type === "Lost Item" || req.body.type === "Found Item") {
       refId = `B/${dateRef}/${reports.length + 1}`;
     } else {
       refId = `A/${dateRef}/${reports.length + 1}`;
