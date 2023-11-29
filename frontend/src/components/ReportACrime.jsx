@@ -230,7 +230,7 @@ const ReportACrime = () => {
   return (
     <div className="container">
       <div className="header">
-        <img src={back}></img>
+        <img src={back} onClick={() => handlePageChange("page1")}></img>
         <p className="ReportACrimeHeader">Report a Crime</p>
         <div></div>
       </div>
