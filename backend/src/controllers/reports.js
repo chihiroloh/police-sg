@@ -15,7 +15,6 @@ const getReportsByUserId = async (req, res) => {
 const createUserReport = async (req, res) => {
   try {
     let newReport = req.body;
-
     const reports = await ReportsModel.find();
     const dateRef = new Date().toLocaleDateString().split("/").join("");
 
