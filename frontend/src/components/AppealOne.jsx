@@ -28,6 +28,7 @@ const AppealOne = () => {
 
   useEffect(() => {
     getAppeals();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -36,9 +37,7 @@ const AppealOne = () => {
       <hr />
       <div className="appeal-list">
         {appeals.map((appeal) => (
-          <div
-            key={appeal._id}
-            className="appeal-item">
+          <div key={appeal._id} className="appeal-item">
             <p className="nextofkin-header">
               <span className="nextofkin">
                 <b>Appeal for Next-of-Kin: </b>
@@ -66,21 +65,13 @@ const AppealOne = () => {
       <div className="button-container">
         <Link to="/IWitness">
           <button className="iwitness-button">
-            <img
-              src={eye}
-              alt="Eye Icon"
-              className="button-icon"
-            />
+            <img src={eye} alt="Eye Icon" className="button-icon" />
             <span className="button-text">i-Witness Report</span>
           </button>
         </Link>
 
         <button className="appeal-hotline">
-          <img
-            src={call}
-            alt="Call Icon"
-            className="button-icon"
-          />
+          <img src={call} alt="Call Icon" className="button-icon" />
           <span className="button-text">Appeal Hotline</span>
         </button>
       </div>
