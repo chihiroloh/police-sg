@@ -17,4 +17,15 @@ This app is created for the Singapore Police Force (SPF), for use by the public.
 - Figma
 
 ## Screenshots
-![Login page](/police-sg/frontend/src/assets/screenshots-Police-SG/screenshot-1.png)
+![Login page](/frontend/src/assets/screenshots-Police-SG/screenshot-1.png)
+![Homepage](/frontend/src/assets/screenshots-Police-SG/screenshot-2.png)
+![Homepage](/frontend/src/assets/screenshots-Police-SG/screenshot-3.png)
+![Tutorial](/frontend/src/assets/screenshots-Police-SG/screenshot-4.png)
+![T&Cs](/frontend/src/assets/screenshots-Police-SG/screenshot-5.png)
+![Report a crime](/frontend/src/assets/screenshots-Police-SG/screenshot-6.png)
+![Report a crime](/frontend/src/assets/screenshots-Police-SG/screenshot-7.png)
+![Report a crime](/frontend/src/assets/screenshots-Police-SG/screenshot-8.png)
+![Contact us](/frontend/src/assets/screenshots-Police-SG/screenshot-9.png)
+![Contact us](/frontend/src/assets/screenshots-Police-SG/screenshot-10.png)
+![Appeals](/frontend/src/assets/screenshots-Police-SG/screenshot-11.png)
+![Appeals](/frontend/src/assets/screenshots-Police-SG/screenshot-12.png)
