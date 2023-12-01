@@ -226,7 +226,7 @@ const ReportACrime = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, [filePath]);
 
   return (
     <div className="container">

@@ -12,17 +12,6 @@ const LoginPage = () => {
   const [startY, setStartY] = useState(0);
   const navigate = useNavigate();
 
-  const handleTouchStart = (e) => {
-    setStartY(e.touches[0].clientY);
-  };
-
-  const handleTouchEnd = (e) => {
-    const endY = e.changedTouches[0].clientY;
-    if (startY - endY > 50) {
-      setIsNewsVisible(true);
-    }
-  };
-
   const navigateToSingpass = () => {
     navigate("/singpass");
   };
@@ -35,14 +24,22 @@ const LoginPage = () => {
     <div className="login-page">
       <div className="content">
         <div className="logoanddesc">
-          <img src={logo} alt="logo" />
+          <img
+            src={logo}
+            alt="logo"
+          />
           <p className="description-login">
             An initiative by the Singapore Police Force
           </p>
         </div>
         <br />
-        <button className="singpass-button" onClick={navigateToSingpass}>
-          <img className="loginsingpass" src={loginsingpass} alt="login"></img>
+        <button
+          className="singpass-button"
+          onClick={navigateToSingpass}>
+          <img
+            className="loginsingpass"
+            src={loginsingpass}
+            alt="login"></img>
         </button>
         <br />
         <div className="action-buttons">
