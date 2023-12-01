@@ -12,20 +12,17 @@ In the backend, the application uses JSON Web Tokens (JWT) as the primary method
 ## Screenshots
 
 <img src="/frontend/src/assets/screenshots-Police-SG/screenshot-1.png" alt="Login Page" height="300">
-<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-1.png" alt="Login Page" height="300">
-<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-1.png" alt="Login Page" height="300">
-<!-- ![Login page]() -->
-![Homepage](/frontend/src/assets/screenshots-Police-SG/screenshot-2.png)
-![Homepage](/frontend/src/assets/screenshots-Police-SG/screenshot-3.png)
-![Tutorial](/frontend/src/assets/screenshots-Police-SG/screenshot-4.png)
-![T&Cs](/frontend/src/assets/screenshots-Police-SG/screenshot-5.png)
-![Report a crime](/frontend/src/assets/screenshots-Police-SG/screenshot-6.png)
-![Report a crime](/frontend/src/assets/screenshots-Police-SG/screenshot-7.png)
-![Report a crime](/frontend/src/assets/screenshots-Police-SG/screenshot-8.png)
-![Contact us](/frontend/src/assets/screenshots-Police-SG/screenshot-9.png)
-![Contact us](/frontend/src/assets/screenshots-Police-SG/screenshot-10.png)
-![Appeals](/frontend/src/assets/screenshots-Police-SG/screenshot-11.png)
-![Appeals](/frontend/src/assets/screenshots-Police-SG/screenshot-12.png)
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-2.png" alt="Homepage" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-3.png" alt="Homepage" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-4.png" alt="Tutorial page" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-5.png" alt="T&Cs page" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-6.png" alt="Report a Crime page" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-7.png" alt="Report a Crime page" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-8.png" alt="Report a Crime page" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-9.png" alt="Contact us page" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-10.png" alt="Contact us page" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-11.png" alt="Appeals page" height="300">
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-12.png" alt="Appeals page" height="300">
 
 ## Technologies and Libraries Used
 
