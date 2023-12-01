@@ -11,7 +11,8 @@ In the backend, the application uses JSON Web Tokens (JWT) as the primary method
 
 ## Screenshots
 
-![Login page](/frontend/src/assets/screenshots-Police-SG/screenshot-1.png)
+<img src="/frontend/src/assets/screenshots-Police-SG/screenshot-1.png" alt="Login Page" height="100">
+![Login page]()
 ![Homepage](/frontend/src/assets/screenshots-Police-SG/screenshot-2.png)
 ![Homepage](/frontend/src/assets/screenshots-Police-SG/screenshot-3.png)
 ![Tutorial](/frontend/src/assets/screenshots-Police-SG/screenshot-4.png)
